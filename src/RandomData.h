@@ -1,13 +1,13 @@
-#include "iostream"
-#include "ctime"
-#include "stdlib.h"
-#include "sstream"
+#include <iostream>
+#include <ctime>
+#include <stdlib.h>
+#include <sstream>
 #include "DataMobil.h"
 
 using namespace std;
 
 string IntToString(int a);
-int main()
+void randomDatas()
 {
     string modelRandom[15];
     string bensin[15];
