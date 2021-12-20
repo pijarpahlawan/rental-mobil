@@ -48,6 +48,5 @@ void generateRandomData()
         char akhiran1 = rand() % 26 + 65;
         char akhiran2 = rand() % 26 + 65;
         platNomor[i] = platDaerah + IntToString(nomorPlat) + akhiran1 + akhiran2;
-        cout << modelRandom[i] << " Plat: " << platNomor[i] << " Tersedia: " << tersedia[i] << endl;
     }
 }
