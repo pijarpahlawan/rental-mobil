@@ -10,20 +10,40 @@
 
 using namespace std;
 
-void displayList()
+void DisplayGarageContent(int garageNumber)
 {
-    int no; //nomor daftar mobil dalam garasi
-pertama:
-    system("cls");
-    cout << "=== Garasi Satu ===" << endl;
-    cout << "No.\tModel Mobil\t\t\tPlat Nomor" << endl;
-    no = 1;
-    for (int i = 0; i < 5; i++)
+    int start, stop, no = 1;
+    if (garageNumber == 1)
+    {
+        start = 0;
+        stop = 5;
+    }
+    else if (garageNumber == 2)
+    {
+        start = 5;
+        stop = 11;
+    }
+    else if (garageNumber == 3)
+    {
+        start = 11;
+        stop = 15;
+    }
+    for (int i = start; i < stop; i++)
     {
         cout << no << ".\t" << modelRandom[i] << "\t\t\t" << platNomor[i] << endl;
         no++;
     }
-    cout << "\t\t\t\t\t\t\tnext >>" << endl;
+}
+
+void displayList()
+{
+pertama:
+    system("cls");
+    cout << "=== Garasi Satu ===" << endl;
+    cout << "No.\tModel Mobil\t\t\tPlat Nomor" << endl;
+    DisplayGarageContent(1);
+    cout << endl
+         << "\t\t\t\t\t\tnext >>" << endl;
     cout << "Tekan ESC untuk keluar";
     while (1)
     {
@@ -34,13 +54,9 @@ pertama:
             system("cls");
             cout << "=== Garasi Kedua ===" << endl;
             cout << "No.\tModel Mobil\t\t\tPlat Nomor" << endl;
-            no = 1;
-            for (int i = 5; i < 11; i++)
-            {
-                cout << no << ".\t" << modelRandom[i] << "\t\t\t" << platNomor[i] << endl;
-                no++;
-            }
-            cout << "<< prev\t\t\t\t\t\t\tnext >>" << endl;
+            DisplayGarageContent(2);
+            cout << endl
+                 << "<< prev\t\t\t\t\t\tnext >>" << endl;
             cout << "Tekan ESC untuk keluar";
             while (1)
             {
@@ -53,13 +69,9 @@ pertama:
                     system("cls");
                     cout << "=== Garasi Ketiga ===" << endl;
                     cout << "No.\tModel Mobil\t\t\tPlat Nomor" << endl;
-                    no = 1;
-                    for (int i = 11; i < 15; i++)
-                    {
-                        cout << no << ".\t" << modelRandom[i] << "\t\t\t" << platNomor[i] << endl;
-                        no++;
-                    }
-                    cout << "<< prev" << endl;
+                    DisplayGarageContent(3);
+                    cout << endl
+                         << "<< prev" << endl;
                     cout << "Tekan ESC untuk keluar";
                     while (1)
                     {
