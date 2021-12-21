@@ -1,5 +1,6 @@
-#include "iostream"
-#include "RandomData.h"
+#include <iostream>
+#include <conio.h>
+#include "DaftarMobil.h"
 
 using namespace std;
 
@@ -11,17 +12,12 @@ int main()
 	//pengumpulan data
 	//randomisasi
 	//tampilkan mobil per garasi
+	displayList();
 	//memilih mobil
 	//menanyakan identitas
 	//menanyakan kurun waktu peminjaman
 	//pembayaran
 	//tampilan terimakasih
 
-	for (int i = 0; i < 15; i++)
-	{
-		cout << modelRandom[i] << " Kapasitas tangki: " << bensin[i] << " Plat: " << platNomor[i] << " Tersedia: " << tersedia[i] << endl;
-	}
-
-	cin.ignore();
 	return 0;
 }
