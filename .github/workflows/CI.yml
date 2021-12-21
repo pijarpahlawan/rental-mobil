@@ -11,12 +11,15 @@ jobs:
         shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
-    - uses: egor-tensin/setup-mingw@v2
+    - name: Setup MinGW
+      uses: egor-tensin/setup-mingw@v2
       with:
         platform: x64
+        cc: 1
+        uses: ./
     - name : Build main.cpp
       run: |
-       & 'x86_64-w64-mingw32-g++' -o ./compile/result ./src/main.cpp
+       & gxx -o ./compile/result ./src/main.cpp
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
       with:
