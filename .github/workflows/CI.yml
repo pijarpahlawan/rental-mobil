@@ -15,7 +15,7 @@ jobs:
       with:
         platform: x64
     - name : Build main.cpp
-    - run: |
+      run: |
        & 'x86_64-w64-mingw32-g++' -o ./compile/result ./src/main.cpp
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
