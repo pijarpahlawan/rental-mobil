@@ -4,17 +4,14 @@ on: [push, pull_request]
 
 jobs:
 
-  amd64_windows_gcc:
-    runs-on: windows-2019
+  MIN-GW:
+    runs-on: windows-latest
     defaults:
       run:
         shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
-    - uses: msys2/setup-msys2@v2
+    - uses: egor-tensin/setup-mingw@v2
       with:
-        install: gcc make
-    - run: gcc -v
-    - run: make CC=gcc
-    - run: file ./src/main.cpp
-    - run: ./main
+        platform: x64
+    - run: g++ -v
