@@ -7,19 +7,19 @@
 using namespace std;
 
 //array tempat menyimpan hasil randomisasi
-string modelRandom[15];
-string bensin[15];
-string kursi[15];
+string modelRandom[15]; //!tidak ikut spesifikasi
+string platNomor[15];   //!tidak ikut spesifikasi
+bool tersedia[15];      //!tidak ikut spesifikasi
 string cc[15];
-string warna[15];
-string adaAC[15];
 string tipeMesin[15];
 string bahanbakar[15];
-int harga[15];
-string platNomor[15];
-string nomorRekening;
+string bensin[15];
+string kursi[15];
 int kilometer[15];
-bool tersedia[15];
+string adaAC[15];
+string warna[15];
+int harga[15];
+string nomorRekening; //!tidak ikut spesifikasi
 
 //mengubah integer menjadi string
 string IntToString(int a)
@@ -40,18 +40,24 @@ void generateRandomData()
         /*mendapatkan indeks ke-r array sebelum terandom. berbasis array models[]*/
         int r = rand() % (sizeof(models) / sizeof(string));
 
-        //randomization
+        /*merandom model mobil*/
         modelRandom[i] = models[r];
-        bensin[i] = fuels[r];
-        kursi[i] = seats[r];
+
+        /*merandom ketersediaan mobil*/
+        tersedia[i] = rand() % 10 != 1;
+
+        /*merandom spesifikasi mobil*/
         cc[i] = engines[r];
-        harga[i] = prices[r];
-        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % 108];
-        adaAC[i] = haveAC[r];
         tipeMesin[i] = engineTypes[r];
         bahanbakar[i] = fuelTypes[r];
+        bensin[i] = fuels[r];
+        kursi[i] = seats[r];
         kilometer[i] = rand() % 98888 + 1111;
-        tersedia[i] = rand() % 10 != 1;
+        adaAC[i] = haveAC[r];
+        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % 108];
+        harga[i] = prices[r];
+
+        /*merandom plat nomor mobil*/
         string platDaerah = awalanPlat[rand() % (sizeof(awalanPlat) / sizeof(string))];
         int nomorPlat = rand() % 8999 + 1000;
         char akhiran1 = rand() % 26 + 65;
