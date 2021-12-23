@@ -11,6 +11,9 @@ jobs:
         shell: pwsh
     steps:
     - uses: actions/checkout@v2
+    - name: Create Compile Folder
+      run: |
+        &mkdir ./compile
     - name: Setup MinGW
       id: setup
       uses: egor-tensin/setup-mingw@v2
@@ -27,3 +30,6 @@ jobs:
           name: RentalMobil
           path: ./compile/
           retention-days: 2
+    - name: Delete Compile Folder
+      run: |
+        & Romeve-Item ./compile -R
