@@ -11,6 +11,8 @@ jobs:
         shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
+    - name: Clean up PATH
+      uses: egor-tensin/cleanup-path@v1
     - name: Setup MinGW
       id: setup
       uses: egor-tensin/setup-mingw@v2
