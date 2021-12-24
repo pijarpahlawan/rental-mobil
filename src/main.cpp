@@ -130,9 +130,10 @@ pilih:
 
 selesai:
     system("cls");
+    cin.ignore();
     cout << "Terimakasih" << endl;
     cout << "Tekan ENTER untuk keluar...";
-    cin.ignore();
+    cin.get();
 
     return 0;
 }
