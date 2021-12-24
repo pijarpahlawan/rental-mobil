@@ -28,8 +28,7 @@ jobs:
        & '${{ steps.setup.outputs.gxx }}' -o ./compile/result ./src/main.cpp
     - name: Setting Date Variable
       id: date
-      run: |
-        & set-output name=today::$(get-date -f ddMMyy-hhmmss)
+      run: echo "::set-output name=today::$(date +'%d%m%y:%H%%i%s')"
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
       with:
