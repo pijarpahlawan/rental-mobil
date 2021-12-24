@@ -26,9 +26,13 @@ jobs:
     - name : Build main.cpp
       run: |
        & '${{ steps.setup.outputs.gxx }}' -o ./compile/result ./src/main.cpp
+    - name: Setting Date Variable
+      id: date
+      run: |
+        & set-output name=today::$(get-date -f ddMMyy-hhmmss)
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
       with:
-          name: RentalMobil
+          name: RentalMobil-${{ steps.date.outputs.today }}
           path: ./compile/
           retention-days: 2
