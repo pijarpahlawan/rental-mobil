@@ -1,0 +1,34 @@
+name: Build 64Bit
+
+on: [push, pull_request]
+
+jobs:
+
+  MIN-GW:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create Compile Folder
+      run: |
+        &mkdir ./compile
+    - name: Setup MinGW
+      id: setup
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+        cc: 1
+    - name : Check version
+      run: |
+        & '${{ steps.setup.outputs.gxx }}' --version
+    - name : Build main.cpp
+      run: |
+       & '${{ steps.setup.outputs.gxx }}' -o ./compile/result ./src/main.cpp
+    - name : Upload Artifact 
+      uses : actions/upload-artifact@v2.3.1
+      with:
+          name: RentalMobil
+          path: ./compile/
+          retention-days: 2
