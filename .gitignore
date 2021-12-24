@@ -33,3 +33,6 @@
 
 # VSCode settings 
 .vscode/
+
+# unnecessary files
+unnecessary/
