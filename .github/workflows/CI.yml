@@ -28,10 +28,10 @@ jobs:
        & '${{ steps.setup.outputs.gxx }}' -o ./compile/result ./src/main.cpp
     - name: Setting Date Variable
       id: date
-      run: echo "::set-output name=today::$(date +'%d%m%y:%H%i%s')"
+      run: echo "::set-output name=today::$(date +'%d%m%y-%H%M%S')"
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
       with:
-          name: RentalMobil-${{ steps.date.outputs.today }}
+          name: RentalMobil_${{ steps.date.outputs.today }}
           path: ./compile/
           retention-days: 2
