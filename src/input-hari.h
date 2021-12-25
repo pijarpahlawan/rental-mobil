@@ -1,34 +1,52 @@
 #include <iostream>
 using namespace std;
+bool asked = false;
+
+void Ulang()
+{
+    asked = false;
+    cout << "Tekan ENTER untuk mengulangi";
+    cin.clear();
+    cin.ignore();
+    cin.ignore();
+    cin.get();  
+    system("cls");    
+}
 
 void InputHari()
 {
-    unsigned int jmlh_hari;
+    int jmlh_hari = 0;
     char y_n;
     bool isRun = true;
-
     while (isRun)
     {
+        baleni:
+        system("cls");
         cout << "Anda mau meminjam untuk berapa hari: ";
-        cin >> jmlh_hari;
-        cout << endl;
-        cout << "Apakah anda yakin, ketik y/n ";
-        if (!(cin >> y_n))
+        if ((cin >> jmlh_hari) && jmlh_hari > 0)
         {
-            cout << "Input error\n";
-            cin.clear();
-            cin.ignore();
-        }
-        else if (y_n == 'y' || y_n == 'Y')
+            cout << endl;
+            cout << "Apakah anda yakin, ketik y/n ";
+            asked = true;
+        } 
+        else
+        {
+            cout << "Silahkan masukkan bilangan bulat positif, dilain itu akan gagal" << endl;
+            Ulang();
+            goto baleni;
+        }               
+        if ((cin >> y_n) && (y_n == 'y' || y_n == 'Y'))
         {
             cout << "Menampilkan biaya untuk " << jmlh_hari << " hari: ";
             isRun = false;
         }
-        else if (y_n == 'N' || y_n == 'n')
+        else
         {
-            continue;
-        }
-        else if ((y_n != 'N' || y_n != 'n') || (y_n != 'y' || y_n != 'Y'))
-            cout << "Input salah\n\n";
+            if (!(y_n == 'n' || y_n == 'N'))
+            {
+                cout << "Silahkan masukkan y/n, dilain itu salah" << endl;
+            }
+            Ulang();
+        }       
     }
 }
