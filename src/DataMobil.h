@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 using namespace std;
 
@@ -111,6 +112,6 @@ string allColors[] =
 };
 string awalanPlat[] =
 {
-	"A", "AA", "AB", "AD", "AE", "AG", "B", "D", "DA", "DB", "DC", "DD", "DE", "DG", "DH", "DK", "DL", "DM", "DN", "DP", "DR", "DT",
-	"DW", "E", "EA", "EB", "ED", "F", "G", "H", "K", "KB", "KH", "KT", "KU", "L", "M", "N", "P", "PA", "PB", "R", "S", "T", "W", "Z",
+	"G", "H", "K", "AB", "R", "AA", "AD", "AB", "D", "E", "AB", "F", "T", "Z", "A", "B", "L", "M",
+	"N", "AB", "P", "S", "AB", "W", "AB", "AE", "AG", "AB", "DK", "AB", "AB", "AB",
 };
