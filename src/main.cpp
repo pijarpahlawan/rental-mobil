@@ -20,10 +20,13 @@ int pilihan;           // variabel yang menampung pilihan mobil
 void DisplayGarageContent(int start, int stop)
 {
     int no = 1; //nomer urut mobil pada daftar mobil yang ditampilkan
-    cout << "No.\tModel Mobil\t\t\tPlat Nomor " << endl;
+    cout << " || No.|| \t    Model Mobil \t\t || \tPlat Nomor \t||" << endl;
+    cout << " =========================================================================" << endl;
     for (int i = start; i < stop; i++)
     {
-        cout << no << ".\t" << modelRandom[i] << "\t\t\t" << platNomor[i] << endl;
+        cout << " || " << no << ". ||\t" << modelRandom[i] << "\t || "
+             << "\t" << platNomor[i] << "  \t"
+             << "||" << endl;
         no++;
     }
 }
@@ -33,10 +36,18 @@ int main()
     generateRandomData();
 pertama:
     system("cls");
-    cout << "=== Garasi Satu ===" << endl;
+    cout << "\t\t\t ====================\t\t\t\t\t" << endl;
+    cout << "\t\t\t || Garasi Pertama ||\t\t\t\t\t" << endl;
+    cout << "\t\t\t ====================\t\t\t\t\t" << endl;
+    cout << endl;
+    cout << " =========================================================================" << endl;
     DisplayGarageContent(0, 5); // garasi satu menampilkan indeks array ke 0 sampai 4
+    cout << " =========================================================================" << endl;
     cout << endl
-         << "\t\t\t\t\t\tnext >>" << endl;
+         << "\t\t\t\t\t\t\t-----------" << endl;
+    cout << "\t\t\t\t\t\t\t| next >> |" << endl;
+    cout << "\t\t\t\t\t\t\t-----------" << endl;
+    cout << endl;
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
     while (1)
     {
@@ -45,10 +56,24 @@ pertama:
         case SELANJUTNYA:
         kedua:
             system("cls");
-            cout << "=== Garasi Kedua ===" << endl;
+            cout << "\t\t\t ==================\t\t\t\t\t" << endl;
+            cout << "\t\t\t || Garasi Kedua ||\t\t\t\t\t" << endl;
+            cout << "\t\t\t ==================\t\t\t\t\t" << endl;
+            cout << endl;
+            cout << " =========================================================================" << endl;
             DisplayGarageContent(5, 11); // garasi satu menampilkan indeks array ke 5 sampai 10
+            cout << " =========================================================================" << endl;
             cout << endl
-                 << "<< prev\t\t\t\t\t\tnext >>" << endl;
+                 << "\t-----------"
+                 << "\t\t\t\t\t"
+                 << "-----------" << endl;
+            cout << "\t| << prev |"
+                 << "\t\t\t\t\t"
+                 << "| next >> |" << endl;
+            cout << "\t-----------"
+                 << "\t\t\t\t\t"
+                 << "-----------" << endl;
+            cout << endl;
             cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
             while (1)
             {
@@ -59,10 +84,18 @@ pertama:
                     break;
                 case SELANJUTNYA:
                     system("cls");
-                    cout << "=== Garasi Ketiga ===" << endl;
+                    cout << "\t\t\t ===================\t\t\t\t\t" << endl;
+                    cout << "\t\t\t || Garasi Ketiga ||\t\t\t\t\t" << endl;
+                    cout << "\t\t\t ===================\t\t\t\t\t" << endl;
+                    cout << endl;
+                    cout << " =========================================================================" << endl;
                     DisplayGarageContent(11, 15); // garasi satu menampilkan indeks array ke 11 sampai 14
+                    cout << " =========================================================================" << endl;
                     cout << endl
-                         << "<< prev" << endl;
+                         << "\t-----------" << endl;
+                    cout << "\t| << prev |" << endl;
+                    cout << "\t-----------" << endl;
+                    cout << endl;
                     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
                     while (1)
                     {
@@ -105,12 +138,12 @@ pertama:
     }
 
 pilih:
-    cout << "Pilih mobil: ";
+    cout << "\nPilih mobil : ";
     cin >> pilihan;
     //TODO: Fungsi output spesifikasi
 
     //?setelah penampilan spesifikasi
-    cout << "Tekan ENTER apabila anda sudah yakin dan tekan BACKSPACE apabila ingin kembali ke daftar menu mobil...";
+    cout << "\nTekan ENTER apabila anda sudah yakin dan tekan BACKSPACE apabila ingin kembali ke daftar menu mobil...";
     while (1)
     {
         switch (getch())
@@ -130,9 +163,8 @@ pilih:
 
 selesai:
     system("cls");
-    cin.ignore();
-    cout << "Terimakasih" << endl;
-    cout << "Tekan ENTER untuk keluar...";
+    cout << "\t~ Terima kasih ~" << endl;
+    cout << "   Tekan ENTER untuk keluar...";
     cin.get();
 
     return 0;
