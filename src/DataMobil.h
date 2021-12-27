@@ -18,13 +18,16 @@ using namespace std;
 
 string models[] =
 {
-	"Daihatsu Ayla \t\t", "Toyota Raize \t\t", "Nissan Livina \t\t", "Daihatsu Gran Max \t", "Toyota Land cruiser \t", "Toyota Vellfire \t", 
-	"Chevrolet Colorado \t", "Toyota Veloz \t\t", "Daihatsu Sigra \t\t", "Hummer \t\t\t", "Range Rover sport \t",  "Toyota Alphard \t\t", 
-	"Toyota Avanza \t\t", "Toyota Camry \t\t", "Honda CRV 1.5L Turbo \t", "Honda CRV 1.5L Turbo Prestige", "Toyota Fortuner \t",  "Toyota Hiace Premio \t", 
-	"Hyundai H1 Royale \t", "Hyundai H1 XG \t\t", "Toyota Kijang Innova \t", "Toyota Kijang Innova Venturer ", "Lexus LX 570 \t\t", "Mercedes Benz C300 AMG \t", 
-	"Mercedes Benz E250 \t", "Mercedes Benz E300 AMG \t", "Mercedes Benz S400 Hybrid", "Toyota Voxy \t\t", "Daihatsu Xenia \t\t", "Mitsubishi Xpander \t", 
-	"Honda Brio \t\t", "Honda Jazz \t\t", "Toyota Yaris \t\t", "Nissan March \t\t", "Nissan Evalia \t\t", "Daihatsu Luxio \t\t"
+	"Daihatsu Ayla", "Toyota Raize", "Nissan Livina", "Daihatsu Gran Max", "Toyota Land Cruiser",
+	"Toyota Vellfire", "Chevrolet Colorado", "Toyota Veloz", "Daihatsu Sigra", "Hummer H2",
+	"Range Rover Sport", "Toyota Alphard", "Toyota Avanza", "Toyota Camry", "Honda CRV 1.5L Turbo",
+	"Honda CRV 1.5L Turbo Prestige", "Toyota Fortuner", "Toyota Hiace Premio", "Hyundai H1 Royale",
+	"Hyundai H1 XG", "Toyota Kijang Innova", "Toyota Kijang Innova Venturer", "Lexus LX 570",
+	"Mercedes Benz C300 AMG", "Mercedes Benz E250", "Mercedes Benz E300 AMG", "Mercedes Benz S400 Hybrid",
+	"Toyota Voxy", "Daihatsu Xenia", "Mitsubishi Xpander", "Honda Brio", "Honda Jazz", "Toyota Yaris",
+	"Nissan March", "Nissan Evalia", "Daihatsu Luxio",
 };
+
 string fuels[] =
 {
 	"45", "36", "55", "45", "93", "75", 
@@ -112,6 +115,6 @@ string allColors[] =
 };
 string awalanPlat[] =
 {
-	"G", "H", "K", "AB", "R", "AA", "AD", "AB", "D", "E", "AB", "F", "T", "Z", "A", "B", "L", "M",
-	"N", "AB", "P", "S", "AB", "W", "AB", "AE", "AG", "AB", "DK", "AB", "AB", "AB",
+	"G", "H", "K", "AB", "R", "AA", "AD", "AB", "D", "E", "AB", "F", "T", "Z", "A", "B", "L",
+	"M", "N", "AB", "P", "S", "AB", "W", "AB", "AE", "AG", "AB", "DK", "AB", "AB", "AB",
 };
