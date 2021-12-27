@@ -8,9 +8,9 @@
 using namespace std;
 
 //array tempat menyimpan hasil randomisasi
-string modelRandom[15]; //!tidak ikut spesifikasi
-string platNomor[15];   //!tidak ikut spesifikasi
-bool tersedia[15];      //!tidak ikut spesifikasi
+string modelRandom[15];
+string platNomor[15];
+bool tersedia[15];
 string cc[15];
 string tipeMesin[15];
 string bahanbakar[15];
@@ -20,20 +20,20 @@ int kilometer[15];
 string adaAC[15];
 string warna[15];
 int harga[15];
-string nomorRekening; //!tidak ikut spesifikasi
+string nomorRekening;
 
 //mengubah integer menjadi string
 string IntToString(int a)
 {
-    ostringstream temp; //template character
-    temp << a;          //formating a to char array (string)
-    return temp.str();  //returning <a> to string value
+    ostringstream temp;
+    temp << a;
+    return temp.str();
 }
 
 //merandom data
 void generateRandomData()
 {
-    srand((unsigned int)time(NULL)); //seed rand()
+    srand((unsigned int)time(NULL));
 
     //mengambil 15 data mobil, spesifikasi, dan harganya
     for (int i = 0; i < 15; i++)
