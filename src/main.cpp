@@ -16,11 +16,11 @@ using namespace std;
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 int pilihan, awal, akhir;
 
+//menambahkan tab(\t) sesuai dengan panjang teks pada model mobil
 string FormatModel(string model)
 {
     string ret = model + " ";
     int pj = model.size() + 1;
-    //cout << pj << endl;
     if (pj < 10)
         ret += "\t\t\t";
     else if (pj < 16)
@@ -31,6 +31,8 @@ string FormatModel(string model)
 }
 string FormatLicensePlate(string plate)
 {
+    //jika panjang teks dari plate adalah 7 maka tambahkan spasi pada elemen 1
+    //jika tidak maka akan mengembalikan instansi yang sama dengan parameter plate
     return plate.size() == 7 ? plate.insert(1, 1, ' ') : plate;
 }
 
