@@ -29,12 +29,16 @@ string IntToString(int a)
     temp << a;          //formating a to char array (string)
     return temp.str();  //returning <a> to string value
 }
+
+//merandom plat nomor
 string GenerateRandomLicensePlate()
 {
+    //mengambil satu elemen array dari awalanPlat[] secara acak
     string platDaerah = awalanPlat[rand() % (sizeof(awalanPlat) / sizeof(string))];
     int nomorPlat = rand() % 8999 + 1000;
-    char akhiran1 = rand() % 26 + 65;
+    char akhiran1 = rand() % 26 + 65; //ascii value dari A - Z adalah 65 - 90
     char akhiran2 = rand() % 26 + 65;
+    //mengembalikan string gabungan dari ke 4 variabel diatas
     return platDaerah + IntToString(nomorPlat) + akhiran1 + akhiran2;
 }
 
@@ -72,13 +76,6 @@ void generateRandomData()
     for (int i = 0; i < 5; i++)
     {
         int noRek = rand() % 999 + 11;
-        if (i == 0)
-        {
-            nomorRekening = IntToString(noRek);
-        }
-        else
-        {
-            nomorRekening = nomorRekening + IntToString(noRek);
-        }
+        nomorRekening += IntToString(noRek);
     }
 }
