@@ -26,6 +26,10 @@ string FormatModel(string model)
     else if (pj < 25) ret += "\t";
     return ret;
 }
+string FormatLicensePlate(string plate)
+{
+    return plate.size() == 7 ? plate.insert(1, 1, ' ') : plate;
+}
 
 // mengeluarkan output model mobil beserta plat nomor mobilnya
 void DisplayGarageContent(int start, int stop)
@@ -36,7 +40,8 @@ void DisplayGarageContent(int start, int stop)
     for (int i = start; i < stop; i++)
     {
         string model = FormatModel(modelRandom[i]);
-        cout << " || " << no << ". ||\t" << model << "\t || " << "\t" << platNomor[i] << "\t" << "||" <<endl;
+        string plate = FormatLicensePlate(platNomor[i]);
+        cout << " || " << no << ". ||\t" << model << "\t || " << "\t" << plate << "\t" << "||" <<endl;
         no++;
     }
 }

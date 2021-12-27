@@ -115,6 +115,6 @@ string allColors[] =
 };
 string awalanPlat[] =
 {
-	"G ", "H ", "K ", "AB ", "R  ", "AA", "AD", "AB", "D ", "E ", "AB", "F ", "T ", "Z ", "A ", "B ", "L ", "M ",
-	"N ", "AB", "P ", "S ", "AB", "W ", "AB", "AE", "AG", "AB", "DK", "AB", "AB", "AB",
+	"G", "H", "K", "AB", "R", "AA", "AD", "AB", "D", "E", "AB", "F", "T", "Z", "A", "B", "L",
+	"M", "N", "AB", "P", "S", "AB", "W", "AB", "AE", "AG", "AB", "DK", "AB", "AB", "AB",
 };
