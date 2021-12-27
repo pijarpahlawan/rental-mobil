@@ -30,6 +30,18 @@ string IntToString(int a)
     return temp.str();  //returning <a> to string value
 }
 
+//merandom plat nomor
+string GenerateRandomLicensePlate()
+{
+    //mengambil satu elemen array dari awalanPlat[] secara acak
+    string platDaerah = awalanPlat[rand() % (sizeof(awalanPlat) / sizeof(string))];
+    int nomorPlat = rand() % 8999 + 1000;
+    char akhiran1 = rand() % 26 + 65; //ascii value dari A - Z adalah 65 - 90
+    char akhiran2 = rand() % 26 + 65;
+    //mengembalikan string gabungan dari ke 4 variabel diatas
+    return platDaerah + IntToString(nomorPlat) + akhiran1 + akhiran2;
+}
+
 //merandom data
 void generateRandomData()
 {
@@ -55,28 +67,15 @@ void generateRandomData()
         kursi[i] = seats[r];
         kilometer[i] = rand() % 98888 + 1111;
         adaAC[i] = haveAC[r];
-        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % 108];
+        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % (sizeof(allColors) / sizeof(string))];
         harga[i] = prices[r];
-
-        /*merandom plat nomor mobil*/
-        string platDaerah = awalanPlat[rand() % (sizeof(awalanPlat) / sizeof(string))];
-        int nomorPlat = rand() % 8999 + 1000;
-        char akhiran1 = rand() % 26 + 65;
-        char akhiran2 = rand() % 26 + 65;
-        platNomor[i] = platDaerah + IntToString(nomorPlat) + akhiran1 + akhiran2;
+        platNomor[i] = GenerateRandomLicensePlate();
     }
 
     //merandom nomor rekening
     for (int i = 0; i < 5; i++)
     {
         int noRek = rand() % 999 + 11;
-        if (i == 0)
-        {
-            nomorRekening = IntToString(noRek);
-        }
-        else
-        {
-            nomorRekening = nomorRekening + IntToString(noRek);
-        }
+        nomorRekening += IntToString(noRek);
     }
 }
