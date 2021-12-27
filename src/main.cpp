@@ -12,9 +12,31 @@ using namespace std;
 #define SEBELUMNYA 75  // 75 adalah kode ASCII tombol panah ke kiri
 #define SELANJUTNYA 77 // 77 adalah kode ASCII tombol panah ke kanan
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
-#define KEMBALI 8      // 8 adalah kode ASCII tombol backspace
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
-int pilihan, awal, akhir;
+//#define KEMBALI 8      // 8 adalah kode ASCII tombol backspace
+
+/*variabel global*/
+int pilihan = 0, jmlh_hari = 0, awal, akhir;
+char y_n[] = "y/n";
+/*pointer untuk menangkap inputan sebelum dicasting ke integer*/
+char *pilihan_str, *jmlHari_str;
+
+void Spesification()
+{
+    cout << "=== Spesifikasi ===" << endl;
+    cout << "Mobil: " << modelRandom[pilihan] << endl;
+    cout << "Plat nomor: " << platNomor[pilihan] << endl;
+    cout << "CC : " << cc[pilihan] << endl;
+    cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
+    cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
+    cout << "Bensin : " << bensin[pilihan] << endl;
+    cout << "Kursi : " << kursi[pilihan] << endl;
+    cout << "Kilometer : " << kilometer[pilihan] << endl;
+    cout << "Ber AC : " << adaAC[pilihan] << endl;
+    cout << "Warna : " << warna[pilihan] << endl;
+    cout << "Harga : " << harga[pilihan] << endl;
+    cout << endl;
+}
 
 //menambahkan tab(\t) sesuai dengan panjang teks pada model mobil
 string FormatModel(string model)
@@ -170,53 +192,79 @@ pertama:
 
 pilih:
     cout << "\nMasukan Pilihan : ";
-    cin >> pilihan;
-    pilihan = pilihan + awal - 1;
+    cin >> pilihan_str;
 
-    // mencari mobil tersedia atau tidak, dan menampilkan data mobil jika tersedia
-    if (!tersedia[pilihan])
+    // menentukan inputan sesuai dengan yang diminta atau tidak
+    if (sscanf(pilihan_str, "%d", &pilihan) && (pilihan > 0) && (pilihan <= (akhir - awal)))
     {
-        cout << "Mohon Maaf Mobil Tidak Tersedia";
-        cin.ignore();
-        cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
-        goto pertama;
+        pilihan = pilihan + awal - 1;
+
+        // mencari mobil tersedia atau tidak, dan menampilkan data mobil jika tersedia
+        if (!tersedia[pilihan])
+        {
+            cout << "Mohon Maaf Mobil Tidak Tersedia" << endl;
+            cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+            cin.ignore();
+            goto pertama;
+        }
+        else
+        {
+        spesifikasi:
+            system("cls");
+            Spesification();
+            cout << "Apakah anda yakin, ketik y/n: ";
+            cin >> y_n;
+            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+            {
+                cout << "jumlah hari, data pelanggan, biaya, bayar" << endl;
+                //TODO: MEMASUKKAN JUMLAH HARI
+                //TODO: INPUT DATA DIRI PELANGGAN
+                //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
+                //TODO: PEMBAYARAN
+            }
+            else
+            {
+                if ((y_n[0] == 'n') || (y_n[0] == 'N'))
+                {
+                    cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+                    cin.ignore();
+                    goto pertama;
+                }
+                else
+                {
+                    cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
+                    cout << "Tekan ENTER untuk kembali memilih y/n...";
+                    cin.ignore();
+                    goto spesifikasi;
+                }
+            }
+        }
     }
     else
     {
-        system("cls");
-        cout << "=== Spesifikasi ===" << endl;
-        cout << "Mobil: " << modelRandom[pilihan] << endl;
-        cout << "Plat nomor: " << platNomor[pilihan] << endl;
-        cout << "CC : " << cc[pilihan] << endl;
-        cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
-        cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
-        cout << "Bensin : " << bensin[pilihan] << endl;
-        cout << "Kursi : " << kursi[pilihan] << endl;
-        cout << "Kilometer : " << kilometer[pilihan] << endl;
-        cout << "ber AC : " << adaAC[pilihan] << endl;
-        cout << "Warna : " << warna[pilihan] << endl;
-        cout << "Harga : " << harga[pilihan] << endl;
+        cout << "ERROR: silahkan masukkan angka yang sesuai dengan kolom nomor." << endl;
+        cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+        cin.ignore();
+        goto pertama;
     }
-    //TODO: Fungsi output spesifikasi
-
-    //?setelah penampilan spesifikasi
-    cout << "\nTekan ENTER apabila anda sudah yakin dan tekan BACKSPACE apabila ingin kembali ke daftar menu mobil...";
-    while (1)
-    {
-        switch (getch())
-        {
-        case MASUK:
-            //*disini meminta input data pelanggan
-            //*disini juga mengeluarkan data pelanggan dan pembayarannya
-            goto selesai;
-            break;
-        case KEMBALI:
-            goto pertama;
-            break;
-        default:
-            break;
-        }
-    }
+    // setelah penampilan spesifikasi
+    // cout << "\nTekan ENTER apabila anda sudah yakin dan tekan BACKSPACE apabila ingin kembali ke daftar menu mobil...";
+    // while (1)
+    // {
+    //     switch (getch())
+    //     {
+    //     case MASUK:
+    //         disini meminta input data pelanggan
+    //         disini juga mengeluarkan data pelanggan dan pembayarannya
+    //         goto selesai;
+    //         break;
+    //     case KEMBALI:
+    //         goto pertama;
+    //         break;
+    //     default:
+    //         break;
+    //     }
+    // }
 
 selesai:
     system("cls");
