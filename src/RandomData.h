@@ -63,7 +63,7 @@ void generateRandomData()
         kursi[i] = seats[r];
         kilometer[i] = rand() % 98888 + 1111;
         adaAC[i] = haveAC[r];
-        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % 108];
+        warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % (sizeof(allColors) / sizeof(string))];
         harga[i] = prices[r];
         platNomor[i] = GenerateRandomLicensePlate();
     }
