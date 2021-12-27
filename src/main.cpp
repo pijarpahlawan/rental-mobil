@@ -14,7 +14,7 @@ using namespace std;
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define KEMBALI 8      // 8 adalah kode ASCII tombol backspace
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
-int pilihan;           // variabel yang menampung pilihan mobil
+int pilihan, awal, akhir;
 
 string FormatModel(string model)
 {
@@ -55,13 +55,16 @@ int main()
 {
     generateRandomData();
 pertama:
+    // garasi satu menampilkan indeks array ke 0 sampai 4
+    awal = 0;
+    akhir = 5;
     system("cls");
     cout << "\t\t\t ====================\t\t\t\t\t" << endl;
     cout << "\t\t\t || Garasi Pertama ||\t\t\t\t\t" << endl;
     cout << "\t\t\t ====================\t\t\t\t\t" << endl;
     cout << endl;
     cout << " =========================================================================" << endl;
-    DisplayGarageContent(0, 5); // garasi satu menampilkan indeks array ke 0 sampai 4
+    DisplayGarageContent(awal, akhir);
     cout << " =========================================================================" << endl;
     cout << endl
          << "\t\t\t\t\t\t\t-----------" << endl;
@@ -71,18 +74,20 @@ pertama:
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
     while (1)
     {
-
         switch (getch())
         {
         case SELANJUTNYA:
         kedua:
+            // garasi satu menampilkan indeks array ke 5 sampai 10
+            awal = 5;
+            akhir = 11;
             system("cls");
             cout << "\t\t\t ==================\t\t\t\t\t" << endl;
             cout << "\t\t\t || Garasi Kedua ||\t\t\t\t\t" << endl;
             cout << "\t\t\t ==================\t\t\t\t\t" << endl;
             cout << endl;
             cout << " =========================================================================" << endl;
-            DisplayGarageContent(5, 11); // garasi satu menampilkan indeks array ke 5 sampai 10
+            DisplayGarageContent(awal, akhir);
             cout << " =========================================================================" << endl;
             cout << endl
                  << "\t-----------"
@@ -104,13 +109,16 @@ pertama:
                     goto pertama;
                     break;
                 case SELANJUTNYA:
+                    // garasi satu menampilkan indeks array ke 11 sampai 14
+                    awal = 11;
+                    akhir = 15;
                     system("cls");
                     cout << "\t\t\t ===================\t\t\t\t\t" << endl;
                     cout << "\t\t\t || Garasi Ketiga ||\t\t\t\t\t" << endl;
                     cout << "\t\t\t ===================\t\t\t\t\t" << endl;
                     cout << endl;
                     cout << " =========================================================================" << endl;
-                    DisplayGarageContent(11, 15); // garasi satu menampilkan indeks array ke 11 sampai 14
+                    DisplayGarageContent(awal, akhir);
                     cout << " =========================================================================" << endl;
                     cout << endl
                          << "\t-----------" << endl;
@@ -159,8 +167,34 @@ pertama:
     }
 
 pilih:
-    cout << "\nPilih mobil : ";
+    cout << "\nMasukan Pilihan : ";
     cin >> pilihan;
+    pilihan = pilihan + awal - 1;
+
+    // mencari mobil tersedia atau tidak, dan menampilkan data mobil jika tersedia
+    if (!tersedia[pilihan])
+    {
+        cout << "Mohon Maaf Mobil Tidak Tersedia";
+        cin.ignore();
+        cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+        goto pertama;
+    }
+    else
+    {
+        system("cls");
+        cout << "=== Spesifikasi ===" << endl;
+        cout << "Mobil: " << modelRandom[pilihan] << endl;
+        cout << "Plat nomor: " << platNomor[pilihan] << endl;
+        cout << "CC : " << cc[pilihan] << endl;
+        cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
+        cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
+        cout << "Bensin : " << bensin[pilihan] << endl;
+        cout << "Kursi : " << kursi[pilihan] << endl;
+        cout << "Kilometer : " << kilometer[pilihan] << endl;
+        cout << "ber AC : " << adaAC[pilihan] << endl;
+        cout << "Warna : " << warna[pilihan] << endl;
+        cout << "Harga : " << harga[pilihan] << endl;
+    }
     //TODO: Fungsi output spesifikasi
 
     //?setelah penampilan spesifikasi
