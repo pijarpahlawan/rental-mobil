@@ -69,9 +69,37 @@ string FormatLicensePlate(string plate)
 }
 
 // mengeluarkan output model mobil beserta plat nomor mobilnya
-void DisplayGarageContent(int start, int stop)
+void DisplayGarageContent(int nomorGarasi)
 {
     int no = 1; //nomer urut mobil pada daftar mobil yang ditampilkan
+    int start = 0, stop = 0;
+    string nomer = "";
+    switch (nomorGarasi)
+    {
+    case 1:
+        start = 0;
+        stop = 5;
+        nomer = "Pertama";
+        break;
+    case 2:
+        start = 5;
+        stop = 11;
+        nomer = "Kedua";
+        break;
+    case 3:
+        start = 11;
+        stop = 15;
+        nomer = "Ketiga";
+        break;
+    default:
+        break;
+    }
+    system("cls");
+    cout << "\t\t\t ==================\t\t\t\t\t" << endl;
+    cout << "\t\t\t || Garasi " << nomer << " ||\t\t\t\t\t" << endl;
+    cout << "\t\t\t ==================\t\t\t\t\t" << endl;
+    cout << endl;
+    cout << " =========================================================================" << endl;
     cout << " || No.|| \t    Model Mobil \t\t || \tPlat Nomor \t||" << endl;
     cout << " =========================================================================" << endl;
     for (int i = start; i < stop; i++)
@@ -83,128 +111,57 @@ void DisplayGarageContent(int start, int stop)
              << "||" << endl;
         no++;
     }
+    cout << " =========================================================================" << endl;
+    cout << endl
+         << "\t-----------"
+         << "\t\t\t\t\t"
+         << "-----------" << endl;
+    cout << "\t| << prev |"
+         << "\t\t\t\t\t"
+         << "| next >> |" << endl;
+    cout << "\t-----------"
+         << "\t\t\t\t\t"
+         << "-----------" << endl;
+    cout << endl;
+    cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
 }
-
+int currentGarage = 1;
+bool doneInteraction = false;
 int main()
 {
     generateRandomData();
 pertama:
-    // garasi satu menampilkan indeks array ke 0 sampai 4
-    awal = 0;
-    akhir = 5;
-    system("cls");
-    cout << "\t\t\t ====================\t\t\t\t\t" << endl;
-    cout << "\t\t\t || Garasi Pertama ||\t\t\t\t\t" << endl;
-    cout << "\t\t\t ====================\t\t\t\t\t" << endl;
-    cout << endl;
-    cout << " =========================================================================" << endl;
-    DisplayGarageContent(awal, akhir);
-    cout << " =========================================================================" << endl;
-    cout << endl
-         << "\t\t\t\t\t\t\t-----------" << endl;
-    cout << "\t\t\t\t\t\t\t| next >> |" << endl;
-    cout << "\t\t\t\t\t\t\t-----------" << endl;
-    cout << endl;
-    cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
-    while (1)
+    doneInteraction = false;
+    while (true)
     {
+        DisplayGarageContent(currentGarage);
         switch (getch())
         {
+        case SEBELUMNYA:
+            currentGarage--;
+            break;
         case SELANJUTNYA:
-        kedua:
-            // garasi satu menampilkan indeks array ke 5 sampai 10
-            awal = 5;
-            akhir = 11;
-            system("cls");
-            cout << "\t\t\t ==================\t\t\t\t\t" << endl;
-            cout << "\t\t\t || Garasi Kedua ||\t\t\t\t\t" << endl;
-            cout << "\t\t\t ==================\t\t\t\t\t" << endl;
-            cout << endl;
-            cout << " =========================================================================" << endl;
-            DisplayGarageContent(awal, akhir);
-            cout << " =========================================================================" << endl;
-            cout << endl
-                 << "\t-----------"
-                 << "\t\t\t\t\t"
-                 << "-----------" << endl;
-            cout << "\t| << prev |"
-                 << "\t\t\t\t\t"
-                 << "| next >> |" << endl;
-            cout << "\t-----------"
-                 << "\t\t\t\t\t"
-                 << "-----------" << endl;
-            cout << endl;
-            cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
-            while (1)
-            {
-                switch (getch())
-                {
-                case SEBELUMNYA:
-                    goto pertama;
-                    break;
-                case SELANJUTNYA:
-                    // garasi satu menampilkan indeks array ke 11 sampai 14
-                    awal = 11;
-                    akhir = 15;
-                    system("cls");
-                    cout << "\t\t\t ===================\t\t\t\t\t" << endl;
-                    cout << "\t\t\t || Garasi Ketiga ||\t\t\t\t\t" << endl;
-                    cout << "\t\t\t ===================\t\t\t\t\t" << endl;
-                    cout << endl;
-                    cout << " =========================================================================" << endl;
-                    DisplayGarageContent(awal, akhir);
-                    cout << " =========================================================================" << endl;
-                    cout << endl
-                         << "\t-----------" << endl;
-                    cout << "\t| << prev |" << endl;
-                    cout << "\t-----------" << endl;
-                    cout << endl;
-                    cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
-                    while (1)
-                    {
-                        switch (getch())
-                        {
-                        case SEBELUMNYA:
-                            goto kedua;
-                            break;
-                        case MASUK:
-                            goto pilih;
-                            break;
-                        case KELUAR:
-                            selesai();
-                            break;
-                        default:
-                            break;
-                        }
-                    }
-                    break;
-                case MASUK:
-                    goto pilih;
-                    break;
-                case KELUAR:
-                    selesai();
-                    break;
-                default:
-                    break;
-                }
-            }
+            currentGarage++;
             break;
         case MASUK:
-            goto pilih;
-            break;
-        case KELUAR:
-            selesai();
+            doneInteraction = true;
             break;
         default:
             break;
         }
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
+                                                                  : currentGarage;
+        DisplayGarageContent(currentGarage);
+        if (doneInteraction)
+            break;
     }
-
 pilih:
     cout << "\nMasukan Pilihan : ";
     cin >> pil;
     stringstream strtoint(pil);
     strtoint >> pilihan;
+
+    cout << "Test" << endl;
 
     // menentukan inputan sesuai dengan yang diminta atau tidak
     if ((pilihan > 0) && (pilihan <= (akhir - awal)))
