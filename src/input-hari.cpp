@@ -27,14 +27,15 @@ int main()
             cout << endl;
             cout << "Apakah anda yakin, ketik y/n ";
             cin >> y_n;
-            if ((sizeof(y_n) / sizeof(char) == 4) && (y_n[0] == 'y' || y_n[0] == 'Y'))
+            //if ((sizeof(y_n) / sizeof(char) == 4) && (y_n[0] == 'y' || y_n[0] == 'Y'))
+            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
                 cout << "Menampilkan biaya untuk " << jmlh_hari << " hari: ";
                 isRun = false;
             }
             else
             {
-                if ((sizeof(y_n) / sizeof(char) == 4) && !(y_n[0] == 'n' || y_n[0] == 'N'))
+                if (!((y_n[0] == 'n') || (y_n[0] == 'N')))
                 {
                     cout << "ERROR:silahkan masukkan y/n, dilain itu salah." << endl;
                 }
