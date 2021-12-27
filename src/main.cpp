@@ -240,6 +240,7 @@ pilih:
                 {
                     cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
                     cin.ignore();
+                    cin.get();
                     goto pertama;
                 }
                 else
@@ -247,6 +248,7 @@ pilih:
                     cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
                     cout << "Tekan ENTER untuk kembali memilih y/n...";
                     cin.ignore();
+                    cin.get();
                     goto spesifikasi;
                 }
             }
@@ -257,6 +259,7 @@ pilih:
         cout << "ERROR: silahkan masukkan angka yang sesuai dengan kolom nomor." << endl;
         cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
         cin.ignore();
+        cin.get();
         goto pertama;
     }
     // setelah penampilan spesifikasi
