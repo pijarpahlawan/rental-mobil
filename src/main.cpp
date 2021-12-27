@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <sstream>
 #include "RandomData.h"
 
 using namespace std;
@@ -18,8 +19,17 @@ using namespace std;
 /*variabel global*/
 int pilihan = 0, jmlh_hari = 0, awal, akhir;
 char y_n[] = "y/n";
+string pil;
 /*pointer untuk menangkap inputan sebelum dicasting ke integer*/
-char *pilihan_str, *jmlHari_str;
+char *pilihan_str = NULL, *jmlHari_str = NULL;
+
+void selesai()
+{
+    system("cls");
+    cout << "\t~ Terima kasih ~" << endl;
+    cout << "   Tekan ENTER untuk keluar...";
+    cin.get();
+}
 
 void Spesification()
 {
@@ -161,7 +171,7 @@ pertama:
                             goto pilih;
                             break;
                         case KELUAR:
-                            goto selesai;
+                            selesai();
                             break;
                         default:
                             break;
@@ -172,7 +182,7 @@ pertama:
                     goto pilih;
                     break;
                 case KELUAR:
-                    goto selesai;
+                    selesai();
                     break;
                 default:
                     break;
@@ -183,7 +193,7 @@ pertama:
             goto pilih;
             break;
         case KELUAR:
-            goto selesai;
+            selesai();
             break;
         default:
             break;
@@ -192,10 +202,12 @@ pertama:
 
 pilih:
     cout << "\nMasukan Pilihan : ";
-    cin >> pilihan_str;
+    cin >> pil;
+    stringstream strtoint(pil);
+    strtoint >> pilihan;
 
     // menentukan inputan sesuai dengan yang diminta atau tidak
-    if (sscanf(pilihan_str, "%d", &pilihan) && (pilihan > 0) && (pilihan <= (akhir - awal)))
+    if ((pilihan > 0) && (pilihan <= (akhir - awal)))
     {
         pilihan = pilihan + awal - 1;
 
@@ -266,11 +278,11 @@ pilih:
     //     }
     // }
 
-selesai:
-    system("cls");
-    cout << "\t~ Terima kasih ~" << endl;
-    cout << "   Tekan ENTER untuk keluar...";
-    cin.get();
+    // selesai:
+    //     system("cls");
+    //     cout << "\t~ Terima kasih ~" << endl;
+    //     cout << "   Tekan ENTER untuk keluar...";
+    //     cin.get();
 
     return 0;
 }
