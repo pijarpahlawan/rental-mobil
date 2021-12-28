@@ -17,10 +17,11 @@ using namespace std;
 //#define KEMBALI 8      // 8 adalah kode ASCII tombol backspace
 
 /*variabel global*/
-int pilihan = 0, jmlh_hari = 0, awal, akhir;
+int pilihan = 0, jmlh_hari = 0;
 char y_n[] = "y/n";
 int currentGarage = 1;
 bool doneInteraction = false;
+int start = 0, stop = 0;
 string pil;
 
 void selesai()
@@ -72,7 +73,6 @@ string FormatLicensePlate(string plate)
 void DisplayGarageContent(int nomorGarasi)
 {
     int no = 1; //nomer urut mobil pada daftar mobil yang ditampilkan
-    int start = 0, stop = 0;
     string nomer = "";
     switch (nomorGarasi)
     {
@@ -163,9 +163,9 @@ pilih:
     cout << "Test" << endl;
 
     // menentukan inputan sesuai dengan yang diminta atau tidak
-    if ((pilihan > 0) && (pilihan <= (akhir - awal)))
+    if ((pilihan > 0) && (pilihan <= (stop - start)))
     {
-        pilihan = pilihan + awal - 1;
+        pilihan = pilihan + start - 1;
 
         // mencari mobil tersedia atau tidak, dan menampilkan data mobil jika tersedia
         if (!tersedia[pilihan])
