@@ -40,7 +40,7 @@ void Spesification()
     cout << "CC : " << cc[pilihan] << endl;
     cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
     cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
-    cout << "Bensin : " << bensin[pilihan] << endl;
+    cout << "Kapasitas Tanki : " << bensin[pilihan] << endl;
     cout << "Kursi : " << kursi[pilihan] << endl;
     cout << "Kilometer : " << kilometer[pilihan] << endl;
     cout << "Ber AC : " << adaAC[pilihan] << endl;
