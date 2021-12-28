@@ -28,7 +28,7 @@ jobs:
       run: echo "::set-output name=today::$(date +'%d%m%y-%H%M%S')"
     - name : Build main.cpp
       run: |
-       & '${{ steps.setup.outputs.gxx }}' -o ./compile/result_${{ steps.date.outputs.today }} ./src/main.cpp -std=c++20
+       & '${{ steps.setup.outputs.gxx }}' -o ./compile/result_${{ steps.date.outputs.today }} ./src/main.cpp
     - name : Upload Artifact 
       uses : actions/upload-artifact@v2.3.1
       with:
