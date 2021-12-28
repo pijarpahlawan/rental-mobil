@@ -15,15 +15,65 @@ using namespace std;
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 
-int pilihan = 0, jmlh_hari = 0; // variabel untuk menampung pilihan mobil dan lama sewa
-int start = 0, stop = 0;        // variabel untuk awalan dan akhiran pengindeksan array ada setiap garasi
-int currentGarage;              // variabel untuk menampung nomor garasi
-char y_n[] = "y/n";             // variabel untuk menampung jawaban y/n
-string pil;                     // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+int pilihan = 0;         // variabel untuk menampung pilihan mobil
+int start = 0, stop = 0; // variabel untuk awalan dan akhiran pengindeksan array ada setiap garasi
+int currentGarage;       // variabel untuk menampung nomor garasi
+char y_n[] = "";         // variabel untuk menampung jawaban y/n
+string pil = "";         // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
 /* control flow condition variables */
 bool doneInteraction = false;
 bool exitProgram = false;
+bool isRun = true;
+
+/* meminta lama pinjam mobil */
+int CarLoanPeriod()
+{
+    int jmlh_hari = 0;   // variabel untuk menampung lama sewa mobil
+    string jumHari = ""; // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+
+    while (isRun)
+    {
+        system("cls");
+        cout << "Anda mau meminjam untuk berapa hari: ";
+        cin >> jumHari;
+        stringstream strtoint(jumHari);
+        strtoint >> jmlh_hari;
+
+        if (jmlh_hari > 0)
+        {
+            cout << endl;
+            cout << "Apakah anda yakin, ketik y/n ";
+            cin >> y_n;
+            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+            {
+                cout << "Menampilkan biaya untuk " << jmlh_hari << " hari: ";
+                isRun = false;
+            }
+            else
+            {
+                if (!((y_n[0] == 'n') || (y_n[0] == 'N')))
+                {
+                    cout << "ERROR:silahkan masukkan y/n, dilain itu salah." << endl;
+                }
+                cin.clear();
+                cout << "Tekan ENTER untuk mengulangi...";
+                cin.ignore();
+                cin.get();
+            }
+        }
+        else
+        {
+            cout << "ERROR:silahkan masukkan bilangan bulat positif, dilain itu akan gagal." << endl;
+            cin.clear();
+            cout << "Tekan ENTER untuk mengulangi...";
+            cin.ignore();
+            cin.get();
+        }
+    }
+
+    return jmlh_hari;
+}
 
 /* tampilan program selesai */
 void selesai()
@@ -170,7 +220,6 @@ pertama:
 
     /* get chosen models */
 pilih:
-    pil = "";
     cout << "\nMasukan Pilihan : ";
     cin >> pil;
     stringstream strtoint(pil);
@@ -184,9 +233,12 @@ pilih:
         /* mencari mobil tersedia atau tidak, dan menampilkan data spesifikasi mobil jika tersedia */
         if (!tersedia[pilihan])
         {
-            cout << "Mohon Maaf Mobil Tidak Tersedia" << endl;
-            cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+            cout << "\n###########################################################################" << endl;
+            cout << "(!)                   Mohon Maaf Mobil Tidak Tersedia                   (!)" << endl;
+            cout << "###########################################################################" << endl;
+            cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
             cin.ignore();
+            cin.get();
             goto pertama;
         }
         else
@@ -195,14 +247,13 @@ pilih:
         spesifikasi:
             system("cls");
             Spesification();
-            cout << "Apakah anda yakin, ketik y/n: ";
+            cout << "Apakah anda yakin? (y/n): ";
             cin >> y_n;
 
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
-                cout << "jumlah hari, data pelanggan, biaya, bayar" << endl;
-                //TODO: MEMASUKKAN JUMLAH HARI
                 //TODO: INPUT DATA DIRI PELANGGAN
+                //TODO: MEMASUKKAN JUMLAH HARI
                 //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
                 //TODO: PEMBAYARAN
             }
