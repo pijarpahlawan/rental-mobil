@@ -20,7 +20,10 @@ int kilometer[15];
 string adaAC[15];
 string warna[15];
 int harga[15];
+string pabrikan[15];
+string jenisMobil[15];
 string nomorRekening;
+int indexes[15]; //hanya dipakai di file ini
 
 //mengubah integer menjadi string
 string IntToString(int a)
@@ -51,7 +54,19 @@ void generateRandomData()
     for (int i = 0; i < 15; i++)
     {
         /*mendapatkan indeks ke-r array sebelum terandom. berbasis array models[]*/
-        int r = rand() % (sizeof(models) / sizeof(string));
+        int r;
+        // loop untuk menghindari memasukkan model mobil yang sama
+        while (true)
+        {
+            r = rand() % (sizeof(models) / sizeof(string));
+            //untuk mengecek apakah variabel r sudah berada di array indexes
+            if (find(begin(indexes), end(indexes), r) == end(indexes))
+            {
+                indexes[i] = r;
+                break;
+            }
+        }
+        
 
         /*merandom model mobil*/
         modelRandom[i] = models[r];
@@ -69,6 +84,8 @@ void generateRandomData()
         adaAC[i] = haveAC[r];
         warna[i] = rand() % 2 == 1 ? colors[r] : allColors[rand() % (sizeof(allColors) / sizeof(string))];
         harga[i] = prices[r];
+        pabrikan[i] = manufacturers[r];
+        jenisMobil[i] = bodyTypes[r];
         platNomor[i] = GenerateRandomLicensePlate();
     }
 

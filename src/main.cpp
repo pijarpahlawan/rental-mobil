@@ -22,6 +22,8 @@ char y_n[] = "y/n";
 int currentGarage = 1;
 bool doneInteraction = false;
 bool exitProgram = false;
+bool reprint = false;
+bool changed = false;
 int start = 0, stop = 0;
 string pil;
 
@@ -37,6 +39,8 @@ void Spesification()
 {
     cout << "=== Spesifikasi ===" << endl;
     cout << "Mobil: " << modelRandom[pilihan] << endl;
+    cout << "Pabrikan: " << pabrikan[pilihan] << endl;
+    cout << "Jenis Mobil: " << jenisMobil[pilihan] << endl;
     cout << "Plat nomor: " << platNomor[pilihan] << endl;
     cout << "CC : " << cc[pilihan] << endl;
     cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
@@ -130,33 +134,42 @@ void DisplayGarageContent(int nomorGarasi)
 int main()
 {
     generateRandomData();
+    reprint = true;
 pertama:
     doneInteraction = false;
+    changed = false;
     while (true)
     {
-        DisplayGarageContent(currentGarage);
+        if (reprint && !changed) DisplayGarageContent(currentGarage);
         switch (getch())
         {
         case SEBELUMNYA:
+            reprint = true;
             currentGarage--;
+            changed = true;
             break;
         case SELANJUTNYA:
+            reprint = true;
             currentGarage++;
+            changed = true;
             break;
         case MASUK:
+            reprint = true;
             doneInteraction = true;
             break;
         case KELUAR:
+            reprint = true;
             doneInteraction = true;
             exitProgram = true;
             selesai();
         default:
+            reprint = false;
             break;
         }
         if (doneInteraction)
             break;
         currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
-        DisplayGarageContent(currentGarage);
+        if (reprint && changed) DisplayGarageContent(currentGarage);
     }
     if (exitProgram) return 0;
 pilih:
@@ -178,6 +191,7 @@ pilih:
             cout << "Mohon Maaf Mobil Tidak Tersedia" << endl;
             cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
             cin.ignore();
+            cin.get();
             goto pertama;
         }
         else
