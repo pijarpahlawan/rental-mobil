@@ -14,17 +14,18 @@ using namespace std;
 #define SELANJUTNYA 77 // 77 adalah kode ASCII tombol panah ke kanan
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
-//#define KEMBALI 8      // 8 adalah kode ASCII tombol backspace
 
-/*variabel global*/
-int pilihan = 0, jmlh_hari = 0;
-char y_n[] = "y/n";
-int currentGarage = 1;
+int pilihan = 0, jmlh_hari = 0; // variabel untuk menampung pilihan mobil dan lama sewa
+int start = 0, stop = 0;        // variabel untuk awalan dan akhiran pengindeksan array ada setiap garasi
+int currentGarage;              // variabel untuk menampung nomor garasi
+char y_n[] = "y/n";             // variabel untuk menampung jawaban y/n
+string pil;                     // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+
+/* control flow condition variables */
 bool doneInteraction = false;
 bool exitProgram = false;
-int start = 0, stop = 0;
-string pil;
 
+/* tampilan program selesai */
 void selesai()
 {
     system("cls");
@@ -33,6 +34,7 @@ void selesai()
     cin.get();
 }
 
+/* menampilkan spesifikasi mobil */
 void Spesification()
 {
     cout << "=== Spesifikasi ===" << endl;
@@ -50,7 +52,7 @@ void Spesification()
     cout << endl;
 }
 
-//menambahkan tab(\t) sesuai dengan panjang teks pada model mobil
+/* menambahkan tab(\t) sesuai dengan panjang teks pada model mobil */
 string FormatModel(string model)
 {
     string ret = model + " ";
@@ -70,7 +72,7 @@ string FormatLicensePlate(string plate)
     return plate.size() == 7 ? plate.insert(1, 1, ' ') : plate;
 }
 
-// mengeluarkan output model mobil beserta plat nomor mobilnya
+/* mengeluarkan output model mobil beserta plat nomor mobilnya */
 void DisplayGarageContent(int nomorGarasi)
 {
     int no = 1; //nomer urut mobil pada daftar mobil yang ditampilkan
@@ -96,23 +98,23 @@ void DisplayGarageContent(int nomorGarasi)
         break;
     }
     system("cls");
-    cout << "\t\t\t ==================\t\t\t\t\t" << endl;
-    cout << "\t\t\t || Garasi " << nomer << " ||\t\t\t\t\t" << endl;
-    cout << "\t\t\t ==================\t\t\t\t\t" << endl;
+    cout << "\t\t\t============================" << endl;
+    cout << "\t\t\t||\tGarasi " << nomer << "\t  ||" << endl;
+    cout << "\t\t\t============================" << endl;
     cout << endl;
-    cout << " =========================================================================" << endl;
-    cout << " || No.|| \t    Model Mobil \t\t || \tPlat Nomor \t||" << endl;
-    cout << " =========================================================================" << endl;
+    cout << "===========================================================================" << endl;
+    cout << "||| No.|| \t    Model Mobil \t\t || \tPlat Nomor \t|||" << endl;
+    cout << "===========================================================================" << endl;
     for (int i = start; i < stop; i++)
     {
         string model = FormatModel(modelRandom[i]);
         string plate = FormatLicensePlate(platNomor[i]);
-        cout << " || " << no << ". ||\t" << model << "\t || "
+        cout << "||| " << no << ". ||\t" << model << "\t || "
              << "\t" << plate << "\t"
-             << "||" << endl;
+             << "|||" << endl;
         no++;
     }
-    cout << " =========================================================================" << endl;
+    cout << "===========================================================================" << endl;
     cout << endl
          << "\t-----------"
          << "\t\t\t\t\t"
@@ -124,13 +126,17 @@ void DisplayGarageContent(int nomorGarasi)
          << "\t\t\t\t\t"
          << "-----------" << endl;
     cout << endl;
+    cout << "***************************************************************************" << endl;
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
 }
 
 int main()
 {
     generateRandomData();
+
+    /* control flow display models */
 pertama:
+    currentGarage = 1;
     doneInteraction = false;
     while (true)
     {
@@ -155,24 +161,27 @@ pertama:
         }
         if (doneInteraction)
             break;
-        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
+                                                                  : currentGarage;
         DisplayGarageContent(currentGarage);
     }
-    if (exitProgram) return 0;
+    if (exitProgram)
+        return 0;
+
+    /* get chosen models */
 pilih:
+    pil = "";
     cout << "\nMasukan Pilihan : ";
     cin >> pil;
     stringstream strtoint(pil);
     strtoint >> pilihan;
 
-    cout << "Test" << endl;
-
-    // menentukan inputan sesuai dengan yang diminta atau tidak
+    /* menentukan inputan sesuai dengan yang diminta atau tidak */
     if ((pilihan > 0) && (pilihan <= (stop - start)))
     {
         pilihan = pilihan + start - 1;
 
-        // mencari mobil tersedia atau tidak, dan menampilkan data mobil jika tersedia
+        /* mencari mobil tersedia atau tidak, dan menampilkan data spesifikasi mobil jika tersedia */
         if (!tersedia[pilihan])
         {
             cout << "Mohon Maaf Mobil Tidak Tersedia" << endl;
@@ -182,11 +191,13 @@ pilih:
         }
         else
         {
+            /* bertanya kepada user apakah yakin atau tidak, jika yakin lanjut ke sesi berikutnya */
         spesifikasi:
             system("cls");
             Spesification();
             cout << "Apakah anda yakin, ketik y/n: ";
             cin >> y_n;
+
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
                 cout << "jumlah hari, data pelanggan, biaya, bayar" << endl;
@@ -199,15 +210,17 @@ pilih:
             {
                 if ((y_n[0] == 'n') || (y_n[0] == 'N'))
                 {
-                    cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+                    cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
                     cin.ignore();
                     cin.get();
                     goto pertama;
                 }
                 else
                 {
+                    cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
                     cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
-                    cout << "Tekan ENTER untuk kembali memilih y/n...";
+                    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+                    cout << "\nTekan ENTER untuk kembali memilih y/n...";
                     cin.ignore();
                     cin.get();
                     goto spesifikasi;
@@ -217,36 +230,14 @@ pilih:
     }
     else
     {
+        cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
         cout << "ERROR: silahkan masukkan angka yang sesuai dengan kolom nomor." << endl;
-        cout << "Tekan ENTER untuk kembali ke menu memilih mobil...";
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+        cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
         cin.ignore();
         cin.get();
         goto pertama;
     }
-    // setelah penampilan spesifikasi
-    // cout << "\nTekan ENTER apabila anda sudah yakin dan tekan BACKSPACE apabila ingin kembali ke daftar menu mobil...";
-    // while (1)
-    // {
-    //     switch (getch())
-    //     {
-    //     case MASUK:
-    //         disini meminta input data pelanggan
-    //         disini juga mengeluarkan data pelanggan dan pembayarannya
-    //         goto selesai;
-    //         break;
-    //     case KEMBALI:
-    //         goto pertama;
-    //         break;
-    //     default:
-    //         break;
-    //     }
-    // }
-
-    // selesai:
-    //     system("cls");
-    //     cout << "\t~ Terima kasih ~" << endl;
-    //     cout << "   Tekan ENTER untuk keluar...";
-    //     cin.get();
 
     return 0;
 }
