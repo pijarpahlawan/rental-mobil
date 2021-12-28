@@ -19,9 +19,9 @@ using namespace std;
 /*variabel global*/
 int pilihan = 0, jmlh_hari = 0, awal, akhir;
 char y_n[] = "y/n";
+int currentGarage = 1;
+bool doneInteraction = false;
 string pil;
-/*pointer untuk menangkap inputan sebelum dicasting ke integer*/
-char *pilihan_str = NULL, *jmlHari_str = NULL;
 
 void selesai()
 {
@@ -125,8 +125,7 @@ void DisplayGarageContent(int nomorGarasi)
     cout << endl;
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
 }
-int currentGarage = 1;
-bool doneInteraction = false;
+
 int main()
 {
     generateRandomData();
