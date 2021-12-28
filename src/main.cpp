@@ -1,8 +1,3 @@
-//TODO: mengganti file ini sebagai main
-//TODO: merapikan tab
-
-//!DALAM FILE INI JUGA NANTI TERDAPAT PEMILIHAN MOBIL
-
 #include <iostream>
 #include <conio.h>
 #include <sstream>
