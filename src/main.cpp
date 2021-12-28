@@ -21,6 +21,7 @@ int pilihan = 0, jmlh_hari = 0;
 char y_n[] = "y/n";
 int currentGarage = 1;
 bool doneInteraction = false;
+bool exitProgram = false;
 int start = 0, stop = 0;
 string pil;
 
@@ -145,15 +146,19 @@ pertama:
         case MASUK:
             doneInteraction = true;
             break;
+        case KELUAR:
+            doneInteraction = true;
+            exitProgram = true;
+            selesai();
         default:
             break;
         }
-        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
-                                                                  : currentGarage;
-        DisplayGarageContent(currentGarage);
         if (doneInteraction)
             break;
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
+        DisplayGarageContent(currentGarage);
     }
+    if (exitProgram) return 0;
 pilih:
     cout << "\nMasukan Pilihan : ";
     cin >> pil;
