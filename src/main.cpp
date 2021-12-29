@@ -27,7 +27,6 @@ int main()
 {
     bool doneInteraction = false; // variabel sebagai kondisi looping menampilkan daftar mobil
     bool reprint = true;          // variabel sebagai kondisi untuk mencetak daftar mobil
-    bool changed = true;          // variabel sebagai kondisi untuk berpindah garasi mobil
     int currentGarage = 0;        // variabel untuk menampung nomor garasi
     int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
     int pilihan = 0;              // variabel untuk menampung pilihan mobil
@@ -41,7 +40,7 @@ menu:
     doneInteraction = false;
     while (true)
     {
-        if (reprint && changed)
+        if (reprint)
             DisplayGarageContent(currentGarage);
         switch (getch())
         {
