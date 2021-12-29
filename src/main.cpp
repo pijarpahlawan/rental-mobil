@@ -36,13 +36,15 @@ void CustomerDatas()
         cin.ignore();
         cout << "Nama\t\t: ";
         getline(cin, nama);
+        cin.ignore();
         cout << "NIK\t\t: ";
-        cin >> nik_str;
+        getline(cin, nik_str);
         cin.ignore();
         cout << "Alamat\t\t: ";
         getline(cin, alamat);
+        cin.ignore();
         cout << "No. Telepon\t: ";
-        cin >> noTelp_str;
+        getline(cin, noTelp_str);
 
         // str to in
         stringstream id(nik_str);
