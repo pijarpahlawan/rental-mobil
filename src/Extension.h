@@ -39,14 +39,17 @@ string FormatLicensePlate(string plate)
     //jika tidak maka akan mengembalikan instansi yang sama dengan parameter plate
     return plate.size() == 7 ? plate.insert(1, 1, ' ') : plate;
 }
+// fungsi untuk me-format harga supaya mudah dibaca
 string FormatPrice(int price)
 {
     string priceStr = IntToString(price);
     int count = 0;
     for (int i = priceStr.size(); i > 0; i-=3)
     {
+        //tiap 3 karakter dari belakang maka string akan di tambahkan titik
         if (count > 0) priceStr.insert(i, ".");
         count++;
     }
+    // mengembalikan harga yang sudah diformat dengan currency IDR
     return "Rp" + priceStr;
 }
