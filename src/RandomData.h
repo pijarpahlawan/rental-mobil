@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include "DataMobil.h"
+#include "Extension.h"
 
 using namespace std;
 
@@ -27,12 +28,6 @@ string nomorRekening;
 int indexes[15]; //hanya dipakai di file ini
 
 //mengubah integer menjadi string
-string IntToString(int a)
-{
-    ostringstream temp;
-    temp << a;
-    return temp.str();
-}
 
 //merandom plat nomor
 string GenerateRandomLicensePlate()
