@@ -27,7 +27,6 @@ int main()
 {
     bool doneInteraction = false; // variabel sebagai kondisi looping menampilkan daftar mobil
     bool reprint = true;          // variabel sebagai kondisi untuk mencetak daftar mobil
-    bool changed = true;          // variabel sebagai kondisi untuk berpindah garasi mobil
     int currentGarage = 0;        // variabel untuk menampung nomor garasi
     int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
     int pilihan = 0;              // variabel untuk menampung pilihan mobil
@@ -39,9 +38,10 @@ int main()
 menu:
     currentGarage = 1;
     doneInteraction = false;
+    reprint = true;
     while (true)
     {
-        if (reprint && changed)
+        if (reprint)
             DisplayGarageContent(currentGarage);
         switch (getch())
         {
@@ -67,8 +67,7 @@ menu:
         }
         if (doneInteraction)
             break;
-        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
-                                                                  : currentGarage;
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
     }
     if (exitProgram)
         return 0;
@@ -101,50 +100,42 @@ menu:
             cin.get();
             goto menu;
         }
+        /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
+        jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
+    spesifikasi:
+        system("cls");
+        Specification(pilihan);
+        cout << "Apakah anda yakin? (y/n): ";
+        cin >> y_n;
+        if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+        {
+            //TODO: INPUT DATA DIRI PELANGGAN
+            CustomerDatas();
+            cout << nama << "\n"
+                    << nik << "\n"
+                    << alamat << "\n"
+                    << noTelp << endl;
+            cin.ignore();
+            //TODO: MEMASUKKAN JUMLAH HARI
+            //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
+            //TODO: PEMBAYARAN
+        }
+        else if ((y_n[0] == 'n') || (y_n[0] == 'N'))
+        {
+            cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
+            cin.ignore();
+            cin.get();
+            goto menu;
+        }
         else
         {
-            /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
-            jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
-        spesifikasi:
-            system("cls");
-            Specification(pilihan);
-            cout << "Apakah anda yakin? (y/n): ";
-            cin >> y_n;
-            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
-            {
-                //TODO: INPUT DATA DIRI PELANGGAN
-                CustomerDatas();
-                cout << nama << "\n"
-                     << nik << "\n"
-                     << alamat << "\n"
-                     << noTelp << endl;
-                cin.ignore();
-                Selesai();
-                //TODO: MEMASUKKAN JUMLAH HARI
-                //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
-                //TODO: PEMBAYARAN
-            }
-            else
-            {
-                if ((y_n[0] == 'n') || (y_n[0] == 'N'))
-                {
-                    cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
-                    cin.ignore();
-                    cin.get();
-
-                    goto menu;
-                }
-                else
-                {
-                    cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                    cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
-                    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                    cout << "\nTekan ENTER untuk kembali memilih y/n...";
-                    cin.ignore();
-                    cin.get();
-                    goto spesifikasi;
-                }
-            }
+            cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
+            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            cout << "\nTekan ENTER untuk kembali memilih y/n...";
+            cin.ignore();
+            cin.get();
+            goto spesifikasi;
         }
     }
     else
@@ -157,6 +148,7 @@ menu:
         cin.get();
         goto menu;
     }
+    Selesai();
     return 0;
 }
 
@@ -246,9 +238,10 @@ void Selesai()
     exitProgram = true;
     system("cls");
     cout << "\t~ Terima kasih ~" << endl;
-    cout << "   Tekan ENTER untuk keluar...";
+    system("pause");
+    /* cout << "   Tekan ENTER untuk keluar...";
     cin.ignore();
-    cin.get();
+    cin.get(); */
 }
 
 /* meminta lama pinjam mobil */
