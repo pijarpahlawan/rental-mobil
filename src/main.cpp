@@ -33,31 +33,32 @@ void CustomerDatas()
     {
         system("cls");
         cout << "Masukkan data diri anda" << endl;
-        cin.ignore();
         cout << "Nama\t\t: ";
-        getline(cin, nama);
         cin.ignore();
+        getline(cin, nama);
         cout << "NIK\t\t: ";
         getline(cin, nik_str);
-        cin.ignore();
         cout << "Alamat\t\t: ";
         getline(cin, alamat);
-        cin.ignore();
         cout << "No. Telepon\t: ";
         getline(cin, noTelp_str);
 
-        // str to in
+        // str to int
+        //! diconvert menjadi integer untuk memastikan bahwa yang dimasukkan adalah bentuk angka
         stringstream id(nik_str);
         id >> nik;
         stringstream phoneNum(noTelp_str);
         phoneNum >> no_telp;
 
+        //? NIK dan nomor telepon harus bilangan positif
         if (nik < 1 || no_telp < 1)
         {
             cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
             cout << "ERROR: NIK atau nomor telepon yang anda masukkan tidak valid." << endl;
-            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! b!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-            cout << "\nTekan ENTER untuk memasukkan kembali...";
+            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            cin.clear();
+            cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
+            cin.ignore();
         }
         else
         {
@@ -310,7 +311,6 @@ pertama:
                      << alamat << "\n"
                      << noTelp_str << endl;
                 cin.ignore();
-                cin.get();
                 Selesai();
                 //TODO: MEMASUKKAN JUMLAH HARI
                 //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
