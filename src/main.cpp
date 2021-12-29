@@ -10,18 +10,59 @@ using namespace std;
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 
-int pilihan = 0;         // variabel untuk menampung pilihan mobil
-int start = 0, stop = 0; // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
-int currentGarage = 0;   // variabel untuk menampung nomor garasi
-char y_n[] = "";         // variabel untuk menampung jawaban y/n
-string pil = "";         // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+int pilihan = 0;                                              // variabel untuk menampung pilihan mobil
+int start = 0, stop = 0;                                      // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
+int currentGarage = 0;                                        // variabel untuk menampung nomor garasi
+char y_n[] = "";                                              // variabel untuk menampung jawaban y/n
+string pil = "";                                              // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+string nama = "", nik_str = "", alamat = "", noTelp_str = ""; // variabel yang menampung input data diri pelanggan
+long long int nik = 0, no_telp = 0;                           // variabel yang menampung NIK dan nomor telepon setelan diubah menjadi integer
 
 /* control flow condition variables */
 bool doneInteraction = false;
 bool exitProgram = false;
 bool reprint = false;
 bool changed = false;
-bool isRun = true;
+bool isRun = false;
+
+/* meminta data diri pelanggan */
+void CustomerDatas()
+{
+    isRun = true;
+    while (isRun)
+    {
+        system("cls");
+        cout << "Masukkan data diri anda" << endl;
+        cin.ignore();
+        cout << "Nama\t\t: ";
+        getline(cin, nama);
+        cout << "NIK\t\t: ";
+        cin >> nik_str;
+        cin.ignore();
+        cout << "Alamat\t\t: ";
+        getline(cin, alamat);
+        cout << "No. Telepon\t: ";
+        cin >> noTelp_str;
+
+        // str to in
+        stringstream id(nik_str);
+        id >> nik;
+        stringstream phoneNum(noTelp_str);
+        phoneNum >> no_telp;
+
+        if (nik < 1 || no_telp < 1)
+        {
+            cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            cout << "ERROR: NIK atau nomor telepon yang anda masukkan tidak valid." << endl;
+            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! b!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            cout << "\nTekan ENTER untuk memasukkan kembali...";
+        }
+        else
+        {
+            isRun = false;
+        }
+    }
+}
 
 /* meminta lama pinjam mobil */
 int CarLoanPeriod()
@@ -29,13 +70,14 @@ int CarLoanPeriod()
     int jmlh_hari = 0;   // variabel untuk menampung lama sewa mobil
     string jumHari = ""; // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
+    isRun = true;
     while (isRun)
     {
         system("cls");
         cout << "Anda mau meminjam untuk berapa hari: ";
         cin >> jumHari;
-        stringstream strtoint(jumHari);
-        strtoint >> jmlh_hari;
+        stringstream pilInt(jumHari);
+        pilInt >> jmlh_hari;
 
         if (jmlh_hari > 0)
         {
@@ -75,6 +117,7 @@ int CarLoanPeriod()
 /* tampilan program selesai */
 void Selesai()
 {
+    exitProgram = true;
     system("cls");
     cout << "\t~ Terima kasih ~" << endl;
     cout << "   Tekan ENTER untuk keluar...";
@@ -212,7 +255,6 @@ pertama:
         case KELUAR:
             reprint = true;
             doneInteraction = true;
-            exitProgram = true;
             Selesai();
         default:
             reprint = false;
@@ -225,15 +267,12 @@ pertama:
         if (reprint && changed)
             DisplayGarageContent(currentGarage);
     }
-    if (exitProgram)
-        return 0;
 
     /* get chosen models */
-pilih:
     cout << "\nMasukan Pilihan : ";
     cin >> pil;
-    stringstream strtoint(pil);
-    strtoint >> pilihan;
+    stringstream pilInt(pil);
+    pilInt >> pilihan;
 
     /* menentukan inputan sesuai dengan yang diminta atau tidak */
     if ((pilihan > 0) && (pilihan <= (stop - start)))
@@ -263,6 +302,14 @@ pilih:
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
                 //TODO: INPUT DATA DIRI PELANGGAN
+                CustomerDatas();
+                cout << nama << "\n"
+                     << nik_str << "\n"
+                     << alamat << "\n"
+                     << noTelp_str << endl;
+                cin.ignore();
+                cin.get();
+                Selesai();
                 //TODO: MEMASUKKAN JUMLAH HARI
                 //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
                 //TODO: PEMBAYARAN
@@ -300,5 +347,6 @@ pilih:
         goto pertama;
     }
 
-    return 0;
+    if (exitProgram)
+        return 0;
 }
