@@ -85,19 +85,19 @@ void Selesai()
 void Spesification()
 {
     cout << "=== Spesifikasi ===" << endl;
-    cout << "Mobil: " << modelRandom[pilihan] << endl;
-    cout << "Pabrikan: " << pabrikan[pilihan] << endl;
-    cout << "Jenis Mobil: " << jenisMobil[pilihan] << endl;
-    cout << "Plat nomor: " << platNomor[pilihan] << endl;
-    cout << "Kapasitas Mesin : " << cc[pilihan] << endl;
-    cout << "Transmisi : " << tipeMesin[pilihan] << endl;
-    cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
-    cout << "Kapasitas Tanki : " << bensin[pilihan] << endl;
-    cout << "Jumlah Kursi : " << kursi[pilihan] << endl;
-    cout << "Kilometer : " << kilometer[pilihan] << endl;
-    cout << "Ber AC : " << adaAC[pilihan] << endl;
-    cout << "Warna : " << warna[pilihan] << endl;
-    cout << "Harga : " << harga[pilihan] << endl;
+    cout << "Mobil\t\t: " << modelRandom[pilihan] << endl;
+    cout << "Pabrikan\t: " << pabrikan[pilihan] << endl;
+    cout << "Jenis Mobil\t: " << jenisMobil[pilihan] << endl;
+    cout << "Plat nomor\t: " << platNomor[pilihan] << endl;
+    cout << "Kapasitas Mesin\t: " << cc[pilihan] << endl;
+    cout << "Transmisi\t: " << tipeMesin[pilihan] << endl;
+    cout << "Bahan Bakar\t: " << bahanbakar[pilihan] << endl;
+    cout << "Kapasitas Tanki\t: " << bensin[pilihan] << endl;
+    cout << "Jumlah Kursi\t: " << kursi[pilihan] << endl;
+    cout << "Kilometer\t: " << kilometer[pilihan] << endl;
+    cout << "Ber AC\t\t: " << adaAC[pilihan] << endl;
+    cout << "Warna\t\t: " << warna[pilihan] << endl;
+    cout << "Harga Per Hari\t: " << harga[pilihan] << endl;
     cout << endl;
 }
 
