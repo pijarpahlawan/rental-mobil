@@ -1,8 +1,3 @@
-//TODO: mengganti file ini sebagai main
-//TODO: merapikan tab
-
-//!DALAM FILE INI JUGA NANTI TERDAPAT PEMILIHAN MOBIL
-
 #include <iostream>
 #include <conio.h>
 #include <sstream>
@@ -16,14 +11,16 @@ using namespace std;
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 
 int pilihan = 0;         // variabel untuk menampung pilihan mobil
-int start = 0, stop = 0; // variabel untuk awalan dan akhiran pengindeksan array ada setiap garasi
-int currentGarage;       // variabel untuk menampung nomor garasi
+int start = 0, stop = 0; // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
+int currentGarage = 0;   // variabel untuk menampung nomor garasi
 char y_n[] = "";         // variabel untuk menampung jawaban y/n
 string pil = "";         // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
 /* control flow condition variables */
 bool doneInteraction = false;
 bool exitProgram = false;
+bool reprint = false;
+bool changed = false;
 bool isRun = true;
 
 /* meminta lama pinjam mobil */
@@ -76,7 +73,7 @@ int CarLoanPeriod()
 }
 
 /* tampilan program selesai */
-void selesai()
+void Selesai()
 {
     system("cls");
     cout << "\t~ Terima kasih ~" << endl;
@@ -88,17 +85,19 @@ void selesai()
 void Spesification()
 {
     cout << "=== Spesifikasi ===" << endl;
-    cout << "Mobil: " << modelRandom[pilihan] << endl;
-    cout << "Plat nomor: " << platNomor[pilihan] << endl;
-    cout << "CC : " << cc[pilihan] << endl;
-    cout << "Tipe Mesin : " << tipeMesin[pilihan] << endl;
-    cout << "Bahan Bakar : " << bahanbakar[pilihan] << endl;
-    cout << "Bensin : " << bensin[pilihan] << endl;
-    cout << "Kursi : " << kursi[pilihan] << endl;
-    cout << "Kilometer : " << kilometer[pilihan] << endl;
-    cout << "Ber AC : " << adaAC[pilihan] << endl;
-    cout << "Warna : " << warna[pilihan] << endl;
-    cout << "Harga : " << harga[pilihan] << endl;
+    cout << "Mobil\t\t: " << modelRandom[pilihan] << endl;
+    cout << "Pabrikan\t: " << pabrikan[pilihan] << endl;
+    cout << "Jenis Mobil\t: " << jenisMobil[pilihan] << endl;
+    cout << "Plat nomor\t: " << platNomor[pilihan] << endl;
+    cout << "Kapasitas Mesin\t: " << cc[pilihan] << endl;
+    cout << "Transmisi\t: " << tipeMesin[pilihan] << endl;
+    cout << "Bahan Bakar\t: " << bahanbakar[pilihan] << endl;
+    cout << "Kapasitas Tanki\t: " << bensin[pilihan] << endl;
+    cout << "Jumlah Kursi\t: " << kursi[pilihan] << endl;
+    cout << "Kilometer\t: " << kilometer[pilihan] << endl;
+    cout << "Ber AC\t\t: " << adaAC[pilihan] << endl;
+    cout << "Warna\t\t: " << warna[pilihan] << endl;
+    cout << "Harga Per Hari\t: " << harga[pilihan] << endl;
     cout << endl;
 }
 
@@ -183,37 +182,48 @@ void DisplayGarageContent(int nomorGarasi)
 int main()
 {
     generateRandomData();
+    reprint = true;
 
     /* control flow display models */
 pertama:
     currentGarage = 1;
     doneInteraction = false;
+    changed = false;
     while (true)
     {
-        DisplayGarageContent(currentGarage);
+        if (reprint && !changed)
+            DisplayGarageContent(currentGarage);
         switch (getch())
         {
         case SEBELUMNYA:
+            reprint = true;
             currentGarage--;
+            changed = true;
             break;
         case SELANJUTNYA:
+            reprint = true;
             currentGarage++;
+            changed = true;
             break;
         case MASUK:
+            reprint = true;
             doneInteraction = true;
             break;
         case KELUAR:
+            reprint = true;
             doneInteraction = true;
             exitProgram = true;
-            selesai();
+            Selesai();
         default:
+            reprint = false;
             break;
         }
         if (doneInteraction)
             break;
         currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
                                                                   : currentGarage;
-        DisplayGarageContent(currentGarage);
+        if (reprint && changed)
+            DisplayGarageContent(currentGarage);
     }
     if (exitProgram)
         return 0;
@@ -243,13 +253,13 @@ pilih:
         }
         else
         {
-            /* bertanya kepada user apakah yakin atau tidak, jika yakin lanjut ke sesi berikutnya */
+            /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak 
+            jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
         spesifikasi:
             system("cls");
             Spesification();
             cout << "Apakah anda yakin? (y/n): ";
             cin >> y_n;
-
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
                 //TODO: INPUT DATA DIRI PELANGGAN
