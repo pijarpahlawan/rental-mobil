@@ -11,19 +11,11 @@ using namespace std;
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 
-int pilihan = 0;                                              // variabel untuk menampung pilihan mobil
-int start = 0, stop = 0;                                      // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
-int currentGarage = 0;                                        // variabel untuk menampung nomor garasi
-char y_n[] = "";                                              // variabel untuk menampung jawaban y/n
-string pil = "";                                              // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
-string nama = "", nik_str = "", alamat = "", noTelp_str = ""; // variabel yang menampung input data diri pelanggan
-
-/* control flow condition variables */
-bool doneInteraction = false;
-bool exitProgram = false;
-bool reprint = false;
-bool changed = false;
-bool isRun = false;
+/* global variables */
+int start = 0, stop = 0;                              // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
+char y_n[] = "";                                      // variabel untuk menampung jawaban y/n
+bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
+string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
 
 void CustomerDatas();
 int CarLoanPeriod();
@@ -33,30 +25,33 @@ void DisplayGarageContent(int nomorGarasi);
 
 int main()
 {
-    generateRandomData();
-    reprint = true;
+    bool doneInteraction = false; // variabel sebagai kondisi looping menampilkan daftar mobil
+    bool reprint = true;          // variabel sebagai kondisi untuk mencetak daftar mobil
+    bool changed = true;          // variabel sebagai kondisi untuk berpindah garasi mobil
+    int currentGarage = 0;        // variabel untuk menampung nomor garasi
+    int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
+    int pilihan = 0;              // variabel untuk menampung pilihan mobil
+    string pil = "";              // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+
+    GenerateRandomData();
 
     /* control flow display models */
-pertama:
+menu:
     currentGarage = 1;
     doneInteraction = false;
-    changed = false;
-    exitProgram = false;
     while (true)
     {
-        if (reprint && !changed)
+        if (reprint && changed)
             DisplayGarageContent(currentGarage);
         switch (getch())
         {
         case SEBELUMNYA:
             reprint = true;
             currentGarage--;
-            changed = true;
             break;
         case SELANJUTNYA:
             reprint = true;
             currentGarage++;
-            changed = true;
             break;
         case MASUK:
             reprint = true;
@@ -72,11 +67,11 @@ pertama:
         }
         if (doneInteraction)
             break;
-        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
-        if (reprint && changed)
-            DisplayGarageContent(currentGarage);
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
+                                                                  : currentGarage;
     }
-    if (exitProgram) return 0;
+    if (exitProgram)
+        return 0;
 
     /* get chosen models */
     cout << "\nMasukan Pilihan : ";
@@ -84,10 +79,12 @@ pertama:
     stringstream pilInt(pil);
     pilInt >> pilihan;
 
-    int garageCap = 0;
-    if (currentGarage == 1) garageCap = 5;
-    else if (currentGarage == 2) garageCap = 6;
-    else if (currentGarage == 3) garageCap = 4;
+    if (currentGarage == 1)
+        garageCap = 5;
+    else if (currentGarage == 2)
+        garageCap = 6;
+    else if (currentGarage == 3)
+        garageCap = 4;
     /* menentukan inputan sesuai dengan yang diminta atau tidak */
     if ((pilihan > 0) && (pilihan <= garageCap))
     {
@@ -102,11 +99,11 @@ pertama:
             cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
             cin.ignore();
             cin.get();
-            goto pertama;
+            goto menu;
         }
         else
         {
-            /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak 
+            /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
             jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
         spesifikasi:
             system("cls");
@@ -118,9 +115,9 @@ pertama:
                 //TODO: INPUT DATA DIRI PELANGGAN
                 CustomerDatas();
                 cout << nama << "\n"
-                     << nik_str << "\n"
+                     << nik << "\n"
                      << alamat << "\n"
-                     << noTelp_str << endl;
+                     << noTelp << endl;
                 cin.ignore();
                 Selesai();
                 //TODO: MEMASUKKAN JUMLAH HARI
@@ -134,8 +131,8 @@ pertama:
                     cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
                     cin.ignore();
                     cin.get();
-    
-                    goto pertama;
+
+                    goto menu;
                 }
                 else
                 {
@@ -158,16 +155,18 @@ pertama:
         cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
         cin.ignore();
         cin.get();
-        goto pertama;
+        goto menu;
     }
-        return 0;
+    return 0;
 }
 
 /* mengeluarkan output model mobil beserta plat nomor mobilnya */
 void DisplayGarageContent(int nomorGarasi)
 {
-    int no = 1; //nomer urut mobil pada daftar mobil yang ditampilkan
-    string nomer = "";
+    int no = 1;                    // nomer urut mobil pada daftar mobil yang ditampilkan
+    string nomer = "";             // garasi keberapa
+    string model = "", plate = ""; // model dan plat nomor yang telah diformat agar mudah terbaca
+
     switch (nomorGarasi)
     {
     case 1:
@@ -198,8 +197,8 @@ void DisplayGarageContent(int nomorGarasi)
     cout << "===========================================================================" << endl;
     for (int i = start; i < stop; i++)
     {
-        string model = FormatModel(modelRandom[i]);
-        string plate = FormatLicensePlate(platNomor[i]);
+        model = FormatModel(modelRandom[i]);
+        plate = FormatLicensePlate(platNomor[i]);
         cout << "||| " << no << ". ||\t" << model << "\t || "
              << "\t" << plate << "\t"
              << "|||" << endl;
@@ -258,8 +257,7 @@ int CarLoanPeriod()
     int jmlh_hari = 0;   // variabel untuk menampung lama sewa mobil
     string jumHari = ""; // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
-    isRun = true;
-    while (isRun)
+    while (true)
     {
         system("cls");
         cout << "Anda mau meminjam untuk berapa hari: ";
@@ -275,7 +273,7 @@ int CarLoanPeriod()
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
             {
                 cout << "Menampilkan biaya untuk " << jmlh_hari << " hari: ";
-                isRun = false;
+                break;
             }
             else
             {
@@ -305,8 +303,7 @@ int CarLoanPeriod()
 /* meminta data diri pelanggan */
 void CustomerDatas()
 {
-    isRun = true;
-    while (isRun)
+    while (true)
     {
         system("cls");
         cout << "Masukkan data diri anda" << endl;
@@ -314,14 +311,13 @@ void CustomerDatas()
         cin.ignore();
         getline(cin, nama);
         cout << "NIK\t\t: ";
-        getline(cin, nik_str);
+        getline(cin, nik);
         cout << "Alamat\t\t: ";
         getline(cin, alamat);
         cout << "No. Telepon\t: ";
-        getline(cin, noTelp_str);
+        getline(cin, noTelp);
 
-        //? NIK dan nomor telepon harus bilangan positif
-        if (!IsStringAllDigit(nik_str) || !IsStringAllDigit(noTelp_str))
+        if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
         {
             cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
             cout << "ERROR: NIK atau nomor telepon yang anda masukkan tidak valid." << endl;
@@ -331,8 +327,6 @@ void CustomerDatas()
             cin.ignore();
         }
         else
-        {
-            isRun = false;
-        }
+            break;
     }
 }

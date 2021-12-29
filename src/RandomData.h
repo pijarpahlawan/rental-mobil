@@ -42,7 +42,7 @@ string GenerateRandomLicensePlate()
 }
 
 //merandom data
-void generateRandomData()
+void GenerateRandomData()
 {
     srand((unsigned int)time(NULL));
 
@@ -62,7 +62,6 @@ void generateRandomData()
                 break;
             }
         }
-        
 
         /*merandom model mobil*/
         modelRandom[i] = models[r];
