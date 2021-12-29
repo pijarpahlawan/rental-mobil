@@ -17,7 +17,6 @@ int currentGarage = 0;                                        // variabel untuk 
 char y_n[] = "";                                              // variabel untuk menampung jawaban y/n
 string pil = "";                                              // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 string nama = "", nik_str = "", alamat = "", noTelp_str = ""; // variabel yang menampung input data diri pelanggan
-long long int nik = 0, no_telp = 0;                           // variabel yang menampung NIK dan nomor telepon setelan diubah menjadi integer
 
 /* control flow condition variables */
 bool doneInteraction = false;
