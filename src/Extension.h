@@ -1,8 +1,19 @@
 #pragma once
-#include "iostream"
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
+/* fungsi untuk mengkonversi string ke integer */
+int StrToInt(string str)
+{
+    int isInt;
+    stringstream ToInt(str);
+    ToInt >> isInt;
+    return isInt;
+}
+
+/* fungsi untuk mengkonversi integer ke string */
 string IntToString(int a)
 {
     ostringstream temp;
@@ -10,7 +21,8 @@ string IntToString(int a)
     return temp.str();
 }
 
-bool IsStringAllDigit(const string& str)
+/* fungsi untuk memeriksa apakah dalam string semuanya terdiri dari angka */
+bool IsStringAllDigit(const string &str)
 {
     //inisialisasi instansi dari iterator string
     string::const_iterator it = str.begin();
@@ -33,13 +45,16 @@ string FormatModel(string model)
         ret += "\t";
     return ret;
 }
+
+/* fungsi untuk me-format plat nomor */
 string FormatLicensePlate(string plate)
 {
     //jika panjang teks dari plate adalah 7 maka tambahkan spasi pada elemen 1
     //jika tidak maka akan mengembalikan instansi yang sama dengan parameter plate
     return plate.size() == 7 ? plate.insert(1, 1, ' ') : plate;
 }
-// fungsi untuk me-format harga supaya mudah dibaca
+
+/* fungsi untuk me-format harga supaya mudah dibaca */
 string FormatPrice(int price)
 {
     string priceStr = IntToString(price);
