@@ -1,7 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include "RandomData.h"
-#include "Extension.h"
+#include "Helpers.h"
 #include "ProgramFlow.h"
 
 using namespace std;
