@@ -17,12 +17,13 @@ char y_n[] = "";                                      // variabel untuk menampun
 bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
 string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
 
-int CustomerPaying(int bayar);
-void CustomerDatas();
-int CarLoanPeriod();
-void Selesai();
-void Specification(int index);
+void Welcome();
 void DisplayGarageContent(int nomorGarasi);
+void Specification(int index);
+int CarLoanPeriod();
+void CustomerDatas();
+int CustomerPaying(int bayar);
+void Selesai();
 
 int main()
 {
@@ -33,6 +34,7 @@ int main()
     int pilihanMobil = 0;         // variabel untuk menampung pilihan mobil
     string pilMob = "";           // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
+    Welcome();
     GenerateRandomData();
 
     /* control flow display models */
@@ -111,15 +113,14 @@ menu:
         cin >> y_n;
         if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
         {
-            //TODO: INPUT DATA DIRI PELANGGAN
-            CustomerDatas();
             //TODO: MEMASUKKAN JUMLAH HARI
             tarif = CarLoanPeriod() * harga[pilihanMobil];
+            //TODO: INPUT DATA DIRI PELANGGAN
+            CustomerDatas();
             //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
             //! ini if else
             CustomerPaying(tarif);
             //TODO: PEMBAYARAN
-            cin.ignore();
             Selesai();
         }
         else
@@ -156,6 +157,19 @@ menu:
     }
     Selesai();
     return 0;
+}
+
+/* tampilan selamat datang */
+void Welcome()
+{
+    system("cls");
+    cout << "\n\n************************************************************************\n\n";
+    cout << "\t====================================================" << endl;
+    cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |" << endl;
+    cout << "\t|	     *********SEMBADA********   	   |" << endl;
+    cout << "\t====================================================" << endl;
+    cout << "\n\n************************************************************************";
+    getch();
 }
 
 /* mengeluarkan output model mobil beserta plat nomor mobilnya */
@@ -236,18 +250,6 @@ void Specification(int index)
     cout << "Warna\t\t: " << warna[index] << endl;
     cout << "Harga Per Hari\t: " << FormatPrice(harga[index]) << endl;
     cout << endl;
-}
-
-/* tampilan program selesai */
-void Selesai()
-{
-    exitProgram = true;
-    system("cls");
-    cout << "\t~ Terima kasih ~" << endl;
-    system("pause");
-    /* cout << "   Tekan ENTER untuk keluar...";
-    cin.ignore();
-    cin.get(); */
 }
 
 /* meminta lama pinjam mobil */
@@ -366,7 +368,19 @@ int CustomerPaying(int bayar)
         else
             break;
     }
-    cout << "--------------------------------------" << endl;
 
     return billChoice;
+}
+
+/* tampilan program selesai */
+void Selesai()
+{
+    exitProgram = true;
+    system("cls");
+    cout << "********** TERIMA KASIH ATAS KEPERCAYAAN ANDA KEPADA KAMI **********" << endl;
+    cout << "		=================================" << endl;
+    cout << "		|	KRITIK DAN SARAN	|" << endl;
+    cout << "		| 	  0812345678910		|" << endl;
+    cout << " 		=================================" << endl;
+    system("pause");
 }
