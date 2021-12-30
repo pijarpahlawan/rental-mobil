@@ -17,6 +17,7 @@ char y_n[] = "";                                      // variabel untuk menampun
 bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
 string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
 
+int CustomerPaying(int bayar);
 void CustomerDatas();
 int CarLoanPeriod();
 void Selesai();
@@ -100,8 +101,9 @@ menu:
             cin.get();
             goto menu;
         }
-        /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
-        jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
+
+    /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
+    jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
     spesifikasi:
         system("cls");
         Specification(pilihanMobil);
@@ -111,64 +113,34 @@ menu:
         {
             //TODO: INPUT DATA DIRI PELANGGAN
             CustomerDatas();
-            cout << nama << "\n"
-                 << nik << "\n"
-                 << alamat << "\n"
-                 << noTelp << endl;
-            cin.ignore();
             //TODO: MEMASUKKAN JUMLAH HARI
+            tarif = CarLoanPeriod() * harga[pilihanMobil];
             //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
+            //! ini if else
+            CustomerPaying(tarif);
             //TODO: PEMBAYARAN
-        }
-        else if ((y_n[0] == 'n') || (y_n[0] == 'N'))
-        {
-            cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
             cin.ignore();
-            cin.get();
-            goto menu;
+            Selesai();
         }
         else
         {
-            /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
-            jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
-        spesifikasi:
-            system("cls");
-            Specification(pilihanMobil);
-            cout << "Apakah anda yakin? (y/n): ";
-            cin >> y_n;
-            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+            if ((y_n[0] == 'n') || (y_n[0] == 'N'))
             {
-                //TODO: INPUT DATA DIRI PELANGGAN
-                CustomerDatas();
-                //TODO: MEMASUKKAN JUMLAH HARI
-                tarif = CarLoanPeriod() * harga[pilihanMobil];
-                //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
-                //! ini if else
-                CustomerPaying(tarif);
-                //TODO: PEMBAYARAN
+                cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
                 cin.ignore();
-                Selesai();
+                cin.get();
+
+                goto menu;
             }
             else
             {
-                if ((y_n[0] == 'n') || (y_n[0] == 'N'))
-                {
-                    cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
-                    cin.ignore();
-                    cin.get();
-
-                    goto menu;
-                }
-                else
-                {
-                    cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                    cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
-                    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                    cout << "\nTekan ENTER untuk kembali memilih y/n...";
-                    cin.ignore();
-                    cin.get();
-                    goto spesifikasi;
-                }
+                cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+                cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
+                cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+                cout << "\nTekan ENTER untuk kembali memilih y/n...";
+                cin.ignore();
+                cin.get();
+                goto spesifikasi;
             }
         }
     }
