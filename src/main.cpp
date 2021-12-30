@@ -12,7 +12,6 @@ using namespace std;
 
 /* global variables */
 int start = 0, stop = 0;                              // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
-int tarif = 0;                                        // variabel yang menampung tarif penyewaan
 char y_n[] = "";                                      // variabel untuk menampung jawaban y/n
 bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
 string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
@@ -20,9 +19,9 @@ string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung
 void Welcome();
 void DisplayGarageContent(int nomorGarasi);
 void Specification(int index);
-int CarLoanPeriod();
+int GetCarLoanPeriod();
 void CustomerDatas();
-int CustomerPaying(int bayar);
+int GetPaymentMethod(int bayar);
 void Selesai();
 
 int main()
@@ -32,7 +31,12 @@ int main()
     int currentGarage = 0;        // variabel untuk menampung nomor garasi
     int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
     int pilihanMobil = 0;         // variabel untuk menampung pilihan mobil
+    int tarif = 0;                // variabel yang menampung tarif penyewaan
+    int uang = 0;                 // variabel yang menampung uang pembayaran
+    int selisih = 0;              // variabel untuk menampung kembalian atau kekurangan pembayaran
+    int metodeBayar = 0;          // variabel yang menampung pilihan metode pembayaran
     string pilMob = "";           // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
+    string pay = "";              // variabel untuk menampung uang pembayaran sementara sebelum dicasting ke tipe integer
 
     Welcome();
     GenerateRandomData();
@@ -114,12 +118,18 @@ menu:
         if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
         {
             //TODO: MEMASUKKAN JUMLAH HARI
-            tarif = CarLoanPeriod() * harga[pilihanMobil];
+            tarif = GetCarLoanPeriod() * harga[pilihanMobil];
             //TODO: INPUT DATA DIRI PELANGGAN
             CustomerDatas();
-            //TODO: MENGELUARKAN BIAYA DAN RESUME PELANGGAN
-            //! ini if else
-            CustomerPaying(tarif);
+            //TODO: MENGELUARKAN RESUME PELANGGAN, BIAYA, DAN MEMINTA METODE PEMBAYARAN
+            metodeBayar = GetPaymentMethod(tarif);
+            if (metodeBayar == 1)
+            {
+                cout << "Masukkan uang anda: ";
+                cin >> pay;
+                uang = StrToInt(pay);
+            }
+
             //TODO: PEMBAYARAN
             Selesai();
         }
@@ -135,9 +145,7 @@ menu:
             }
             else
             {
-                cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
-                cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+                ErrorNotif(1);
                 cout << "\nTekan ENTER untuk kembali memilih y/n...";
                 cin.ignore();
                 cin.get();
@@ -147,9 +155,7 @@ menu:
     }
     else
     {
-        cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-        cout << "ERROR: silahkan masukkan angka yang sesuai dengan kolom nomor." << endl;
-        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+        ErrorNotif(2);
         cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
         cin.ignore();
         cin.get();
@@ -253,7 +259,7 @@ void Specification(int index)
 }
 
 /* meminta lama pinjam mobil */
-int CarLoanPeriod()
+int GetCarLoanPeriod()
 {
     int jmlh_hari = 0;   // variabel untuk menampung lama sewa mobil
     string jumHari = ""; // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
@@ -271,17 +277,12 @@ int CarLoanPeriod()
             cout << "Apakah anda yakin? (y/n): ";
             cin >> y_n;
             if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
-            {
-                cout << "Menampilkan biaya untuk " << jmlh_hari << " hari: ";
                 break;
-            }
             else
             {
                 if (!((y_n[0] == 'n') || (y_n[0] == 'N')))
                 {
-                    cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-                    cout << "ERROR: silahkan masukkan y/n, dilain itu salah." << endl;
-                    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+                    ErrorNotif(1);
                 }
                 cout << "\nTekan ENTER untuk mengulangi...";
                 cin.ignore();
@@ -290,9 +291,7 @@ int CarLoanPeriod()
         }
         else
         {
-            cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-            cout << "ERROR: silahkan masukkan bilangan bulat positif, dilain itu akan gagal." << endl;
-            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            ErrorNotif(3);
             cout << "\nTekan ENTER untuk mengulangi...";
             cin.ignore();
             cin.get();
@@ -321,9 +320,7 @@ void CustomerDatas()
 
         if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
         {
-            cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-            cout << "ERROR: NIK atau nomor telepon yang anda masukkan tidak valid." << endl;
-            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            ErrorNotif(4);
             cin.clear();
             cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
             cin.ignore();
@@ -334,7 +331,7 @@ void CustomerDatas()
 }
 
 //! ini bagiannya putra, jangan ikut commit
-int CustomerPaying(int bayar)
+int GetPaymentMethod(int bayar)
 {
     int billChoice = 0;
     string pilihanBayar = ""; // variabel yang menampung pilihan metode pembayaran
@@ -351,16 +348,14 @@ int CustomerPaying(int bayar)
         cout << "Total tarif: " << FormatPrice(bayar) << endl;
         cout << "--------------------------------------" << endl;
         cout << "Metode Pembayaran:" << endl;
-        cout << "[1] Transfer\n[2] Uang Tunai" << endl;
+        cout << "[1] Uang Tunai\n[2] Transfer" << endl;
         cout << "\nMasukkan pilihan: " << endl;
         cin >> pilihanBayar;
         billChoice = StrToInt(pilihanBayar);
 
         if (!(0 < billChoice <= 2))
         {
-            cout << "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-            cout << "ERROR: silahkan masukkan angka sesuai yang ada dalam pilihan." << endl;
-            cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+            ErrorNotif(2);
             cin.clear();
             cout << "\nTekan ENTER untuk kembali memasukkan pilihan metode bayar...";
             cin.ignore();

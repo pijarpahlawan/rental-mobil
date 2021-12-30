@@ -4,6 +4,32 @@
 
 using namespace std;
 
+/* fungsi untuk menampilkan error */
+void ErrorNotif(int errorKind)
+{
+    string error = "ERROR: ";
+
+    if (errorKind == 1)
+        error = error + "silahkan masukkan y/n, dilain itu salah.";
+    else if (errorKind == 2)
+        error = error + "silahkan masukkan angka yang sesuai yang ada dalam pilihan.";
+    else if (errorKind == 3)
+        error = error + "silahkan masukkan bilangan bulat positif, dilain itu akan gagal.";
+    else if (errorKind == 4)
+        error = error + "NIK atau nomor telepon yang anda masukkan tidak valid.";
+
+    cout << endl;
+    for (int i = 0; i < 150; i++)
+    {
+        cout << "!";
+        if (i == 74)
+        {
+            cout << "\n" << error << "\n";
+        }
+    }
+    cout << endl;
+}
+
 /* fungsi untuk mengkonversi string ke integer */
 int StrToInt(string str)
 {
@@ -59,7 +85,7 @@ string FormatPrice(int price)
 {
     string priceStr = IntToString(price);
     int count = 0;
-    for (int i = priceStr.size(); i > 0; i-=3)
+    for (int i = priceStr.size(); i > 0; i -= 3)
     {
         //tiap 3 karakter dari belakang maka string akan di tambahkan titik
         if (count > 0) priceStr.insert(i, ".");
