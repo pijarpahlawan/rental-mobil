@@ -33,7 +33,6 @@ int main()
     int pilihanMobil = 0;         // variabel untuk menampung pilihan mobil
     int tarif = 0;                // variabel yang menampung tarif penyewaan
     int uang = 0;                 // variabel yang menampung uang pembayaran
-    int selisih = 0;              // variabel untuk menampung kembalian atau kekurangan pembayaran
     int metodeBayar = 0;          // variabel yang menampung pilihan metode pembayaran
     string pilMob = "";           // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
     string pay = "";              // variabel untuk menampung uang pembayaran sementara sebelum dicasting ke tipe integer
@@ -123,14 +122,46 @@ menu:
             CustomerDatas();
             //TODO: MENGELUARKAN RESUME PELANGGAN, BIAYA, DAN MEMINTA METODE PEMBAYARAN
             metodeBayar = GetPaymentMethod(tarif);
+            //TODO: PEMBAYARAN
             if (metodeBayar == 1)
             {
-                cout << "Masukkan uang anda: ";
-                cin >> pay;
-                uang = StrToInt(pay);
+                while (1)
+                {
+                    system("cls");
+                    cout << "Masukkan uang anda: ";
+                    cin >> pay;
+                    uang = StrToInt(pay);
+                    if (uang < 0)
+                    {
+                        ErrorNotif(3);
+                        cout << "\nTekan ENTER untuk mengulangi...";
+                        cin.ignore();
+                        cin.get();
+                    }
+                    else
+                    {
+                        if (uang > tarif)
+                        {
+                            cout << "Uang anda kembali: " << uang - tarif << endl;
+                            system("pause");
+                            break;
+                        }
+                        else if (uang < tarif)
+                        {
+                            cout << "Uang anda kurang: " << tarif - uang << endl;
+                            cout << "\nTekan ENTER untuk mengulangi...";
+                            cin.ignore();
+                            cin.get();
+                        }
+                    }
+                }
             }
-
-            //TODO: PEMBAYARAN
+            else
+            {
+                cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
+                     << nomorRekening << endl;
+                system("pause");
+            }
             Selesai();
         }
         else
@@ -169,13 +200,13 @@ menu:
 void Welcome()
 {
     system("cls");
-    cout << "\n\n************************************************************************\n\n";
-    cout << "\t====================================================" << endl;
-    cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |" << endl;
-    cout << "\t|	     *********SEMBADA********   	   |" << endl;
-    cout << "\t====================================================" << endl;
-    cout << "\n\n************************************************************************";
-    getch();
+    //cout << "\n\n************************************************************************\n\n";
+    cout << "\n\n\n\n\n\n\n\n\n\t\t====================================================" << endl;
+    cout << "\t\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |" << endl;
+    cout << "\t\t|	     *********SEMBADA********   	   |" << endl;
+    cout << "\t\t====================================================" << endl;
+    //cout << "\n\n************************************************************************";
+    cin.ignore();
 }
 
 /* mengeluarkan output model mobil beserta plat nomor mobilnya */
@@ -241,6 +272,24 @@ void DisplayGarageContent(int nomorGarasi)
 //menampilkan spesifikasi mobil
 void Specification(int index)
 {
+    // cout << "================================================================" << endl;
+    // cout << "|" << endl;
+    // cout << "|" "--- Spesifikasi ---" << endl;
+    // cout << "|" "Mobil\t\t: " << modelRandom[index] << endl;
+    // cout << "|" "Pabrikan\t: " << pabrikan[index] << endl;
+    // cout << "|" "Jenis Mobil\t: " << jenisMobil[index] << endl;
+    // cout << "|" "Plat nomor\t: " << platNomor[index] << endl;
+    // cout << "|" "Kapasitas Mesin\t: " << cc[index] << endl;
+    // cout << "|" "Transmisi\t: " << tipeMesin[index] << endl;
+    // cout << "|" "Bahan Bakar\t: " << bahanbakar[index] << endl;
+    // cout << "|" "Kapasitas Tanki\t: " << bensin[index] << endl;
+    // cout << "|" "Jumlah Kursi\t: " << kursi[index] << endl;
+    // cout << "|" "Kilometer\t: " << kilometer[index] << endl;
+    // cout << "|" "Ber AC\t\t: " << adaAC[index] << endl;
+    // cout << "|" "Warna\t\t: " << warna[index] << endl;
+    // cout << "|" "Harga Per Hari\t: " << harga[index] << endl;
+    // cout << "================================================================" << endl;
+    // cout << endl;
     cout << "=== Spesifikasi ===" << endl;
     cout << "Mobil\t\t: " << modelRandom[index] << endl;
     cout << "Pabrikan\t: " << pabrikan[index] << endl;
