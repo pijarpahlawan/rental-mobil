@@ -54,6 +54,8 @@ void ErrorNotif(int errorKind)
         error = error + "silahkan masukkan bilangan bulat positif, dilain itu akan gagal.";
     else if (errorKind == 4)
         error = error + "NIK atau nomor telepon yang anda masukkan tidak valid.";
+    else if (errorKind == 5)
+        error = error + "Nama atau alamat yang anda masukkan tidak valid.";
 
     cout << endl;
     for (int i = 0; i < 150; i++)
