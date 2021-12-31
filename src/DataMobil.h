@@ -135,7 +135,7 @@ string bodyTypes[] =
 	"MPV", "Super", "Classic", "Compact", "SUV", "SUV", "Sport",
 	"Off-Road", "SUV", "Classic", "SUV",
 };
-string manufacturers[]
+string manufacturers[] = 
 {
 	"Daihatsu", "Toyota", "Nissan", "Daihatsu", "Toyota", "Toyota", "Chevrolet",
 	"Toyota", "Daihatsu", "Hummer", "Land Rover", "Toyota", "Toyota", "Toyota",
