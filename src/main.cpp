@@ -117,7 +117,6 @@ menu:
             metodeBayar = GetPaymentMethod(tarif);
             // PEMBAYARAN
             GetPaid(metodeBayar);
-            Selesai();
         }
         else
         {
@@ -126,7 +125,6 @@ menu:
                 cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
                 cin.ignore();
                 cin.get();
-
                 goto menu;
             }
             else
@@ -148,5 +146,6 @@ menu:
         goto menu;
     }
     Selesai();
-    return 0;
+    if (exitProgram)
+        return 0;
 }

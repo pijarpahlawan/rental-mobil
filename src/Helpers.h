@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/* fungsi untuk menampilkan judul setiap seksi */
 void JudulSesi(int sesiKe)
 {
     int mid;

@@ -169,13 +169,15 @@ int GetCarLoanPeriod()
 /* meminta data diri pelanggan */
 void CustomerDatas()
 {
+    int i = 1;
     while (true)
     {
         system("cls");
         JudulSesi(2);
         cout << "Masukkan data diri anda" << endl;
         cout << "Nama\t\t: ";
-        cin.ignore();
+        if (i == 1)
+            cin.ignore();
         getline(cin, nama);
         cout << "NIK\t\t: ";
         getline(cin, nik);
@@ -187,9 +189,9 @@ void CustomerDatas()
         if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
         {
             ErrorNotif(4);
-            cin.clear();
             cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
-            cin.ignore();
+            cin.get();
+            i++;
         }
         else
             break;
@@ -261,15 +263,18 @@ void GetPaid(int pilihan)
                 if (uang > tarif)
                 {
                     cout << "Uang anda kembali: " << uang - tarif << endl;
-                    system("pause");
+                    getch();
                     break;
                 }
                 else if (uang < tarif)
                 {
                     cout << "Uang anda kurang: " << tarif - uang << endl;
                     cout << "\nTekan ENTER untuk mengulangi...";
-                    cin.ignore();
-                    cin.get();
+                    getch();
+                }
+                else
+                {
+                    break;
                 }
             }
         }
