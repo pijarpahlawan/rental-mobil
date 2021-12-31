@@ -137,6 +137,5 @@ menu:
         goto menu;
     }
     Selesai();
-    if (exitProgram)
-        return 0;
+    return 0;
 }
