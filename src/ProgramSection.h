@@ -170,12 +170,16 @@ void CustomerDatas()
         cout << "No. Telepon\t: ";
         getline(cin, noTelp);
 
-        if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp) || IsStringAllDigit(nama) || IsStringAllDigit(alamat))
+       if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
         {
-            if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
-                ErrorNotif(4);
-            if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
-                ErrorNotif(5);
+            ErrorNotif(4);
+            cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
+            cin.get();
+            i++;
+        }
+        else if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
+        {
+            ErrorNotif(5);
             cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
             cin.get();
             i++;
@@ -235,6 +239,7 @@ void GetPaid(int pilihan)
         {
             system("cls");
             JudulSesi(4);
+            cout << "Total tarif: " << FormatPrice(tarif) << endl;
             cout << "Masukkan uang anda: ";
             cin >> pay;
             uang = StrToInt(pay);
@@ -268,6 +273,7 @@ void GetPaid(int pilihan)
     else
     {
         cout << "...........................................................................\n";
+        cout << "Total tarif: " << FormatPrice(tarif) << endl;
         cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
              << nomorRekening << "\n\n";
     }
