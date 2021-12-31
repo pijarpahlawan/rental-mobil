@@ -11,15 +11,6 @@ using namespace std;
 #define KELUAR 27      // 27 adalah kode ASCII tombol esc
 #define MASUK 13       // 13 adalah kode ASCII tombol enter
 
-void Welcome();
-void DisplayGarageContent(int nomorGarasi);
-void Specification(int index);
-int GetCarLoanPeriod();
-void CustomerDatas();
-int GetPaymentMethod(int bayar);
-void GetPaid(int pilihan);
-void Selesai();
-
 int main()
 {
     bool doneInteraction = false; // variabel sebagai kondisi looping menampilkan daftar mobil

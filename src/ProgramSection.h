@@ -177,6 +177,13 @@ void CustomerDatas()
             cin.get();
             i++;
         }
+        else if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
+        {
+            ErrorNotif(5);
+            cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
+            cin.get();
+            i++;
+        }
         else
             break;
     }
@@ -246,12 +253,12 @@ void GetPaid(int pilihan)
             {
                 if (uang > tarif)
                 {
-                    cout << "Uang anda kembali: " << uang - tarif << endl;
+                    cout << "Uang anda kembali: " << FormatPrice(uang - tarif) << endl;
                     break;
                 }
                 else if (uang < tarif)
                 {
-                    cout << "Uang anda kurang: " << tarif - uang << endl;
+                    cout << "Uang anda kurang: " << FormatPrice(tarif - uang) << endl;
                     cout << "\nTekan ENTER untuk mengulangi...";
                     getch();
                 }
