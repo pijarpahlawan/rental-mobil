@@ -54,11 +54,25 @@ void GenerateRandomData()
         {
             r = rand() % (sizeof(models) / sizeof(string));
             //untuk mengecek apakah variabel r sudah berada di array indexes
-            if (find(begin(indexes), end(indexes), r) == end(indexes))
+            bool found = false;
+            for (int j = 0; j < 15; j++)
+            {
+                if (indexes[j] == r)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
             {
                 indexes[i] = r;
                 break;
             }
+            /* if (find(begin(indexes), end(indexes), r) == end(indexes))
+            {
+                indexes[i] = r;
+                break;
+            } */
         }
 
         /*merandom model mobil*/
