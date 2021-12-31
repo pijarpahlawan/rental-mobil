@@ -22,7 +22,8 @@ void Welcome()
     cout << "\t|	     *********SEMBADA********   	   |" << endl;
     cout << "\t====================================================\n\n"
          << endl;
-    system("pause");
+    cout << "\t\t Pencet ENTER untuk melanjutkan....";
+    cin.ignore();
 }
 
 /* mengeluarkan output model mobil beserta plat nomor mobilnya */
@@ -85,24 +86,23 @@ void DisplayGarageContent(int nomorGarasi)
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
 }
 
-//! perbaikan tampilan
 //menampilkan spesifikasi mobil
 void Specification(int index)
 {
     JudulSesi(0);
-    cout << "Mobil\t\t: " << modelRandom[index] << endl;
-    cout << "Pabrikan\t: " << pabrikan[index] << endl;
-    cout << "Jenis Mobil\t: " << jenisMobil[index] << endl;
-    cout << "Plat nomor\t: " << platNomor[index] << endl;
-    cout << "Kapasitas Mesin\t: " << cc[index] << endl;
-    cout << "Transmisi\t: " << tipeMesin[index] << endl;
-    cout << "Bahan Bakar\t: " << bahanbakar[index] << endl;
-    cout << "Kapasitas Tanki\t: " << bensin[index] << endl;
-    cout << "Jumlah Kursi\t: " << kursi[index] << endl;
-    cout << "Kilometer\t: " << kilometer[index] << endl;
-    cout << "Ber AC\t\t: " << adaAC[index] << endl;
-    cout << "Warna\t\t: " << warna[index] << endl;
-    cout << "Harga Per Hari\t: " << FormatPrice(harga[index]) << endl;
+    cout << "Mobil\t\t\t: " << modelRandom[index] << endl;
+    cout << "Pabrikan\t\t: " << pabrikan[index] << endl;
+    cout << "Jenis Mobil\t\t: " << jenisMobil[index] << endl;
+    cout << "Plat nomor\t\t: " << platNomor[index] << endl;
+    cout << "Kapasitas Mesin\t\t: " << cc[index] << endl;
+    cout << "Transmisi\t\t: " << tipeMesin[index] << endl;
+    cout << "Bahan Bakar\t\t: " << bahanbakar[index] << endl;
+    cout << "Kapasitas Tanki\t\t: " << bensin[index] << endl;
+    cout << "Jumlah Kursi\t\t: " << kursi[index] << endl;
+    cout << "Kilometer\t\t: " << kilometer[index] << endl;
+    cout << "Ber AC\t\t\t: " << adaAC[index] << endl;
+    cout << "Warna\t\t\t: " << warna[index] << endl;
+    cout << "Harga Per Hari\t\t: " << FormatPrice(harga[index]) << endl;
     cout << endl;
 }
 

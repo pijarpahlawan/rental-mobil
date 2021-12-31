@@ -27,8 +27,6 @@ string jenisMobil[15];
 string nomorRekening;
 int indexes[15]; //hanya dipakai di file ini
 
-//mengubah integer menjadi string
-
 //merandom plat nomor
 string GenerateRandomLicensePlate()
 {
