@@ -4,6 +4,40 @@
 
 using namespace std;
 
+void JudulSesi(int sesiKe)
+{
+    int mid;
+    string judul = "";
+    if (sesiKe == 1)
+        judul = "Kurun Waktu Peminjaman";
+    if (sesiKe == 2)
+        judul = "Registrasi";
+    else if (sesiKe == 3)
+        judul = "Resume Pemesanan";
+    else if (sesiKe == 4)
+        judul = "Pembayaran Tunai";
+
+    mid = 75 - judul.size();
+    for (int i = 0; i < 150; i++)
+    {
+        cout << "=";
+        if (i == 74)
+        {
+            cout << endl;
+            for (int j = 0; j < mid; j++)
+            {
+                cout << ":";
+                if (j == (mid / 2))
+                {
+                    cout << judul;
+                }
+            }
+            cout << endl;
+        }
+    }
+    cout << endl;
+}
+
 /* fungsi untuk menampilkan error */
 void ErrorNotif(int errorKind)
 {

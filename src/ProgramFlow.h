@@ -131,6 +131,7 @@ int GetCarLoanPeriod()
     while (true)
     {
         system("cls");
+        JudulSesi(1);
         cout << "Masukkan jumlah hari meminjam: ";
         cin >> jumHari;
         jmlh_hari = StrToInt(jumHari);
@@ -171,6 +172,7 @@ void CustomerDatas()
     while (true)
     {
         system("cls");
+        JudulSesi(2);
         cout << "Masukkan data diri anda" << endl;
         cout << "Nama\t\t: ";
         cin.ignore();
@@ -203,6 +205,7 @@ int GetPaymentMethod(int bayar)
     while (true)
     {
         system("cls");
+        JudulSesi(3);
         cout << "Pemesanan atas nama:" << endl;
         cout << "Nama\t\t: " << nama << endl;
         cout << "NIK\t\t: " << nik << endl;
@@ -242,6 +245,7 @@ void GetPaid(int pilihan)
         while (1)
         {
             system("cls");
+            JudulSesi(4);
             cout << "Masukkan uang anda: ";
             cin >> pay;
             uang = StrToInt(pay);
@@ -287,6 +291,7 @@ void Selesai()
     cout << "		=================================" << endl;
     cout << "		|	KRITIK DAN SARAN	|" << endl;
     cout << "		| 	  0812345678910		|" << endl;
-    cout << " 		=================================" << endl;
+    cout << " 		=================================\n\n"
+         << endl;
     system("pause");
 }
