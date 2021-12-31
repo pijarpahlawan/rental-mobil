@@ -239,6 +239,7 @@ void GetPaid(int pilihan)
         {
             system("cls");
             JudulSesi(4);
+            cout << "Total tarif: " << FormatPrice(tarif) << endl;
             cout << "Masukkan uang anda: ";
             cin >> pay;
             uang = StrToInt(pay);
@@ -272,6 +273,7 @@ void GetPaid(int pilihan)
     else
     {
         cout << "...........................................................................\n";
+        cout << "Total tarif: " << FormatPrice(tarif) << endl;
         cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
              << nomorRekening << "\n\n";
     }
