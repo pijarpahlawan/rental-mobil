@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
+#include <iomanip>
 #include "RandomData.h"
 #include "Helpers.h"
 
@@ -84,28 +85,11 @@ void DisplayGarageContent(int nomorGarasi)
     cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
 }
 
+//! perbaikan tampilan
 //menampilkan spesifikasi mobil
 void Specification(int index)
 {
-    // cout << "================================================================" << endl;
-    // cout << "|" << endl;
-    // cout << "|" "--- Spesifikasi ---" << endl;
-    // cout << "|" "Mobil\t\t: " << modelRandom[index] << endl;
-    // cout << "|" "Pabrikan\t: " << pabrikan[index] << endl;
-    // cout << "|" "Jenis Mobil\t: " << jenisMobil[index] << endl;
-    // cout << "|" "Plat nomor\t: " << platNomor[index] << endl;
-    // cout << "|" "Kapasitas Mesin\t: " << cc[index] << endl;
-    // cout << "|" "Transmisi\t: " << tipeMesin[index] << endl;
-    // cout << "|" "Bahan Bakar\t: " << bahanbakar[index] << endl;
-    // cout << "|" "Kapasitas Tanki\t: " << bensin[index] << endl;
-    // cout << "|" "Jumlah Kursi\t: " << kursi[index] << endl;
-    // cout << "|" "Kilometer\t: " << kilometer[index] << endl;
-    // cout << "|" "Ber AC\t\t: " << adaAC[index] << endl;
-    // cout << "|" "Warna\t\t: " << warna[index] << endl;
-    // cout << "|" "Harga Per Hari\t: " << harga[index] << endl;
-    // cout << "================================================================" << endl;
-    // cout << endl;
-    cout << "=== Spesifikasi ===" << endl;
+    JudulSesi(0);
     cout << "Mobil\t\t: " << modelRandom[index] << endl;
     cout << "Pabrikan\t: " << pabrikan[index] << endl;
     cout << "Jenis Mobil\t: " << jenisMobil[index] << endl;
@@ -213,12 +197,12 @@ int GetPaymentMethod(int bayar)
         cout << "NIK\t\t: " << nik << endl;
         cout << "Alamat\t\t: " << alamat << endl;
         cout << "No. Telepon\t: " << noTelp << endl;
-        cout << "--------------------------------------" << endl;
+        cout << "---------------------------------------------------------------------------" << endl;
         cout << "Total tarif: " << FormatPrice(bayar) << endl;
-        cout << "--------------------------------------" << endl;
+        cout << "---------------------------------------------------------------------------" << endl;
         cout << "Metode Pembayaran:" << endl;
         cout << "[1] Uang Tunai\n[2] Transfer" << endl;
-        cout << "\nMasukkan pilihan: " << endl;
+        cout << "\nMasukkan pilihan: ";
         cin >> pilihanBayar;
         billChoice = StrToInt(pilihanBayar);
 
@@ -263,7 +247,6 @@ void GetPaid(int pilihan)
                 if (uang > tarif)
                 {
                     cout << "Uang anda kembali: " << uang - tarif << endl;
-                    getch();
                     break;
                 }
                 else if (uang < tarif)
@@ -281,10 +264,12 @@ void GetPaid(int pilihan)
     }
     else
     {
+        cout << "...........................................................................\n";
         cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
-             << nomorRekening << endl;
-        system("pause");
+             << nomorRekening << "\n\n";
     }
+    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
+    getch();
 }
 
 /* tampilan program selesai */
