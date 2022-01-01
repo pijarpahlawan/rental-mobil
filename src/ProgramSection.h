@@ -170,22 +170,15 @@ void CustomerDatas()
         cout << "No. Telepon\t: ";
         getline(cin, noTelp);
 
-       if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
-        {
-            ErrorNotif(4);
-            cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
-            cin.get();
-            i++;
-        }
-        else if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
-        {
+        if (!IsThereACharacter(nama) || AreAllInteger(alamat))
             ErrorNotif(5);
-            cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
-            cin.get();
-            i++;
-        }
+        if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
+            ErrorNotif(4);
         else
             break;
+        cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
+        cin.get();
+        i++;
     }
 }
 

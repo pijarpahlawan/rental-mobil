@@ -4,6 +4,34 @@
 
 using namespace std;
 
+/* fungsi untuk menentukan apakah ada angka di inputan */
+bool IsThereACharacter(string str)
+{
+    string digit = "0123456789";
+    for (int i = 0; i < str.length(); i++)
+    {
+        for (int j = 0; j < digit.length(); j++)
+        {
+            if (str[i] == digit[j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+/* fungsi untuk menentukan apakah inputan terdiri dari integer */
+bool AreAllInteger(string str)
+{
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (isdigit(str[i]) == false)
+            return false;
+    }
+    return true;
+}
+
 /* fungsi untuk menampilkan judul setiap seksi */
 void JudulSesi(int sesiKe)
 {
@@ -87,7 +115,7 @@ string IntToString(int a)
     return temp.str();
 }
 
-/* fungsi untuk memeriksa apakah dalam string semuanya terdiri dari angka */
+/* fungsi untuk memeriksa apakah dalam angka terdapat huruf */
 bool IsStringAllDigit(const string &str)
 {
     //inisialisasi instansi dari iterator string
