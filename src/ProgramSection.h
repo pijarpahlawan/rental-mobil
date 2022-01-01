@@ -12,6 +12,9 @@ char y_n[] = "";                                      // variabel untuk menampun
 int tarif = 0;                                        // variabel yang menampung tarif penyewaan
 bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
 string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
+int pilihanMobil = 0;                                 // variabel untuk menampung pilihan mobil
+int jmlh_hari = 0;                                    // variabel untuk menampung lama sewa mobil
+int uang = 0;                                         // variabel yang menampung uang pembayaran
 
 /* tampilan selamat datang */
 void Welcome()
@@ -107,9 +110,8 @@ void Specification(int index)
 }
 
 /* meminta lama pinjam mobil */
-int GetCarLoanPeriod()
+void GetCarLoanPeriod()
 {
-    int jmlh_hari = 0;   // variabel untuk menampung lama sewa mobil
     string jumHari = ""; // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
     while (true)
@@ -146,8 +148,6 @@ int GetCarLoanPeriod()
             cin.get();
         }
     }
-
-    return jmlh_hari;
 }
 
 /* meminta data diri pelanggan */
@@ -188,6 +188,8 @@ void CustomerDatas()
         }
         if (cond)
             break;
+        cout << "\nNote :" << endl;
+        cout << "- nama tidak boleh memiliki angka\n- alamat tidak boleh angka seluruhnya\n- NIK dan nomor telepon harus berisi angka\n";
         cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
         cin.get();
         cond = false;
@@ -235,7 +237,7 @@ int GetPaymentMethod(int bayar)
 /* meminta pembayaran */
 void GetPaid(int pilihan)
 {
-    int uang = 0;    // variabel yang menampung uang pembayaran
+    void Struck();
     string pay = ""; // variabel untuk menampung uang pembayaran sementara sebelum dicasting ke tipe integer
 
     if (pilihan == 1)
@@ -260,6 +262,8 @@ void GetPaid(int pilihan)
                 if (uang > tarif)
                 {
                     cout << "Uang anda kembali: " << FormatPrice(uang - tarif) << endl;
+                    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
+                    Struck();
                     break;
                 }
                 else if (uang < tarif)
@@ -281,9 +285,36 @@ void GetPaid(int pilihan)
         cout << "Total tarif: " << FormatPrice(tarif) << endl;
         cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
              << nomorRekening << "\n\n";
+        cout << "Anda akan mendapatkan kwitansi melalui SMS setelah pembayaran terkonfirmasi\n\n";
+        system("pause");
     }
-    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
+}
+
+//tampilan struck
+void Struck()
+{
     getch();
+    system("cls");
+    cout << "=================================================" << endl;
+    cout << "|\t\tKWITANSI PEMBAYARAN\t\t|" << endl;
+    cout << "|\t\t **** SEMBADA **** \t\t|" << endl;
+    cout << "-------------------------------------------------" << endl;
+    cout << " Nama Penyewa\t:" << nama << endl;
+    cout << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << endl;
+    cout << " Plat \t\t:" << platNomor[pilihanMobil] << endl;
+    cout << " Jumlah hari\t:" << jmlh_hari << endl;
+    cout << "-------------------------------------------------" << endl;
+    cout << " Jumlah sewa\t:" << FormatPrice(tarif) << endl;
+    cout << " Jumlah uang\t:" << FormatPrice(uang) << endl;
+    cout << " Kembalian\t:" << FormatPrice(uang - tarif) << endl;
+    cout << "-------------------------------------------------" << endl;
+    cout << "\t\t      LUNAS       \t\t" << endl;
+    cout << "-------------------------------------------------" << endl;
+    cout << " \t    SIMPAN BUKTI PEMBAYARAN !    \t" << endl;
+    cout << " ~Terimakasih Atas Kepercayaan Anda Kepada Kami~ " << endl;
+    cout << "=================================================\n\n"
+         << endl;
+    system("pause");
 }
 
 /* tampilan program selesai */

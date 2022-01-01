@@ -25,7 +25,8 @@ bool IsStringContainsAnyDigit(const string &str)
 {
     for (int i = 0; i < str.length(); i++)
     {
-        if (isdigit(str[i])) return true;
+        if (isdigit(str[i]))
+            return true;
     }
     return false;
 }
@@ -118,9 +119,9 @@ void ErrorNotif(int errorKind)
     else if (errorKind == 4)
         error = error + "NIK atau nomor telepon yang anda masukkan tidak valid.";
     else if (errorKind == 5)
-        error = error + "Nama yang anda masukkan tidak valid. Nama tidak boleh memiliki angka";
+        error = error + "Nama yang anda masukkan tidak valid.";
     else if (errorKind == 6)
-        error = error + "Alamat yang anda masukkan tidak valid. alamat tidak boleh angka seluruhnya";
+        error = error + "Alamat yang anda masukkan tidak valid.";
 
     cout << endl;
     for (int i = 0; i < 150; i++)
