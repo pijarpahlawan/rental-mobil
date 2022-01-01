@@ -125,11 +125,11 @@ int GetCarLoanPeriod()
             cout << endl;
             cout << "Apakah anda yakin? (y/n): ";
             cin >> y_n;
-            if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+            if (MakeLowercase(y_n)[0] == 'y')
                 break;
             else
             {
-                if (!((y_n[0] == 'n') || (y_n[0] == 'N')))
+                if (MakeLowercase(y_n)[0] != 'y')
                 {
                     ErrorNotif(1);
                 }
@@ -172,7 +172,7 @@ void CustomerDatas()
 
         if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
             ErrorNotif(5);
-        if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
+        else if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
             ErrorNotif(4);
         else
             break;
@@ -193,7 +193,7 @@ int GetPaymentMethod(int bayar)
         system("cls");
         JudulSesi(3);
         cout << "Pemesanan atas nama:" << endl;
-        cout << "Nama\t\t: " << nama << endl;
+        cout << "Nama\t\t: " << Capitalize(nama) << endl;
         cout << "NIK\t\t: " << nik << endl;
         cout << "Alamat\t\t: " << alamat << endl;
         cout << "No. Telepon\t: " << noTelp << endl;
