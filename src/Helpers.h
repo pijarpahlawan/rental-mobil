@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//fungsi untuk mengubah string ke lowercase
 string MakeLowercase(const string& str)
 {
     string result = str;
@@ -15,6 +16,7 @@ string MakeLowercase(const string& str)
     return result;
 }
 
+//fungsi untuk mengubah string ke uppercase
 string MakeUppercase(const string& str)
 {
     string result = str;
@@ -26,12 +28,15 @@ string MakeUppercase(const string& str)
     return result;
 }
 
+//fungsi untuk mengubah string ke titlecase
 string Capitalize(const string& str)
 {
     string result = str;
-    for (int i = 0; i < str.size(); i++)
+    int len = str.size();
+    for (int i = 0; i < len; i++)
     {
-        if (result[i + 1] == 32 && result[i] > 64 + 32 && result[i] < 91 + 32)
+        if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) 
+        && result[i] > 64 + 32 && result[i] < 91 + 32)
             result[i] = result[i] - 32;
     }
     return result;
