@@ -4,32 +4,42 @@
 
 using namespace std;
 
-/* fungsi untuk menentukan apakah ada angka di inputan */
-bool IsThereACharacter(string str)
+//fungsi untuk mengubah string ke lowercase
+string MakeLowercase(const string& str)
 {
-    string digit = "0123456789";
-    for (int i = 0; i < str.length(); i++)
+    string result = str;
+    for (int i = 0; i < str.size(); i++)
     {
-        for (int j = 0; j < digit.length(); j++)
-        {
-            if (str[i] == digit[j])
-            {
-                return false;
-            }
-        }
+        if (result[i] > 64 && result[i] < 91)
+            result[i] = result[i] + 32;
     }
-    return true;
+    return result;
 }
 
-/* fungsi untuk menentukan apakah inputan terdiri dari integer */
-bool AreAllInteger(string str)
+//fungsi untuk mengubah string ke uppercase
+string MakeUppercase(const string& str)
 {
-    for (int i = 0; i < str.length(); i++)
+    string result = str;
+    for (int i = 0; i < str.size(); i++)
     {
-        if (isdigit(str[i]) == false)
-            return false;
+        if (result[i] > 64 + 32 && result[i] < 91 + 32)
+            result[i] = result[i] - 32;
     }
-    return true;
+    return result;
+}
+
+//fungsi untuk mengubah string ke titlecase
+string Capitalize(const string& str)
+{
+    string result = str;
+    int len = str.size();
+    for (int i = 0; i < len; i++)
+    {
+        if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) 
+        && result[i] > 64 + 32 && result[i] < 91 + 32)
+            result[i] = result[i] - 32;
+    }
+    return result;
 }
 
 /* fungsi untuk menampilkan judul setiap seksi */
