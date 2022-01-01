@@ -8,13 +8,13 @@
 using namespace std;
 
 int start = 0, stop = 0;                              // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
+int pilihanMobil = 0;                                 // variabel untuk menampung pilihan mobil
+int jmlh_hari = 0;                                    // variabel untuk menampung lama sewa mobil
+int uang = 0;                                         // variabel yang menampung uang pembayaran
 char y_n[] = "";                                      // variabel untuk menampung jawaban y/n
 int tarif = 0;                                        // variabel yang menampung tarif penyewaan
 bool exitProgram = false;                             // variabel sebagai kondisi program telah selesai
 string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung input data diri pelanggan
-int pilihanMobil = 0;                                 // variabel untuk menampung pilihan mobil
-int jmlh_hari = 0;                                    // variabel untuk menampung lama sewa mobil
-int uang = 0;                                         // variabel yang menampung uang pembayaran
 
 /* tampilan selamat datang */
 void Welcome()
@@ -220,12 +220,12 @@ int GetPaymentMethod(int bayar)
         cin >> pilihanBayar;
         billChoice = StrToInt(pilihanBayar);
 
-        if (!(0 < billChoice <= 2))
+        if (billChoice != 1 && billChoice != 2)
         {
             ErrorNotif(2);
-            cin.clear();
             cout << "\nTekan ENTER untuk kembali memasukkan pilihan metode bayar...";
             cin.ignore();
+            cin.get();
         }
         else
             break;
@@ -274,6 +274,8 @@ void GetPaid(int pilihan)
                 }
                 else
                 {
+                    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
+                    Struck();
                     break;
                 }
             }
