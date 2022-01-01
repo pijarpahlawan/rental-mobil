@@ -19,35 +19,15 @@ bool IsStringAllDigit(const string &str)
 }
 
 /* fungsi untuk menentukan apakah ada angka di inputan */
-// akan true jika tidak ditemukan angka pada string (all string)
-// akan false jika saat itu juga ditemukan angka (sekali dapat)
-bool IsThereADigit(string str)
-{
-    string digit = "0123456789";
-    for (int i = 0; i < str.length(); i++)
-    {
-        for (int j = 0; j < digit.length(); j++)
-        {
-            if (str[i] == digit[j])
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-/* fungsi untuk menentukan apakah inputan terdiri dari integer */
-// akan true jika semua integer
-// akan false jika tidak semua angka (salah satu tetap false)
-bool AreAllDigits(string str)
+// akan false jika tidak ditemukan angka pada string (all string)
+// akan true jika saat itu juga ditemukan angka (sekali dapat)
+bool IsStringContainsAnyDigit(const string &str)
 {
     for (int i = 0; i < str.length(); i++)
     {
-        if (isdigit(str[i]) == false)
-            return false;
+        if (isdigit(str[i])) return true;
     }
-    return true;
+    return false;
 }
 
 //fungsi untuk mengubah string ke lowercase
@@ -138,7 +118,9 @@ void ErrorNotif(int errorKind)
     else if (errorKind == 4)
         error = error + "NIK atau nomor telepon yang anda masukkan tidak valid.";
     else if (errorKind == 5)
-        error = error + "Nama atau alamat yang anda masukkan tidak valid.";
+        error = error + "Nama yang anda masukkan tidak valid. Nama tidak boleh memiliki angka";
+    else if (errorKind == 6)
+        error = error + "Alamat yang anda masukkan tidak valid. alamat tidak boleh angka seluruhnya";
 
     cout << endl;
     for (int i = 0; i < 150; i++)
