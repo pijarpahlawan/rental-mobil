@@ -4,8 +4,54 @@
 
 using namespace std;
 
+/* fungsi untuk memeriksa apakah dalam angka terdapat huruf */
+// akan true jika inputan tidak ada string (all int)
+// akan false jika inputan terdapat string (sekali dapat)
+bool IsStringAllDigit(const string &str)
+{
+    //inisialisasi instansi dari iterator string
+    string::const_iterator it = str.begin();
+    //jika iterator bukan digit, maka hentikan loop
+    while (it != str.end() && isdigit(*it))
+        ++it;
+    //mengembalikan kondisi apakah iterator sudah mencapai akhir
+    return !str.empty() && it == str.end();
+}
+
+/* fungsi untuk menentukan apakah ada angka di inputan */
+// akan true jika tidak ditemukan angka pada string (all string)
+// akan false jika saat itu juga ditemukan angka (sekali dapat)
+bool IsThereADigit(string str)
+{
+    string digit = "0123456789";
+    for (int i = 0; i < str.length(); i++)
+    {
+        for (int j = 0; j < digit.length(); j++)
+        {
+            if (str[i] == digit[j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+/* fungsi untuk menentukan apakah inputan terdiri dari integer */
+// akan true jika semua integer
+// akan false jika tidak semua angka (salah satu tetap false)
+bool AreAllDigits(string str)
+{
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (isdigit(str[i]) == false)
+            return false;
+    }
+    return true;
+}
+
 //fungsi untuk mengubah string ke lowercase
-string MakeLowercase(const string& str)
+string MakeLowercase(const string &str)
 {
     string result = str;
     for (int i = 0; i < str.size(); i++)
@@ -17,7 +63,7 @@ string MakeLowercase(const string& str)
 }
 
 //fungsi untuk mengubah string ke uppercase
-string MakeUppercase(const string& str)
+string MakeUppercase(const string &str)
 {
     string result = str;
     for (int i = 0; i < str.size(); i++)
@@ -29,14 +75,13 @@ string MakeUppercase(const string& str)
 }
 
 //fungsi untuk mengubah string ke titlecase
-string Capitalize(const string& str)
+string Capitalize(const string &str)
 {
     string result = str;
     int len = str.size();
     for (int i = 0; i < len; i++)
     {
-        if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) 
-        && result[i] > 64 + 32 && result[i] < 91 + 32)
+        if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) && result[i] > 64 + 32 && result[i] < 91 + 32)
             result[i] = result[i] - 32;
     }
     return result;
@@ -123,18 +168,6 @@ string IntToString(int a)
     ostringstream temp;
     temp << a;
     return temp.str();
-}
-
-/* fungsi untuk memeriksa apakah dalam angka terdapat huruf */
-bool IsStringAllDigit(const string &str)
-{
-    //inisialisasi instansi dari iterator string
-    string::const_iterator it = str.begin();
-    //jika iterator bukan digit, maka hentikan loop
-    while (it != str.end() && isdigit(*it))
-        ++it;
-    //mengembalikan kondisi apakah iterator sudah mencapai akhir
-    return !str.empty() && it == str.end();
 }
 
 /* menambahkan tab(\t) sesuai dengan panjang teks pada model mobil */
