@@ -17,7 +17,6 @@ int main()
     bool reprint = true;          // variabel sebagai kondisi untuk mencetak daftar mobil
     int currentGarage = 0;        // variabel untuk menampung nomor garasi
     int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
-    int pilihanMobil = 0;         // variabel untuk menampung pilihan mobil
     int metodeBayar = 0;          // variabel yang menampung pilihan metode pembayaran
     string pilMob = "";           // variabel untuk menampung pilihan mobil sementara sebelum dicasting ke tipe integer
 
@@ -101,7 +100,8 @@ menu:
         if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
         {
             // MEMASUKKAN JUMLAH HARI
-            tarif = GetCarLoanPeriod() * harga[pilihanMobil];
+            GetCarLoanPeriod();
+            tarif = jmlh_hari * harga[pilihanMobil];
             // INPUT DATA DIRI PELANGGAN
             CustomerDatas();
             // MENGELUARKAN RESUME PELANGGAN, BIAYA, DAN MEMINTA METODE PEMBAYARAN
@@ -136,6 +136,7 @@ menu:
         cin.get();
         goto menu;
     }
+
     Selesai();
     return 0;
 }
