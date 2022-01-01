@@ -153,14 +153,14 @@ int GetCarLoanPeriod()
 /* meminta data diri pelanggan */
 void CustomerDatas()
 {
-    bool cond = true;
+    int i = 1;
     while (true)
     {
         system("cls");
         JudulSesi(2);
         cout << "Masukkan data diri anda" << endl;
         cout << "Nama\t\t: ";
-        if (cond)
+        if (i == 1)
             cin.ignore();
         getline(cin, nama);
         cout << "NIK\t\t: ";
@@ -170,22 +170,15 @@ void CustomerDatas()
         cout << "No. Telepon\t: ";
         getline(cin, noTelp);
 
-        cond = true;
-        if (!IsThereACharacter(nama) || AreAllInteger(alamat))
-        {
+        if (IsStringAllDigit(nama) || IsStringAllDigit(alamat))
             ErrorNotif(5);
-            cond = false;
-        }
         if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
-        {
             ErrorNotif(4);
-            cond = false;
-        }
-        if (cond)
+        else
             break;
         cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
         cin.get();
-        cond = false;
+        i++;
     }
 }
 
