@@ -171,9 +171,14 @@ void CustomerDatas()
         getline(cin, noTelp);
 
         cond = true;
-        if (!IsThereADigit(nama) || AreAllDigits(alamat))
+        if (IsStringContainsAnyDigit(nama))
         {
             ErrorNotif(5);
+            cond = false;
+        }
+        if (IsStringAllDigit(alamat))
+        {
+            ErrorNotif(6);
             cond = false;
         }
         if (!IsStringAllDigit(nik) || !IsStringAllDigit(noTelp))
