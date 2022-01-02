@@ -26,6 +26,7 @@ string pabrikan[15];
 string jenisMobil[15];
 string nomorRekening;
 int indexes[15]; //hanya dipakai di file ini
+unsigned int nomorTransaksi;
 
 //merandom plat nomor
 string GenerateRandomLicensePlate()
@@ -102,4 +103,12 @@ void GenerateRandomData()
         int noRek = rand() % 999 + 11;
         nomorRekening += IntToString(noRek);
     }
+    //merandom nomor transaksi
+    string randomString = "";
+    for (int i = 0; i < rand() % 5 + 3; i++)
+    {
+        int affix = rand() % 2 == 1 ? 0 : 32;
+        randomString += rand() % 26 + 35 + affix;
+    }
+    nomorTransaksi = EncryptJoaat(randomString);
 }

@@ -2,14 +2,15 @@
 |		KWITANSI PEMBAYARAN		|
 |		 **** SEMBADA **** 		|
 -------------------------------------------------
- Nama Penyewa	:Anonym
- Jenis Mobil	:Toyota Land Cruiser
- Plat 		:AB7174GL
- Jumlah hari	:2
+ No. Transaksi	:1224382179
+ Nama Penyewa	:Fiersa Besari
+ Jenis Mobil	:Maserati Levante
+ Plat 		:N7239ID
+ Jumlah hari	:15
 -------------------------------------------------
- Jumlah sewa	:Rp22.000.000
- Jumlah uang	:Rp22.000.000
- Kembalian	:Rp0
+ Jumlah sewa	:Rp17.025.000
+ Jumlah uang	:Rp18.000.000
+ Kembalian	:Rp975.000
 -------------------------------------------------
 		      LUNAS       		
 -------------------------------------------------

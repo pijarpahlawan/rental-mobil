@@ -304,7 +304,8 @@ void Struck()
     kwitansi << "|\t\tKWITANSI PEMBAYARAN\t\t|\n";
     kwitansi << "|\t\t **** SEMBADA **** \t\t|\n";
     kwitansi << "-------------------------------------------------\n";
-    kwitansi << " Nama Penyewa\t:" << nama << "\n";
+    kwitansi << " No. Transaksi\t:" << nomorTransaksi << "\n";
+    kwitansi << " Nama Penyewa\t:" << Capitalize(nama) << "\n";
     kwitansi << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << "\n";
     kwitansi << " Plat \t\t:" << platNomor[pilihanMobil] << "\n";
     kwitansi << " Jumlah hari\t:" << jmlh_hari << "\n";
