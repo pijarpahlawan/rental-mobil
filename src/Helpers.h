@@ -76,9 +76,9 @@ void JudulSesi(int sesiKe)
     string judul = "";
     if (sesiKe == 0)
         judul = "Spesifikasi Mobil";
-    if (sesiKe == 1)
+    else if (sesiKe == 1)
         judul = "Kurun Waktu Peminjaman";
-    if (sesiKe == 2)
+    else if (sesiKe == 2)
         judul = "Input Data Pelanggan";
     else if (sesiKe == 3)
         judul = "Resume Pemesanan";
