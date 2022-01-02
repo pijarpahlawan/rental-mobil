@@ -2,13 +2,13 @@
 |		KWITANSI PEMBAYARAN		|
 |		 **** SEMBADA **** 		|
 -------------------------------------------------
- Nama Penyewa	:afsdfds
- Jenis Mobil	:Hyundai H1 Royale
- Plat 		:AG1549YR
+ Nama Penyewa	:Anonym
+ Jenis Mobil	:Toyota Land Cruiser
+ Plat 		:AB7174GL
  Jumlah hari	:2
 -------------------------------------------------
- Jumlah sewa	:Rp2.800.000
- Jumlah uang	:Rp2.800.000
+ Jumlah sewa	:Rp22.000.000
+ Jumlah uang	:Rp22.000.000
  Kembalian	:Rp0
 -------------------------------------------------
 		      LUNAS       		

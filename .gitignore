@@ -31,8 +31,7 @@
 *.out
 *.app
 
-# VSCode settings 
+# Ignored Folders
 .vscode/
-
-# unnecessary files
 unnecessary/
+finished-project/
