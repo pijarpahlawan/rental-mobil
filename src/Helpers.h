@@ -5,9 +5,9 @@
 
 using namespace std;
 
-/* fungsi untuk memeriksa apakah dalam angka terdapat huruf */
-// akan true jika inputan tidak ada string (all int)
-// akan false jika inputan terdapat string (sekali dapat)
+/* fungsi untuk memeriksa apakah dalam angka terdapat huruf 
+    - akan true jika inputan tidak ada string (all int)
+    - akan false jika inputan terdapat string (sekali dapat) */
 bool IsStringAllDigit(const string &str)
 {
     //inisialisasi instansi dari iterator string
@@ -19,9 +19,9 @@ bool IsStringAllDigit(const string &str)
     return !str.empty() && it == str.end();
 }
 
-/* fungsi untuk menentukan apakah ada angka di inputan */
-// akan false jika tidak ditemukan angka pada string (all string)
-// akan true jika saat itu juga ditemukan angka (sekali dapat)
+/* fungsi untuk menentukan apakah ada angka di inputan 
+    - akan false jika tidak ditemukan angka pada string (all string)
+    - akan true jika saat itu juga ditemukan angka (sekali dapat) */
 bool IsStringContainsAnyDigit(const string &str)
 {
     for (int i = 0; i < str.length(); i++)
@@ -32,7 +32,7 @@ bool IsStringContainsAnyDigit(const string &str)
     return false;
 }
 
-//fungsi untuk mengubah string ke lowercase
+/* fungsi untuk mengubah string ke lowercase */
 string MakeLowercase(const string &str)
 {
     string result = str;
@@ -44,7 +44,7 @@ string MakeLowercase(const string &str)
     return result;
 }
 
-//fungsi untuk mengubah string ke uppercase
+/* fungsi untuk mengubah string ke uppercase */
 string MakeUppercase(const string &str)
 {
     string result = str;
@@ -56,7 +56,7 @@ string MakeUppercase(const string &str)
     return result;
 }
 
-//fungsi untuk mengubah string ke titlecase
+/* fungsi untuk mengubah string ke titlecase */
 string Capitalize(const string &str)
 {
     string result = str;
@@ -192,6 +192,7 @@ string FormatPrice(int price)
     return "Rp" + priceStr;
 }
 
+/* fungsi untuk membaca file */
 void ReadFile(const char *filename)
 {
     ifstream stream;

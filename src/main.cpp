@@ -99,12 +99,12 @@ menu:
         cin >> y_n;
         if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
         {
-            // MEMASUKKAN JUMLAH HARI
+            // MEMASUKKAN JUMLAH HARI DAN KALKULASI TARIF PINJAM
             GetCarLoanPeriod();
             tarif = jmlh_hari * harga[pilihanMobil];
             // INPUT DATA DIRI PELANGGAN
             CustomerDatas();
-            // MENGELUARKAN RESUME PELANGGAN, BIAYA, DAN MEMINTA METODE PEMBAYARAN
+            // MENGELUARKAN RESUME DATA DIRI PELANGGAN, BIAYA, DAN MEMINTA METODE PEMBAYARAN
             metodeBayar = GetPaymentMethod(tarif);
             // PEMBAYARAN
             GetPaid(metodeBayar);
