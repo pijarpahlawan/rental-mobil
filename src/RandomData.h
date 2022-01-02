@@ -50,7 +50,7 @@ void GenerateRandomData()
     {
         //mendapatkan indeks ke-r array sebelum terandom. berbasis array models[]
         int r;
-        // loop untuk menghindari memasukkan model mobil yang sama
+        //loop untuk menghindari memasukkan model mobil yang sama
         while (true)
         {
             r = rand() % (sizeof(models) / sizeof(string));

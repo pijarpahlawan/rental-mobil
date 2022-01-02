@@ -69,7 +69,7 @@ string Capitalize(const string &str)
     return result;
 }
 
-/* fungsi untuk menampilkan judul setiap seksi */
+/* fungsi untuk menampilkan judul setiap sesi */
 void JudulSesi(int sesiKe)
 {
     int mid;
@@ -130,8 +130,7 @@ void ErrorNotif(int errorKind)
         cout << "!";
         if (i == 74)
         {
-            cout << "\n"
-                 << error << "\n";
+            cout << "\n" << error << "\n";
         }
     }
     cout << endl;
@@ -206,7 +205,7 @@ void ReadFile(const char *filename)
     stream.close();
 }
 
-/*Meng-enkripsi string mengguakan jenkins one at a time algorithm*/
+/* Meng-enkripsi string mengguakan jenkins one at a time algorithm */
 unsigned int EncryptJoaat(const string &str)
 {
     unsigned int result = 0;

@@ -56,8 +56,7 @@ menu:
         }
         if (doneInteraction)
             break;
-        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3
-                                                                  : currentGarage;
+        currentGarage = currentGarage > 3 ? 1 : currentGarage < 1 ? 3 : currentGarage;
     }
     if (exitProgram)
         return 0;

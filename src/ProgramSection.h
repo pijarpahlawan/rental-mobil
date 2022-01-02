@@ -35,7 +35,7 @@ void DisplayGarageContent(int nomorGarasi)
     int no = 1;        // nomer urut mobil pada daftar mobil yang ditampilkan
     string nomer = ""; // garasi keberapa
     string model = ""; // model mobil yang telah diformat agat mudah terbaca
-    string plate = ""; // model dan plat nomor yang telah diformat agar mudah terbaca
+    string plate = ""; // plat nomor yang telah diformat agar mudah terbaca
 
     switch (nomorGarasi)
     {
@@ -143,7 +143,7 @@ void GetCarLoanPeriod()
 /* meminta data diri pelanggan */
 void CustomerDatas()
 {
-    bool cond = true;
+    bool cond = true; // variabel untuk menentukan kondisi
     while (true)
     {
         system("cls");
@@ -189,8 +189,8 @@ void CustomerDatas()
 /* meminta pilihan metode pembayaran */
 int GetPaymentMethod(int bayar)
 {
-    int billChoice = 0;
-    string pilihanBayar = ""; // variabel yang menampung pilihan metode pembayaran
+    int billChoice = 0;       // variabel yang menampung pilihan metode pembayaran
+    string pilihanBayar = ""; // variabel yang menampung pilihan metode pembayaran sebelum dicasting ke integer
 
     while (true)
     {
@@ -285,7 +285,7 @@ void GetPaid(int pilihan)
     }
 }
 
-/* menulis kwitansi peminjaman ke kwitansi.ext */
+/* menulis kwitansi peminjaman ke kwitansi.txt */
 void Struck()
 {
     ofstream kwitansi;
