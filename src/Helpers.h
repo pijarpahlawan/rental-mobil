@@ -205,3 +205,20 @@ void ReadFile(const char *filename)
     }
     stream.close();
 }
+
+/*Meng-enkripsi string mengguakan jenkins one at a time algorithm*/
+unsigned int EncryptJoaat(const string &str)
+{
+    unsigned int result = 0;
+    for (int i = 0; i < str.size(); i++)
+    {
+        int ascii = int(str[i]);
+        result += ascii;
+        result += result << 10;
+        result ^= result >> 6;
+    }
+    result += result << 3;
+    result ^= result >> 11;
+    result += result << 15;
+    return result;
+}

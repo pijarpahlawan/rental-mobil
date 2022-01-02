@@ -25,7 +25,8 @@ int harga[15];
 string pabrikan[15];
 string jenisMobil[15];
 string nomorRekening;
-int indexes[15]; //hanya dipakai di file ini
+int indexes[15]; // *hanya dipakai di file ini
+unsigned int nomorTransaksi;
 
 //merandom plat nomor
 string GenerateRandomLicensePlate()
@@ -33,7 +34,7 @@ string GenerateRandomLicensePlate()
     //mengambil satu elemen array dari awalanPlat[] secara acak
     string platDaerah = awalanPlat[rand() % (sizeof(awalanPlat) / sizeof(string))];
     int nomorPlat = rand() % 8999 + 1000;
-    char akhiran1 = rand() % 26 + 65; //ascii value dari A - Z adalah 65 - 90
+    char akhiran1 = rand() % 26 + 65; // ?ascii value dari A - Z adalah 65 - 90
     char akhiran2 = rand() % 26 + 65;
     //mengembalikan string gabungan dari ke 4 variabel diatas
     return platDaerah + IntToString(nomorPlat) + akhiran1 + akhiran2;
@@ -47,7 +48,7 @@ void GenerateRandomData()
     //mengambil 15 data mobil, spesifikasi, dan harganya
     for (int i = 0; i < 15; i++)
     {
-        /*mendapatkan indeks ke-r array sebelum terandom. berbasis array models[]*/
+        //mendapatkan indeks ke-r array sebelum terandom. berbasis array models[]
         int r;
         // loop untuk menghindari memasukkan model mobil yang sama
         while (true)
@@ -68,20 +69,15 @@ void GenerateRandomData()
                 indexes[i] = r;
                 break;
             }
-            /* if (find(begin(indexes), end(indexes), r) == end(indexes))
-            {
-                indexes[i] = r;
-                break;
-            } */
         }
 
-        /*merandom model mobil*/
+        //merandom model mobil
         modelRandom[i] = models[r];
 
-        /*merandom ketersediaan mobil*/
+        //merandom ketersediaan mobil
         tersedia[i] = rand() % 10 != 1;
 
-        /*merandom spesifikasi mobil*/
+        //merandom spesifikasi mobil
         cc[i] = engines[r];
         tipeMesin[i] = engineTypes[r];
         bahanbakar[i] = fuelTypes[r];
@@ -102,4 +98,13 @@ void GenerateRandomData()
         int noRek = rand() % 999 + 11;
         nomorRekening += IntToString(noRek);
     }
+
+    //merandom nomor transaksi
+    string randomString = "";
+    for (int i = 0; i < rand() % 5 + 3; i++)
+    {
+        int affix = rand() % 2 == 1 ? 0 : 32;
+        randomString += rand() % 26 + 35 + affix;
+    }
+    nomorTransaksi = EncryptJoaat(randomString);
 }
