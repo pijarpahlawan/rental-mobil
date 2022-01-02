@@ -25,7 +25,7 @@ void Welcome()
     cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |\n";
     cout << "\t|	     *********SEMBADA********   	   |\n";
     cout << "\t====================================================\n\n\n";
-    cout << "\t\t Pencet ENTER untuk melanjutkan....";
+    cout << "\t\t  Tekan ENTER untuk melanjutkan...";
     cin.ignore();
 }
 
@@ -121,7 +121,7 @@ void GetCarLoanPeriod()
                 break;
             else
             {
-                if (MakeLowercase(y_n)[0] != 'y')
+                if (MakeLowercase(y_n)[0] != 'n')
                 {
                     ErrorNotif(1);
                 }

@@ -96,7 +96,7 @@ menu:
         Specification(pilihanMobil);
         cout << "Apakah anda yakin? (y/n): ";
         cin >> y_n;
-        if ((y_n[0] == 'y') || (y_n[0] == 'Y'))
+        if (MakeLowercase(y_n)[0] == 'y')
         {
             // MEMASUKKAN JUMLAH HARI DAN KALKULASI TARIF PINJAM
             GetCarLoanPeriod();
@@ -110,7 +110,7 @@ menu:
         }
         else
         {
-            if ((y_n[0] == 'n') || (y_n[0] == 'N'))
+            if (MakeLowercase(y_n)[0] == 'n')
             {
                 cout << "\nTekan ENTER untuk kembali ke menu memilih mobil...";
                 cin.ignore();
