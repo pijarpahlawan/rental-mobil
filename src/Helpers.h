@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -189,4 +190,17 @@ string FormatPrice(int price)
     }
     // mengembalikan harga yang sudah diformat dengan currency IDR
     return "Rp" + priceStr;
+}
+
+void ReadFile(string filename)
+{
+    ifstream stream;
+    string baris = "";
+
+    stream.open(filename);
+    while (getline(stream, baris))
+    {
+        cout << baris << "\n";
+    }
+    stream.close();
 }

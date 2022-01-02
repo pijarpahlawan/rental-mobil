@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
-#include <iomanip>
+#include <fstream>
 #include "RandomData.h"
 #include "Helpers.h"
 
@@ -239,15 +239,14 @@ void GetPaid(int pilihan)
 {
     void Struck();
     string pay = ""; // variabel untuk menampung uang pembayaran sementara sebelum dicasting ke tipe integer
-
     if (pilihan == 1)
     {
         while (1)
         {
             system("cls");
             JudulSesi(4);
-            cout << "Total tarif: " << FormatPrice(tarif) << endl;
-            cout << "Masukkan uang anda: ";
+            cout << "Total tarif\t\t: " << FormatPrice(tarif) << endl;
+            cout << "Masukkan uang anda\t: ";
             cin >> pay;
             uang = StrToInt(pay);
             if (uang < 0)
@@ -261,21 +260,25 @@ void GetPaid(int pilihan)
             {
                 if (uang > tarif)
                 {
-                    cout << "Uang anda kembali: " << FormatPrice(uang - tarif) << endl;
-                    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
+                    cout << "Uang anda kembali\t: " << FormatPrice(uang - tarif) << endl;
                     Struck();
+                    ReadFile("kwitansi.txt");
+                    cout << "NOTE: pembayaran telah tersimpan di kwitansi.txt\n\n";
+                    system("pause");
                     break;
                 }
                 else if (uang < tarif)
                 {
-                    cout << "Uang anda kurang: " << FormatPrice(tarif - uang) << endl;
+                    cout << "Uang anda kurang\t: " << FormatPrice(tarif - uang) << endl;
                     cout << "\nTekan ENTER untuk mengulangi...";
                     getch();
                 }
                 else
                 {
-                    cout << "\nTekan ENTER untuk menampilkan kuitansi...";
                     Struck();
+                    ReadFile("kwitansi.txt");
+                    cout << "NOTE: pembayaran telah tersimpan di kwitansi.txt\n\n";
+                    system("pause");
                     break;
                 }
             }
@@ -292,31 +295,34 @@ void GetPaid(int pilihan)
     }
 }
 
-//tampilan struck
+/* menulis kwitansi peminjaman ke kwitansi.ext */
 void Struck()
 {
-    getch();
+    ofstream kwitansi;
+    kwitansi.open("kwitansi.txt");
+    kwitansi << "=================================================\n";
+    kwitansi << "|\t\tKWITANSI PEMBAYARAN\t\t|\n";
+    kwitansi << "|\t\t **** SEMBADA **** \t\t|\n";
+    kwitansi << "-------------------------------------------------\n";
+    kwitansi << " Nama Penyewa\t:" << nama << "\n";
+    kwitansi << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << "\n";
+    kwitansi << " Plat \t\t:" << platNomor[pilihanMobil] << "\n";
+    kwitansi << " Jumlah hari\t:" << jmlh_hari << "\n";
+    kwitansi << "-------------------------------------------------\n";
+    kwitansi << " Jumlah sewa\t:" << FormatPrice(tarif) << "\n";
+    kwitansi << " Jumlah uang\t:" << FormatPrice(uang) << "\n";
+    kwitansi << " Kembalian\t:" << FormatPrice(uang - tarif) << "\n";
+    kwitansi << "-------------------------------------------------\n";
+    kwitansi << "\t\t      LUNAS       \t\t\n";
+    kwitansi << "-------------------------------------------------\n";
+    kwitansi << " \t    SIMPAN BUKTI PEMBAYARAN !    \t\n";
+    kwitansi << " ~Terimakasih Atas Kepercayaan Anda Kepada Kami~ \n";
+    kwitansi << "=================================================\n\n\n";
+    kwitansi.close();
+    cout << "\nTekan ENTER untuk menampilkan kwitansi...";
+    cin.ignore();
+    cin.get();
     system("cls");
-    cout << "=================================================" << endl;
-    cout << "|\t\tKWITANSI PEMBAYARAN\t\t|" << endl;
-    cout << "|\t\t **** SEMBADA **** \t\t|" << endl;
-    cout << "-------------------------------------------------" << endl;
-    cout << " Nama Penyewa\t:" << nama << endl;
-    cout << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << endl;
-    cout << " Plat \t\t:" << platNomor[pilihanMobil] << endl;
-    cout << " Jumlah hari\t:" << jmlh_hari << endl;
-    cout << "-------------------------------------------------" << endl;
-    cout << " Jumlah sewa\t:" << FormatPrice(tarif) << endl;
-    cout << " Jumlah uang\t:" << FormatPrice(uang) << endl;
-    cout << " Kembalian\t:" << FormatPrice(uang - tarif) << endl;
-    cout << "-------------------------------------------------" << endl;
-    cout << "\t\t      LUNAS       \t\t" << endl;
-    cout << "-------------------------------------------------" << endl;
-    cout << " \t    SIMPAN BUKTI PEMBAYARAN !    \t" << endl;
-    cout << " ~Terimakasih Atas Kepercayaan Anda Kepada Kami~ " << endl;
-    cout << "=================================================\n\n"
-         << endl;
-    system("pause");
 }
 
 /* tampilan program selesai */

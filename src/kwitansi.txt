@@ -1,0 +1,20 @@
+=================================================
+|		KWITANSI PEMBAYARAN		|
+|		 **** SEMBADA **** 		|
+-------------------------------------------------
+ Nama Penyewa	:ewrwe
+ Jenis Mobil	:Maserati Levante
+ Plat 		:L9732XG
+ Jumlah hari	:1
+-------------------------------------------------
+ Jumlah sewa	:Rp1.135.000
+ Jumlah uang	:Rp1.134.500.000
+ Kembalian	:Rp1.133.365.000
+-------------------------------------------------
+		      LUNAS       		
+-------------------------------------------------
+ 	    SIMPAN BUKTI PEMBAYARAN !    	
+ ~Terimakasih Atas Kepercayaan Anda Kepada Kami~ 
+=================================================
+
+
