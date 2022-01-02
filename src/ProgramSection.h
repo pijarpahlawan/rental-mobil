@@ -7,7 +7,8 @@
 
 using namespace std;
 
-int start = 0, stop = 0;                              // variabel untuk awalan dan akhiran pengindeksan array pada setiap garasi
+int start = 0;                                        // variabel untuk awalan pengindeksan array pada setiap garasi
+int stop = 0;                                         // variabel untuk akhiran pengindeksan array pada setiap garasi
 int pilihanMobil = 0;                                 // variabel untuk menampung pilihan mobil
 int jmlh_hari = 0;                                    // variabel untuk menampung lama sewa mobil
 int uang = 0;                                         // variabel yang menampung uang pembayaran
@@ -20,11 +21,10 @@ string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung
 void Welcome()
 {
     system("cls");
-    cout << "\t====================================================" << endl;
-    cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |" << endl;
-    cout << "\t|	     *********SEMBADA********   	   |" << endl;
-    cout << "\t====================================================\n\n"
-         << endl;
+    cout << "\t====================================================\n";
+    cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |\n";
+    cout << "\t|	     *********SEMBADA********   	   |\n";
+    cout << "\t====================================================\n\n\n";
     cout << "\t\t Pencet ENTER untuk melanjutkan....";
     cin.ignore();
 }
@@ -32,9 +32,10 @@ void Welcome()
 /* mengeluarkan output model mobil beserta plat nomor mobilnya */
 void DisplayGarageContent(int nomorGarasi)
 {
-    int no = 1;                    // nomer urut mobil pada daftar mobil yang ditampilkan
-    string nomer = "";             // garasi keberapa
-    string model = "", plate = ""; // model dan plat nomor yang telah diformat agar mudah terbaca
+    int no = 1;        // nomer urut mobil pada daftar mobil yang ditampilkan
+    string nomer = ""; // garasi keberapa
+    string model = ""; // model mobil yang telah diformat agat mudah terbaca
+    string plate = ""; // model dan plat nomor yang telah diformat agar mudah terbaca
 
     switch (nomorGarasi)
     {
@@ -57,36 +58,25 @@ void DisplayGarageContent(int nomorGarasi)
         break;
     }
     system("cls");
-    cout << "\t\t\t============================" << endl;
-    cout << "\t\t\t||\tGarasi " << nomer << "\t  ||" << endl;
-    cout << "\t\t\t============================" << endl;
-    cout << endl;
-    cout << "===========================================================================" << endl;
-    cout << "||| No.|| \t    Model Mobil \t\t || \tPlat Nomor \t|||" << endl;
-    cout << "===========================================================================" << endl;
+    cout << "\t\t\t============================\n";
+    cout << "\t\t\t||\tGarasi " << nomer << "\t  ||\n";
+    cout << "\t\t\t============================\n\n\n";
+    cout << "===========================================================================\n";
+    cout << "||| No.|| \t    Model Mobil \t\t || \tPlat Nomor \t|||\n";
+    cout << "===========================================================================\n";
     for (int i = start; i < stop; i++)
     {
         model = FormatModel(modelRandom[i]);
         plate = FormatLicensePlate(platNomor[i]);
-        cout << "||| " << no << ". ||\t" << model << "\t || "
-             << "\t" << plate << "\t"
-             << "|||" << endl;
+        cout << "||| " << no << ". ||\t" << model << "\t || \t" << plate << "\t|||\n";
         no++;
     }
-    cout << "===========================================================================" << endl;
-    cout << endl
-         << "\t-----------"
-         << "\t\t\t\t\t"
-         << "-----------" << endl;
-    cout << "\t| << prev |"
-         << "\t\t\t\t\t"
-         << "| next >> |" << endl;
-    cout << "\t-----------"
-         << "\t\t\t\t\t"
-         << "-----------" << endl;
-    cout << endl;
-    cout << "***************************************************************************" << endl;
-    cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar" << endl;
+    cout << "===========================================================================\n";
+    cout << "\n\t-----------\t\t\t\t\t-----------\n";
+    cout << "\t| << prev |\t\t\t\t\t| next >> |\n";
+    cout << "\t-----------\t\t\t\t\t-----------\n\n";
+    cout << "***************************************************************************\n";
+    cout << "Tekan ENTER untuk memilih mobil dan tekan ESC untuk keluar\n";
 }
 
 //menampilkan spesifikasi mobil
@@ -158,7 +148,7 @@ void CustomerDatas()
     {
         system("cls");
         JudulSesi(2);
-        cout << "Masukkan data diri anda" << endl;
+        cout << "Masukkan data diri anda\n";
         cout << "Nama\t\t: ";
         if (cond)
             cin.ignore();
@@ -188,7 +178,7 @@ void CustomerDatas()
         }
         if (cond)
             break;
-        cout << "\nNote :" << endl;
+        cout << "\nNote :\n";
         cout << "- nama tidak boleh memiliki angka\n- alamat tidak boleh angka seluruhnya\n- NIK dan nomor telepon harus berisi angka\n";
         cout << "\nTekan ENTER untuk kembali memasukkan data diri...";
         cin.get();
@@ -288,8 +278,8 @@ void GetPaid(int pilihan)
     {
         cout << "...........................................................................\n";
         cout << "Total tarif: " << FormatPrice(tarif) << endl;
-        cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n"
-             << nomorRekening << "\n\n";
+        cout << "\nTransfer pembayaran anda ke nomor rekening berikut:\n";
+        cout << nomorRekening << endl;
         cout << "Anda akan mendapatkan kwitansi melalui SMS setelah pembayaran terkonfirmasi\n\n";
         system("pause");
     }
@@ -301,17 +291,17 @@ void Struck()
     ofstream kwitansi;
     kwitansi.open("kwitansi.txt");
     kwitansi << "=================================================\n";
-    kwitansi << "|\t\tKWITANSI PEMBAYARAN\t\t|\n";
-    kwitansi << "|\t\t **** SEMBADA **** \t\t|\n";
+    kwitansi << "|\t       KWITANSI PEMBAYARAN       \t|\n";
+    kwitansi << "|\t        **** SEMBADA ****        \t|\n";
     kwitansi << "-------------------------------------------------\n";
-    kwitansi << " Nama Penyewa\t:" << nama << "\n";
-    kwitansi << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << "\n";
-    kwitansi << " Plat \t\t:" << platNomor[pilihanMobil] << "\n";
-    kwitansi << " Jumlah hari\t:" << jmlh_hari << "\n";
+    kwitansi << " Nama Penyewa\t:" << nama << endl;
+    kwitansi << " Jenis Mobil\t:" << modelRandom[pilihanMobil] << endl;
+    kwitansi << " Plat \t\t:" << platNomor[pilihanMobil] << endl;
+    kwitansi << " Jumlah hari\t:" << jmlh_hari << endl;
     kwitansi << "-------------------------------------------------\n";
-    kwitansi << " Jumlah sewa\t:" << FormatPrice(tarif) << "\n";
-    kwitansi << " Jumlah uang\t:" << FormatPrice(uang) << "\n";
-    kwitansi << " Kembalian\t:" << FormatPrice(uang - tarif) << "\n";
+    kwitansi << " Jumlah sewa\t:" << FormatPrice(tarif) << endl;
+    kwitansi << " Jumlah uang\t:" << FormatPrice(uang) << endl;
+    kwitansi << " Kembalian\t:" << FormatPrice(uang - tarif) << endl;
     kwitansi << "-------------------------------------------------\n";
     kwitansi << "\t\t      LUNAS       \t\t\n";
     kwitansi << "-------------------------------------------------\n";
@@ -330,11 +320,10 @@ void Selesai()
 {
     exitProgram = true;
     system("cls");
-    cout << "********** TERIMA KASIH ATAS KEPERCAYAAN ANDA KEPADA KAMI **********" << endl;
-    cout << "		=================================" << endl;
-    cout << "		|	KRITIK DAN SARAN	|" << endl;
-    cout << "		| 	  0812345678910		|" << endl;
-    cout << " 		=================================\n\n"
-         << endl;
+    cout << "********** TERIMA KASIH ATAS KEPERCAYAAN ANDA KEPADA KAMI **********\n";
+    cout << "		=================================\n";
+    cout << "		|	KRITIK DAN SARAN	|\n";
+    cout << "		| 	  0812345678910		|\n";
+    cout << " 		=================================\n\n\n";
     system("pause");
 }
