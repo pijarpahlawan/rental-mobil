@@ -31,7 +31,8 @@
 *.out
 *.app
 
-# Ignored Folders
+# Aadditional Object Ignored
+*.txt
 .vscode/
 unnecessary/
 finished-project/
