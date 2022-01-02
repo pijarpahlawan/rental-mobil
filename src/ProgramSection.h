@@ -199,7 +199,7 @@ int GetPaymentMethod(int bayar)
         cout << "Pemesanan atas nama:" << endl;
         cout << "Nama\t\t: " << Capitalize(nama) << endl;
         cout << "NIK\t\t: " << nik << endl;
-        cout << "Alamat\t\t: " << alamat << endl;
+        cout << "Alamat\t\t: " << Capitalize(alamat) << endl;
         cout << "No. Telepon\t: " << noTelp << endl;
         cout << "---------------------------------------------------------------------------" << endl;
         cout << "Total tarif: " << FormatPrice(bayar) << endl;
