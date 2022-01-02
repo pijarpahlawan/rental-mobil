@@ -192,7 +192,7 @@ string FormatPrice(int price)
     return "Rp" + priceStr;
 }
 
-void ReadFile(string filename)
+void ReadFile(const char *filename)
 {
     ifstream stream;
     string baris = "";
