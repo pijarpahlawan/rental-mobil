@@ -24,7 +24,7 @@ bool IsStringAllDigit(const string &str)
     - akan true jika saat itu juga ditemukan angka (sekali dapat) */
 bool IsStringContainsAnyDigit(const string &str)
 {
-    for (int i = 0; i < str.length(); i++)
+    for (int i = 0; i < str.size(); i++)
     {
         if (isdigit(str[i]))
             return true;
@@ -40,7 +40,7 @@ bool IsNameValid(const string &name)
         - a-z
         - ' - [space]
     */
-   for (int i = 0; i < name.length(); i++)
+   for (int i = 0; i < name.size(); i++)
    {
        int asciiCode = int(name[i]);
        if (!(asciiCode == 32 || asciiCode == 45 || asciiCode == 39
