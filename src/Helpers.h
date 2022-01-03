@@ -82,6 +82,8 @@ string Capitalize(const string &str)
     {
         if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) && result[i] > 64 + 32 && result[i] < 91 + 32)
             result[i] = result[i] - 32;
+        else if (result[i] > 64 && result[i] < 91)
+             result[i] = result[i] + 32;
     }
     return result;
 }
