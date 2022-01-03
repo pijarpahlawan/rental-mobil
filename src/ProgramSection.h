@@ -161,7 +161,7 @@ void CustomerDatas()
         getline(cin, noTelp);
 
         cond = true;
-        if (IsStringContainsAnyDigit(nama))
+        if (!IsNameValid(nama))
         {
             ErrorNotif(5);
             cond = false;
