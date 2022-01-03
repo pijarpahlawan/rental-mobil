@@ -80,7 +80,7 @@ string Capitalize(const string &str)
     int len = str.size();
     for (int i = 0; i < len; i++)
     {
-        if ((result[i - 1] == 32 || i == 0 || (i == len && result[i - 1] == 32)) && result[i] > 64 + 32 && result[i] < 91 + 32)
+        if ((result[i - 1] == 32 || result[i - 1] == 45 || i == 0 || (i == len && result[i - 1] == 32)) && result[i] > 64 + 32 && result[i] < 91 + 32)
             result[i] = result[i] - 32;
         else if (result[i] > 64 && result[i] < 91)
              result[i] = result[i] + 32;
