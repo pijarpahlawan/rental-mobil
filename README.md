@@ -6,7 +6,7 @@ Final Project Kelompok 5 (21-IF-08) Mata Kuliah Algoritma dan Pemrograman Progra
 |------|-----|
 | Yahya Handarestanto | 21.11.4365 |
 | Pijar Pahlawan Qolbu | 21.11.4368 |
-| Aldi Putra Miftaqul Ullumn | 21.11.4369 |
+| Aldi Putra Miftaqul Ullum | 21.11.4369 |
 | Valen Achmad Apiliawan | 21.11.4370 |
 | Michael Mardiansyah | 21.11.4371 |
 | Tifani Dea Shafira | 21.11.4372 |
