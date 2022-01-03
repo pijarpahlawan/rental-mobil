@@ -32,6 +32,25 @@ bool IsStringContainsAnyDigit(const string &str)
     return false;
 }
 
+bool IsNameValid(const string &name)
+{
+    /*
+        Allowed characters:
+        - A-Z
+        - a-z
+        - ' - [space]
+    */
+   for (int i = 0; i < name.length(); i++)
+   {
+       int asciiCode = int(name[i]);
+       if (!(asciiCode == 32 || asciiCode == 45 || asciiCode == 39
+            || (asciiCode > 64 && asciiCode < 91)
+            || (asciiCode > 96 && asciiCode < 123)))
+            return false;
+   }
+   return true;
+}
+
 /* fungsi untuk mengubah string ke lowercase */
 string MakeLowercase(const string &str)
 {
