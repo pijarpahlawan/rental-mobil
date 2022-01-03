@@ -48,7 +48,17 @@ bool IsNameValid(const string &name)
             || (asciiCode > 96 && asciiCode < 123)))
             return false;
    }
-   return true;
+  //cek ulang apakah semua karakter terdiri atas - ' atau [spasi]
+   string::const_iterator first = name.begin();
+   string::const_iterator last = name.end();
+   string::const_iterator it = name.begin();
+   while (it != last)
+   {
+       int asciiCode = int(*it);
+       if (asciiCode == 32 || asciiCode == 45 || asciiCode == 39) first++;
+       it++;
+   }
+   return !name.empty() && first != last;
 }
 
 /* fungsi untuk mengubah string ke lowercase */
