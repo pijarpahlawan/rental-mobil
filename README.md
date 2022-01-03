@@ -1,5 +1,5 @@
 # rental-mobil
-Final Project Kelompok 5 Mata Kuliah Algoritma dan Pemrograman Program Studi Informatika Universitas Amikom Yogyakarta 
+Final Project Kelompok 5 (21-IF-08) Mata Kuliah Algoritma dan Pemrograman Program Studi Informatika Universitas Amikom Yogyakarta 
 ### cara-compile
 g++ main.cpp -o rental-mobil.exe
 

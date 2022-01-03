@@ -24,7 +24,7 @@ bool IsStringAllDigit(const string &str)
     - akan true jika saat itu juga ditemukan angka (sekali dapat) */
 bool IsStringContainsAnyDigit(const string &str)
 {
-    for (int i = 0; i < str.length(); i++)
+    for (int i = 0; i < str.size(); i++)
     {
         if (isdigit(str[i]))
             return true;
@@ -40,7 +40,7 @@ bool IsNameValid(const string &name)
         - a-z
         - ' - [space]
     */
-   for (int i = 0; i < name.length(); i++)
+   for (int i = 0; i < name.size(); i++)
    {
        int asciiCode = int(name[i]);
        if (!(asciiCode == 32 || asciiCode == 45 || asciiCode == 39
@@ -48,7 +48,17 @@ bool IsNameValid(const string &name)
             || (asciiCode > 96 && asciiCode < 123)))
             return false;
    }
-   return true;
+  //cek ulang apakah semua karakter terdiri atas - ' atau [spasi]
+   string::const_iterator first = name.begin();
+   string::const_iterator last = name.end();
+   string::const_iterator it = name.begin();
+   while (it != last)
+   {
+       int asciiCode = int(*it);
+       if (asciiCode == 32 || asciiCode == 45 || asciiCode == 39) first++;
+       it++;
+   }
+   return !name.empty() && first != last;
 }
 
 /* fungsi untuk mengubah string ke lowercase */
