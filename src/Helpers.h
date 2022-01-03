@@ -44,18 +44,6 @@ string MakeLowercase(const string &str)
     return result;
 }
 
-/* fungsi untuk mengubah string ke uppercase */
-string MakeUppercase(const string &str)
-{
-    string result = str;
-    for (int i = 0; i < str.size(); i++)
-    {
-        if (result[i] > 64 + 32 && result[i] < 91 + 32)
-            result[i] = result[i] - 32;
-    }
-    return result;
-}
-
 /* fungsi untuk mengubah string ke titlecase */
 string Capitalize(const string &str)
 {
