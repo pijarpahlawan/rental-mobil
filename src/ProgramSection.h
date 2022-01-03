@@ -210,7 +210,7 @@ int GetPaymentMethod(int bayar)
         cin >> pilihanBayar;
         billChoice = StrToInt(pilihanBayar);
 
-        if (billChoice != 1 && billChoice != 2 && IsStringAllDigit(pilihanBayar))
+        if (!IsStringAllDigit(pilihanBayar) || (billChoice != 1 && billChoice != 2))
         {
             ErrorNotif(2);
             cout << "\nTekan ENTER untuk kembali memasukkan pilihan metode bayar...";
@@ -218,10 +218,8 @@ int GetPaymentMethod(int bayar)
             cin.get();
         }
         else
-            break;
+            return billChoice;
     }
-
-    return billChoice;
 }
 
 /* meminta pembayaran */
