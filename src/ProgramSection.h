@@ -111,8 +111,8 @@ void GetCarLoanPeriod()
         cout << "Masukkan jumlah hari meminjam: ";
         cin >> jumHari;
         jmlh_hari = StrToInt(jumHari);
-
-        if (jmlh_hari > 0)
+        
+        if (jmlh_hari > 0 && IsStringAllDigit(jumHari))
         {
             cout << endl;
             cout << "Apakah anda yakin? (y/n): ";
@@ -210,7 +210,7 @@ int GetPaymentMethod(int bayar)
         cin >> pilihanBayar;
         billChoice = StrToInt(pilihanBayar);
 
-        if (billChoice != 1 && billChoice != 2)
+        if (billChoice != 1 && billChoice != 2 && IsStringAllDigit(pilihanBayar))
         {
             ErrorNotif(2);
             cout << "\nTekan ENTER untuk kembali memasukkan pilihan metode bayar...";
@@ -239,14 +239,8 @@ void GetPaid(int pilihan)
             cout << "Masukkan uang anda\t: ";
             cin >> pay;
             uang = StrToInt(pay);
-            if (uang < 0)
-            {
-                ErrorNotif(3);
-                cout << "\nTekan ENTER untuk mengulangi...";
-                cin.ignore();
-                cin.get();
-            }
-            else
+            
+            if (uang > 0 && IsStringAllDigit(pay))
             {
                 if (uang > tarif)
                 {
@@ -272,6 +266,15 @@ void GetPaid(int pilihan)
                     break;
                 }
             }
+            else
+            {
+                ErrorNotif(3);
+                cout << "\nTekan ENTER untuk mengulangi...";
+                cin.ignore();
+                cin.get();
+            }
+            
+            
         }
     }
     else

@@ -73,7 +73,7 @@ menu:
     else if (currentGarage == 3)
         garageCap = 4;
     /* menentukan inputan sesuai dengan yang diminta atau tidak */
-    if ((pilihanMobil > 0) && (pilihanMobil <= garageCap))
+    if ((pilihanMobil > 0) && (pilihanMobil <= garageCap) && IsStringAllDigit(pilMob))
     {
         pilihanMobil = pilihanMobil + start - 1;
 
