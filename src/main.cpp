@@ -25,9 +25,9 @@ int main()
 
     /* control flow display models */
 menu:
-    currentGarage = 1;
-    doneInteraction = false;
-    reprint = true;
+    currentGarage = 1;          // variabel untuk menampung garasi ke-
+    doneInteraction = false;    // variabel sebagai kondisi apakah program masih berjalan atau telah selesai
+    reprint = true;             // variabel sebagai kondisi apakah program masih mencetak daftar mobil atau tidak
     while (true)
     {
         if (reprint)

@@ -4,16 +4,19 @@ using namespace std;
 
 /*
     Keterangan nama array:
-    - models[]		: adalah array yang menampung data jenis mobil
-    - fuels[]		: adalah array yang menampung data kapasitas tangki BBM mobil (L)
-    - seats[]		: adalah array yang menampung data kapasitas tempat duduk mobil
-    - engines[]     : adalah array yang menampung data kapasitas mesin mobil (cc)
-    - engineTypes[] : adalah array yang menampung data transmisi pada mobil
-    - haveAC[]      : adalah array yang menampung data apakah mobil terdapat AC atau tidak
-    - fuelTypes[]   : adalah array yang menampung data bahan bakar yang digunakan oleh mobil
-    - colors[]      : adalah array yang menampung data warna mobil primer
-	- allColors[]	: adalah array yang menampung data warna mobil sekunder
-    - prices[]      : adalah array yang menampung data harga sewa mobil per hari (24 jam)
+    - models[]			: adalah array yang menampung data jenis mobil
+    - fuels[]			: adalah array yang menampung data kapasitas tangki BBM mobil (L)
+    - seats[]			: adalah array yang menampung data kapasitas tempat duduk mobil
+    - engines[]     	: adalah array yang menampung data kapasitas mesin mobil (cc)
+    - engineTypes[] 	: adalah array yang menampung data transmisi pada mobil
+    - haveAC[]      	: adalah array yang menampung data apakah mobil terdapat AC atau tidak
+    - fuelTypes[]   	: adalah array yang menampung data bahan bakar yang digunakan oleh mobil
+    - colors[]      	: adalah array yang menampung data warna mobil primer
+	- allColors[]		: adalah array yang menampung data warna mobil sekunder
+    - prices[]      	: adalah array yang menampung data harga sewa mobil per hari (24 jam)
+	- bodyTypes[]		: adalah array yang menampung data jenis bodi mobil
+	- manufacturers[]	: adalah array yang menampung data pabrik produsen mobil 
+	- awalanPlat[]		: adalah array yang menampung awalan plat nomor sesuai kota
 */
 
 string models[] =
@@ -30,7 +33,6 @@ string models[] =
 	"Chevrolet Impala", "Aston Martin Vanquish", "Skyline GTR KGC10", "Volkswagen Beetle", "Maserati Levante",
 	"Lamborghini Urus", "Porsche 992 Cabriolet", "Hummer H1", "Audi E-Tron 2020", "Volkswagen Type 2", "Chevrolet Suburban",
 };
-
 string fuels[] =
 {
 	"45 Liter", "36 Liter", "55 Liter", "45 Liter", "93 Liter", "75 Liter", "53 Liter", "45 Liter", "36 Liter",
