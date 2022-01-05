@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
     bool doneInteraction = false; // variabel sebagai kondisi looping menampilkan daftar mobil
-    bool reprint = true;          // variabel sebagai kondisi untuk mencetak daftar mobil
+    bool reprint = false;          // variabel sebagai kondisi untuk mencetak daftar mobil
     int currentGarage = 0;        // variabel untuk menampung nomor garasi
     int garageCap = 0;            // variabel untuk menampung jumlah kapasitas mobil per garasi
     int metodeBayar = 0;          // variabel yang menampung pilihan metode pembayaran
