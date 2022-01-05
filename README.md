@@ -16,5 +16,6 @@ Final Project Kelompok 5 (21-IF-08) Mata Kuliah Algoritma dan Pemrograman Progra
 
 
 ### cara-compile
-`g++ main.cpp -o rental-mobil.exe -static`
+```bash
+g++ main.cpp -o rental-mobil.exe -static
 
