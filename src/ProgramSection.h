@@ -82,7 +82,7 @@ void DisplayGarageContent(int nomorGarasi)
 //menampilkan spesifikasi mobil
 void Specification(int index)
 {
-    JudulSesi(0);
+    JudulSesi(1);
     cout << "Mobil\t\t\t: " << modelRandom[index] << endl;
     cout << "Pabrikan\t\t: " << pabrikan[index] << endl;
     cout << "Jenis Mobil\t\t: " << jenisMobil[index] << endl;
@@ -107,7 +107,7 @@ void GetCarLoanPeriod()
     while (true)
     {
         system("cls");
-        JudulSesi(1);
+        JudulSesi(2);
         cout << "Masukkan jumlah hari meminjam: ";
         cin >> jumHari;
         jmlh_hari = StrToInt(jumHari);
@@ -147,7 +147,7 @@ void CustomerDatas()
     while (true)
     {
         system("cls");
-        JudulSesi(2);
+        JudulSesi(3);
         cout << "Masukkan data diri anda\n";
         cout << "Nama\t\t: ";
         if (cond)
@@ -195,7 +195,7 @@ int GetPaymentMethod(int bayar)
     while (true)
     {
         system("cls");
-        JudulSesi(3);
+        JudulSesi(4);
         cout << "Pemesanan atas nama:" << endl;
         cout << "Nama\t\t: " << Capitalize(nama) << endl;
         cout << "NIK\t\t: " << nik << endl;
@@ -232,7 +232,7 @@ void GetPaid(int pilihan)
         while (1)
         {
             system("cls");
-            JudulSesi(4);
+            JudulSesi(5);
             cout << "Total tarif\t\t: " << FormatPrice(tarif) << endl;
             cout << "Masukkan uang anda\t: ";
             cin >> pay;

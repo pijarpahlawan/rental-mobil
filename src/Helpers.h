@@ -93,15 +93,15 @@ void JudulSesi(int sesiKe)
 {
     int mid;
     string judul = "";
-    if (sesiKe == 0)
+    if (sesiKe == 1)
         judul = "Spesifikasi Mobil";
-    else if (sesiKe == 1)
-        judul = "Kurun Waktu Peminjaman";
     else if (sesiKe == 2)
-        judul = "Input Data Pelanggan";
+        judul = "Kurun Waktu Peminjaman";
     else if (sesiKe == 3)
-        judul = "Resume Pemesanan";
+        judul = "Input Data Pelanggan";
     else if (sesiKe == 4)
+        judul = "Resume Pemesanan";
+    else if (sesiKe == 5)
         judul = "Pembayaran Tunai";
 
     mid = 75 - judul.size();
