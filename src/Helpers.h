@@ -38,27 +38,26 @@ bool IsNameValid(const string &name)
         Allowed characters:
         - A-Z
         - a-z
-        - ' - [space]
+        - [space] = 32; tanda kutip (') = 39; tanda hubung (-) = 45; titik (.) = 46
     */
-   for (int i = 0; i < name.size(); i++)
-   {
-       int asciiCode = int(name[i]);
-       if (!(asciiCode == 32 || asciiCode == 45 || asciiCode == 39
-            || (asciiCode > 64 && asciiCode < 91)
-            || (asciiCode > 96 && asciiCode < 123)))
+    for (int i = 0; i < name.size(); i++)
+    {
+        int asciiCode = int(name[i]);
+        if (!(asciiCode == 32 || asciiCode == 39 || asciiCode == 45 || asciiCode == 46 || (asciiCode > 64 && asciiCode < 91) || (asciiCode > 96 && asciiCode < 123)))
             return false;
-   }
-  //cek ulang apakah semua karakter terdiri atas - ' atau [spasi]
-   string::const_iterator first = name.begin();
-   string::const_iterator last = name.end();
-   string::const_iterator it = name.begin();
-   while (it != last)
-   {
-       int asciiCode = int(*it);
-       if (asciiCode == 32 || asciiCode == 45 || asciiCode == 39) first++;
-       it++;
-   }
-   return !name.empty() && first != last;
+    }
+    //cek ulang apakah semua karakter terdiri atas [spasi] ' - atau .
+    string::const_iterator first = name.begin();
+    string::const_iterator last = name.end();
+    string::const_iterator it = name.begin();
+    while (it != last)
+    {
+        int asciiCode = int(*it);
+        if (asciiCode == 32 || asciiCode == 39 || asciiCode == 45 || asciiCode == 46)
+            first++;
+        it++;
+    }
+    return !name.empty() && first != last;
 }
 
 /* fungsi untuk mengubah string ke lowercase */
@@ -80,10 +79,11 @@ string Capitalize(const string &str)
     int len = str.size();
     for (int i = 0; i < len; i++)
     {
-        if ((result[i - 1] == 32 || result[i - 1] == 45 || i == 0 || (i == len && result[i - 1] == 32)) && result[i] > 64 + 32 && result[i] < 91 + 32)
+        // 32 = karakter spasi; 45 = karakter tanda hubung; 46 = karakter titik; 97 s/d 122 = lower case
+        if ((i == 0 || result[i - 1] == 32 || result[i - 1] == 45 || result[i - 1] == 46) && result[i] > 96 && result[i] < 123)
+        {
             result[i] = result[i] - 32;
-        else if (result[i] > 64 && result[i] < 91)
-             result[i] = result[i] + 32;
+        }
     }
     return result;
 }
