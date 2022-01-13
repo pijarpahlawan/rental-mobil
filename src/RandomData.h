@@ -95,7 +95,7 @@ void GenerateRandomData()
     //merandom nomor rekening
     for (int i = 0; i < 5; i++)
     {
-        int noRek = rand() % 999 + 11;
+        int noRek = rand() % 988 + 11;
         nomorRekening += IntToString(noRek);
     }
 
