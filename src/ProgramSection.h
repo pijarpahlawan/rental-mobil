@@ -20,7 +20,7 @@ string nama = "", nik = "", alamat = "", noTelp = ""; // variabel yang menampung
 /* tampilan selamat datang */
 void Welcome()
 {
-    system("cls");
+    clear();
     cout << "\t====================================================\n";
     cout << "\t|  SELAMAT DATANG DI PENYEWAAN MOBIL LEPAS KUNCI   |\n";
     cout << "\t|	     *********SEMBADA********   	   |\n";
@@ -57,7 +57,7 @@ void DisplayGarageContent(int nomorGarasi)
     default:
         break;
     }
-    system("cls");
+    clear();
     cout << "\t\t\t============================\n";
     cout << "\t\t\t||\tGarasi " << nomer << "\t  ||\n";
     cout << "\t\t\t============================\n\n\n";
@@ -106,7 +106,7 @@ void GetCarLoanPeriod()
 
     while (true)
     {
-        system("cls");
+        clear();
         JudulSesi(2);
         cout << "Masukkan jumlah hari meminjam: ";
         cin >> jumHari;
@@ -146,7 +146,7 @@ void CustomerDatas()
     bool cond = true; // variabel untuk menentukan kondisi
     while (true)
     {
-        system("cls");
+        clear();
         JudulSesi(3);
         cout << "Masukkan data diri anda\n";
         cout << "Nama\t\t: ";
@@ -194,7 +194,7 @@ int GetPaymentMethod(int bayar)
 
     while (true)
     {
-        system("cls");
+        clear();
         JudulSesi(4);
         cout << "Pemesanan atas nama:" << endl;
         cout << "Nama\t\t: " << Capitalize(nama) << endl;
@@ -231,7 +231,7 @@ void GetPaid(int pilihan)
     {
         while (1)
         {
-            system("cls");
+            clear();
             JudulSesi(5);
             cout << "Total tarif\t\t: " << FormatPrice(tarif) << endl;
             cout << "Masukkan uang anda\t: ";
@@ -314,14 +314,14 @@ void Struck()
     cout << "\nTekan ENTER untuk menampilkan kwitansi...";
     cin.ignore();
     cin.get();
-    system("cls");
+    clear();
 }
 
 /* tampilan program selesai */
 void Selesai()
 {
     exitProgram = true;
-    system("cls");
+    clear();
     cout << "********** TERIMA KASIH ATAS KEPERCAYAAN ANDA KEPADA KAMI **********\n";
     cout << "		=================================\n";
     cout << "		|	KRITIK DAN SARAN	|\n";

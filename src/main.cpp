@@ -1,3 +1,9 @@
+#ifdef _WIN32 || WIN32
+#define OS_Windows 1
+#else
+#define OS_Windows 0
+#endif
+
 #include <iostream>
 #include <conio.h>
 #include "RandomData.h"
@@ -92,7 +98,7 @@ menu:
     /* menampilkan spesifikasi dan bertanya kepada user apakah yakin atau tidak
     jika yakin lanjut ke sesi berikutnya. jika tidak yakin kembali ke menu pilihan mobil*/
     spesifikasi:
-        system("cls");
+        clear();
         Specification(pilihanMobil);
         cout << "Apakah anda yakin? (y/n): ";
         cin >> y_n;
