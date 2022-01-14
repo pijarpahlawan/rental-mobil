@@ -242,16 +242,3 @@ unsigned int EncryptJoaat(const string &str)
     result += result << 15;
     return result;
 }
-
-/* Menghapus Console */
-void clear()
-{
-    if (OS_Windows)
-    {
-        system("cls");
-    }
-    else
-    {
-        system("clear");
-    }
-}
