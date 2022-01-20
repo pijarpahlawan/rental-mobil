@@ -34,19 +34,6 @@ bool IsStringAllDigit(const string &str)
     return !str.empty() && it == str.end();
 }
 
-/* fungsi untuk menentukan apakah ada angka di inputan 
-    - akan false jika tidak ditemukan angka pada string (all string)
-    - akan true jika saat itu juga ditemukan angka (sekali dapat) */
-bool IsStringContainsAnyDigit(const string &str)
-{
-    for (int i = 0; i < str.size(); i++)
-    {
-        if (isdigit(str[i]))
-            return true;
-    }
-    return false;
-}
-
 bool IsNameValid(const string &name)
 {
     /*
