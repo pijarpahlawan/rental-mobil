@@ -31,8 +31,16 @@
 *.out
 *.app
 
+#docs file
+*.pdf
+*.docx
+*.xlsx
+*.ai
+*.psd
+
 # Aadditional Object Ignored
 *.txt
 .vscode/
 unnecessary/
 finished-project/
+
